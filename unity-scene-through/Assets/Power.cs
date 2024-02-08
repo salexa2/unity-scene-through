@@ -14,8 +14,10 @@ public class Power : MonoBehaviour
     public float angle = 0;
     public bool killPlayer = true;
     public GameObject player;
-
+    public Vector3 direciton; 
     float power_range = 100;
+
+    public GameObject[] raycreate = new GameObject[0];
     struct RayData
     {
         bool kill;
@@ -32,26 +34,32 @@ public class Power : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < raycreate.Length; i++)
+        {
+            Destroy(raycreate[i]);
+            raycreate[i] = null;
+        }
         line_renderer.positionCount = 2 + bounces;
         line_renderer.SetPosition(0, start_position.transform.position);
-        castRay(start_position.transform.position, transform.forward);
+        direciton = transform.forward;
+        castRay(start_position.transform.position, direciton);
     }
     /*
      * A method to cast a ray from source.
      * p0 is the start position.
      * p1 is the direction
      */
-    void castRay(Vector3 p0, Vector3 p1) 
+    public void castRay(Vector3 p0, Vector3 p1) 
     {
         line_renderer.SetPosition(0, start_position.transform.position);
-        
+        Ray ray = new Ray(p0, p1);
+        RaycastHit hit;
         for (int i = 0; i < bounces+1; i++)
         {
-            Ray ray = new Ray(p0, p1);
-            RaycastHit hit;
+            ray = new Ray(p0, p1);
             if (Physics.Raycast(ray, out hit, power_range, 1))
             {
-                //Debug.Log("Hit: " + hit.collider.gameObject.tag.Equals("Player"));
+                
                 if (hit.collider.gameObject.tag.Equals("Mirror") || childernNameCheck(hit.collider.gameObject, "Mirror"))
                 {
                     Debug.Log("Hit Mirror");
@@ -68,7 +76,10 @@ public class Power : MonoBehaviour
                             line_renderer.SetPosition(j, hit.point);
                         }
                     }
-
+                    if(hit.collider.gameObject.GetComponent<Mirror>() != null)
+                    {
+                        raycreate = hit.collider.gameObject.GetComponent<Mirror>().NewCast(this.gameObject);
+                    }
                 }
                 else if (hit.collider.gameObject.tag.Equals("Player") || childernNameCheck(hit.collider.gameObject, "Player") && killPlayer)
                 {
@@ -78,18 +89,28 @@ public class Power : MonoBehaviour
                      *     hit.collider.gameObject.GetComponent<[Player_script]>().dies;
                      * }
                      */
+                 
                 }
                 else if(hit.transform.gameObject.tag.Equals("Ray") || childernNameCheck(hit.collider.gameObject, "Ray"))
                 {
-                    Debug.Log("Hit Power");
-                    p1 = hit.point;
+                    
                 }
                 
             }
             
 
         }
-        line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1);
+        ray = new Ray(p0, p1);
+        if (Physics.Raycast(ray, out hit, power_range))
+        {
+            Debug.Log("hit distance");
+            line_renderer.SetPosition(line_renderer.positionCount - 1, hit.point);
+        }
+        else
+        {
+            line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1);
+        }
+           
         bounces =  0;
     }
     bool childernNameCheck(GameObject obj, string name)
