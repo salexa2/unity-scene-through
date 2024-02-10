@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mirror
+  - Death
+  - Goal
   layers:
   - Default
   - TransparentFX

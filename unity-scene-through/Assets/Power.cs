@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Windows.Speech;
 
 public class Power : MonoBehaviour
 {
@@ -34,11 +35,15 @@ public class Power : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < raycreate.Length; i++)
+        if(raycreate != null)
         {
-            Destroy(raycreate[i]);
-            raycreate[i] = null;
+            for (int i = 0; i < raycreate.Length; i++)
+            {
+                Destroy(raycreate[i]);
+                raycreate[i] = null;
+            }
         }
+        
         line_renderer.positionCount = 2 + bounces;
         line_renderer.SetPosition(0, start_position.transform.position);
         direciton = transform.forward;
@@ -62,7 +67,7 @@ public class Power : MonoBehaviour
                 
                 if (hit.collider.gameObject.tag.Equals("Mirror") || childernNameCheck(hit.collider.gameObject, "Mirror"))
                 {
-                    Debug.Log("Hit Mirror");
+                    //Debug.Log("Hit Mirror");
                     reflectOnlyMirror = true;
                     bounces++;
                     line_renderer.positionCount++;
@@ -89,11 +94,16 @@ public class Power : MonoBehaviour
                      *     hit.collider.gameObject.GetComponent<[Player_script]>().dies;
                      * }
                      */
-                 
+                      
                 }
                 else if(hit.transform.gameObject.tag.Equals("Ray") || childernNameCheck(hit.collider.gameObject, "Ray"))
                 {
-                    
+
+                }
+                else if(hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal"))
+                {
+                    Debug.Log("Play video");
+                    Debug.Log("Door Open");
                 }
                 
             }
