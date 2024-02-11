@@ -103,7 +103,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 985cd6d57cb8650408d3496bcdccd54c, type: 3}
 --- !u!1 &1583386210998996
@@ -209,7 +209,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 985cd6d57cb8650408d3496bcdccd54c, type: 3}
 --- !u!1 &1672930628612310
@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 33203810693843228}
   - component: {fileID: 23674172065670804}
   - component: {fileID: 64560453999904960}
+  - component: {fileID: 2476182157050556347}
   m_Layer: 0
   m_Name: PTK_Elevator_3Floors
   m_TagString: Untagged
@@ -319,6 +320,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c2a58ee923676e044a4f94bfc04ad45d, type: 3}
+--- !u!95 &2476182157050556347
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672930628612310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33ef229e5f2c7c14ba389071cccf04ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1700556721083670
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +446,6 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 985cd6d57cb8650408d3496bcdccd54c, type: 3}

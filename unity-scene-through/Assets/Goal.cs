@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    Animator door_aniamtor;
+    public Animator door_aniamtor;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +15,9 @@ public class Goal : MonoBehaviour
     void Update()
     {
         
+    }
+    public void CompleteGoal()
+    {
+        door_aniamtor.Play("Door Open");
     }
 }

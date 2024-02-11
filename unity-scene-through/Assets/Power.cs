@@ -17,7 +17,8 @@ public class Power : MonoBehaviour
     public GameObject player;
     public Vector3 direciton; 
     float power_range = 100;
-
+    public GameObject power_Light = null;
+    public GameObject[] lightPoint = new GameObject[0];
     public GameObject[] raycreate = new GameObject[0];
     struct RayData
     {
@@ -104,6 +105,10 @@ public class Power : MonoBehaviour
                 {
                     Debug.Log("Play video");
                     Debug.Log("Door Open");
+                    if(hit.collider.gameObject.GetComponent<Goal>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<Goal>().CompleteGoal();
+                    }
                 }
                 
             }
@@ -120,7 +125,16 @@ public class Power : MonoBehaviour
         {
             line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1);
         }
-           
+        for (int j = 0; j < lightPoint.Length; j++){
+            Destroy(lightPoint[j]);
+        }
+        lightPoint = new GameObject[line_renderer.positionCount];
+        for (int j = 0; j < lightPoint.Length; j++)
+        {
+            GameObject tmp_light = Instantiate(power_Light);
+            tmp_light.transform.position = line_renderer.GetPosition(j);
+            lightPoint[j] = tmp_light;
+        }
         bounces =  0;
     }
     bool childernNameCheck(GameObject obj, string name)
