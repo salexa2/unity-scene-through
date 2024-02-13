@@ -118,7 +118,6 @@ public class Power : MonoBehaviour
         ray = new Ray(p0, p1);
         if (Physics.Raycast(ray, out hit, power_range))
         {
-            Debug.Log("hit distance");
             line_renderer.SetPosition(line_renderer.positionCount - 1, hit.point);
         }
         else

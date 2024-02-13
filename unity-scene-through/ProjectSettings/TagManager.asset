@@ -7,6 +7,8 @@ TagManager:
   - Mirror
   - Death
   - Goal
+  - Pushable
+  - Rideable
   layers:
   - Default
   - TransparentFX
