@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
-
+            animator.SetBool("isJumping", true);
             Jump();
         
             Invoke(nameof(ResetJump), jumpCooldown);
@@ -150,7 +150,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        animator.SetBool("isJumping", true);
 
         //reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
