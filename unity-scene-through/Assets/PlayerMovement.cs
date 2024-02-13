@@ -31,11 +31,24 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    //reference to animator
+    private Animator animator;
+
+    //public float speed;
+    public float rotationSpeed;
+
+    Vector3 cameraForward;
+    Vector3 cameraRight;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+
+        // Get the Animator component attached to the player
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+    
+        
+ 
     }
 
     void FixedUpdate()
@@ -59,7 +76,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void MyInput()
+
     {
+
+
+       cameraForward = Camera.main.transform.forward;
+       cameraRight = Camera.main.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -75,8 +104,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        //calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
+        moveDirection.Normalize();
+
+        horizontalInput = moveDirection.x;
+        verticalInput = moveDirection.z;
+
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+
+        if (moveDirection != Vector3.zero)
+        {
+            animator.SetBool("isWalking", true);
+            transform.forward = moveDirection;
+        }
+        else
+        {
+            animator.SetBool("isWalking", false); 
+        }
 
         //on ground
         if (grounded)
