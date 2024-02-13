@@ -20,6 +20,9 @@ public class Power : MonoBehaviour
     public GameObject power_Light = null;
     public GameObject[] lightPoint = new GameObject[0];
     public GameObject[] raycreate = new GameObject[0];
+
+
+    GameObject tmp_goal_object = null;
     struct RayData
     {
         bool kill;
@@ -108,6 +111,8 @@ public class Power : MonoBehaviour
                     if(hit.collider.gameObject.GetComponent<Goal>() != null)
                     {
                         hit.collider.gameObject.GetComponent<Goal>().CompleteGoal();
+                        tmp_goal_object = hit.collider.gameObject;
+                        tmp_goal_object.GetComponent<Goal>().isOpen = false;
                     }
                 }
                 
@@ -119,10 +124,36 @@ public class Power : MonoBehaviour
         if (Physics.Raycast(ray, out hit, power_range))
         {
             line_renderer.SetPosition(line_renderer.positionCount - 1, hit.point);
+            if (hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal")){
+                if (tmp_goal_object != null)
+                {
+                    if (tmp_goal_object.GetComponent<Goal>() != null)
+                    {
+                        tmp_goal_object.GetComponent<Goal>().isOpen = true;
+                    }
+                }
+            }
+            else
+            {
+                if (tmp_goal_object != null)
+                {
+                    if (tmp_goal_object.GetComponent<Goal>() != null)
+                    {
+                        tmp_goal_object.GetComponent<Goal>().isOpen = false;
+                    }
+                }
+            }
         }
         else
         {
             line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1);
+            if(tmp_goal_object != null)
+            {
+                if(tmp_goal_object.GetComponent<Goal>() != null)
+                {
+                    tmp_goal_object.GetComponent<Goal>().isOpen = false;
+                }
+            }
         }
         for (int j = 0; j < lightPoint.Length; j++){
             Destroy(lightPoint[j]);

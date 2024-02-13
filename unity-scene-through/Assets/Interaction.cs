@@ -1,5 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -9,15 +12,35 @@ public class Interaction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public bool deathFlag = false;
     // Start is called before the first frame update
+
+    public CinemachineVirtualCamera cam = null;
+    public float x_position = 0;
+    public float x_factor = 1;
     void Start()
     {
-        
+        x_position = gameObject.transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey(quitKey))
+        {
+            Debug.Log("Stop interaction");
+            stopInteraction();
+        }
+        if(cam != null)
+        {
+            float new_x = x_position - this.gameObject.transform.position.x;
+            if (new_x != 0)
+            {
+                new_x = new_x + x_factor* ((x_position - this.gameObject.transform.position.x) / x_position);
+            }
+            if (cam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
+            {
+                cam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -41,7 +64,7 @@ public class Interaction : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        objectInteraction = null;
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -53,7 +76,7 @@ public class Interaction : MonoBehaviour
         if (other.gameObject != null)
         {
             Debug.Log("Object:" + other.gameObject.name);
-            if (Input.GetKeyDown(interactionKey))
+            if (Input.GetKey(interactionKey))
             {
                 if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
                 {
@@ -61,11 +84,6 @@ public class Interaction : MonoBehaviour
                     interactionMirror(other.gameObject);
                     return;
                 }
-            }
-            else if(Input.GetKeyDown(quitKey))
-            {
-                Debug.Log("Stop interaction");
-                stopInteraction();
             }
 
         }
@@ -78,21 +96,17 @@ public class Interaction : MonoBehaviour
             this.gameObject.GetComponent<PlayerMovement>().enabled = false;
             objectInteraction.GetComponent<Mirror>().enabled = true;
         }
-        else
-        {
-            objectInteraction = null;
-        }
     }
     private void stopInteraction()
     {
         if(objectInteraction == null)
         {
+            this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             return;
         }
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
             objectInteraction.GetComponent<Mirror>().enabled = false;
-            objectInteraction = null;
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
         }
     }
