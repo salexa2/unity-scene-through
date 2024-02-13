@@ -82,17 +82,6 @@ public class PlayerMovement : MonoBehaviour
     {
 
 
-       cameraForward = Camera.main.transform.forward;
-       cameraRight = Camera.main.transform.right;
-
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
@@ -106,6 +95,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+
+
+        cameraForward = Camera.main.transform.forward;
+        cameraRight = Camera.main.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
         moveDirection.Normalize();
