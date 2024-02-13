@@ -88,9 +88,10 @@ public class PlayerMovement : MonoBehaviour
             readyToJump = false;
 
             Jump();
-
+        
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+       
     }
 
     private void MovePlayer()
@@ -149,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        animator.SetBool("isJumping", true);
+
         //reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -158,5 +161,6 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+        animator.SetBool("isJumping", false);
     }
 }
