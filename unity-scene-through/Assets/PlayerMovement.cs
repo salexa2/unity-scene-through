@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[Header("Movement")]
+    [Header("Movement")]
     public float moveSpeed;
 
     public float groundDrag;
@@ -14,10 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    //[Header("Keybinds")]
+    [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
-    //[Header("Ground Check")]
+    [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
