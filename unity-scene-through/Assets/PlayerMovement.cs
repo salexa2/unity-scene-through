@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        readyToJump = true;
+
 
         // Get the Animator component attached to the player
         animator = GetComponent<Animator>();
