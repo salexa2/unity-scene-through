@@ -68,7 +68,19 @@ public class Interaction : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag.Equals("Rideable"))
+        {
+            this.transform.parent = other.transform;
+            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Rideable"))
+        {
+            this.transform.parent = null;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
