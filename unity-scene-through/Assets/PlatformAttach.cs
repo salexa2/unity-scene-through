@@ -1,38 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlatformAttach : MonoBehaviour
 {
     public GameObject player;
-    public Vector3 size = Vector3.one;
 
-    /*private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        
-        if(other.gameObject == player)
+        if(player != null)
         {
-            player.transform.parent = this.gameObject.transform;
+            //player.transform.position -= player.transform.parent.localPosition;
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (other.gameObject.tag.Equals("Player")){
+           // other.transform.parent.SetParent(transform);
+            //player = other.gameObject;
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject == player)
+        /*if (other.gameObject.tag.Equals("Player"))
         {
-            player.transform.parent = null;
-        }
+            other.transform.parent.SetParent(null);
+            player = null;
+        }*/
     }
-
     private void OnTriggerStay(Collider other)
     {
-
-        if (other.gameObject == player)
+        /*if (other.gameObject.tag.Equals("Player"))
         {
-            player.transform.parent = this.gameObject.transform;
-        }
-    }*/
-    private void OnCollisionEnter(Collision collision)
+            other.transform.parent.SetParent(transform);
+            player = other.gameObject;
+        }*/
+    }
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
@@ -61,5 +67,5 @@ public class PlatformAttach : MonoBehaviour
         {
             player.transform.parent = gameObject.transform;
         }
-    }
+    }*/
 }
