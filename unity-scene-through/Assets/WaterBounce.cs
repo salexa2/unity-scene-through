@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -19,12 +20,14 @@ public class WaterBounce : MonoBehaviour
     public float waterHeight = 0f;
 
     Rigidbody m_Rigidbody;
-
+    public GameObject water;
+    public Vector3 start_position;
     bool underwater;
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        start_position = this.transform.position;
     }
 
     // Update is called once per frame
@@ -35,9 +38,12 @@ public class WaterBounce : MonoBehaviour
     private void FixedUpdate()
     {
         float difference = transform.position.y - waterHeight;
-        
-        if(difference < 0)
+        transform.rotation = Quaternion.identity;
+        transform.position.Set(start_position.x, transform.position.y, start_position.z);
+
+        if (difference < 0)
         {
+            
             m_Rigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(difference), transform.position, ForceMode.Force);
             if(!underwater)
             {
