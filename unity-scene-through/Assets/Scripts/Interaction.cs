@@ -13,14 +13,63 @@ public class Interaction : MonoBehaviour
     public bool deathFlag = false;
     // Start is called before the first frame update
 
-    public CinemachineVirtualCamera cam = null;
+
+    public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
-    public float x_factor = 1;
+    public float max_x_factor = 5;
+    public float x_factor = 0;
+
+    public CinemachineVirtualCamera topCam = null;
+    public float y_position = 0;
+    public float max_y_factor = 5;
+    public float y_factor = 1;
+
+    public Transform pivotPoint = null;
     void Start()
     {
         x_position = gameObject.transform.position.x;
+        y_position = gameObject.transform.position.y;
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            if (topCam.isActiveAndEnabled)
+            {
+                topCam.enabled = false;
+                sideCam.enabled = true;
+            }
+            else if (sideCam.isActiveAndEnabled)
+            {
+                sideCam.enabled = false;
+                topCam.enabled = true;
+            }
+        }
+        if (sideCam != null && sideCam.isActiveAndEnabled)
+        {
+            float new_x = x_position - this.gameObject.transform.position.x;
+            if (new_x != 0)
+            {
+                new_x = new_x + x_factor * ((x_position - this.gameObject.transform.position.x) / x_position);
+            }
+            if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
+            {
+                sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
+            }
+        }
+        if (topCam != null && topCam.isActiveAndEnabled)
+        {
+            Vector3 camTmp = topCam.gameObject.transform.position;
+            Vector3 new_position = new Vector3(this.transform.position.x, camTmp.y, camTmp.z);
+            topCam.gameObject.transform.position = Vector3.Lerp(camTmp, new_position, 4);
+            float new_y = y_position - this.gameObject.transform.position.x;
+            if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
+            {
+                sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.y = new_y;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -29,18 +78,7 @@ public class Interaction : MonoBehaviour
             Debug.Log("Stop interaction");
             stopInteraction();
         }
-        if(cam != null)
-        {
-            float new_x = x_position - this.gameObject.transform.position.x;
-            if (new_x != 0)
-            {
-                new_x = new_x + x_factor* ((x_position - this.gameObject.transform.position.x) / x_position);
-            }
-            if (cam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
-            {
-                cam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
-            }
-        }
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -64,7 +102,7 @@ public class Interaction : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -111,7 +149,7 @@ public class Interaction : MonoBehaviour
     }
     private void stopInteraction()
     {
-        if(objectInteraction == null)
+        if (objectInteraction == null)
         {
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             return;
