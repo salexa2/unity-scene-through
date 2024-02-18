@@ -35,12 +35,12 @@ public class Interaction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            if (topCam.isActiveAndEnabled)
+            if (topCam != null && sideCam != null && topCam.isActiveAndEnabled)
             {
                 topCam.enabled = false;
                 sideCam.enabled = true;
             }
-            else if (sideCam.isActiveAndEnabled)
+            else if (topCam != null && sideCam != null && sideCam.isActiveAndEnabled)
             {
                 sideCam.enabled = false;
                 topCam.enabled = true;
