@@ -16,11 +16,17 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode crouchKey = KeyCode.Tab; 
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+
+    public CapsuleCollider characterCollider;
+    public BoxCollider boxCollide;
+    private bool wasCrouched = false;
+
 
     public Transform orientation;
 
@@ -48,9 +54,13 @@ public class PlayerMovement : MonoBehaviour
 
         readyToJump = true;
 
+        
 
         // Get the Animator component attached to the player
         animator = GetComponent<Animator>();
+        // Get the CapsuleCollider component attached to the player
+        characterCollider = GetComponent<CapsuleCollider>();
+        boxCollide = GetComponent<BoxCollider>(); 
     }
 
     // Update is called once per frame
@@ -91,7 +101,23 @@ public class PlayerMovement : MonoBehaviour
         
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-       
+
+
+        bool isCrouchedNow = Input.GetKey(crouchKey);
+        if(isCrouchedNow && !wasCrouched)
+    {
+            animator.SetBool("isCrouched", true);
+            Crouch();
+        }
+    else if (!isCrouchedNow && wasCrouched)
+        {
+            animator.SetBool("isCrouched", false);
+            StandUp();
+        }
+
+        wasCrouched = isCrouchedNow;
+
+
     }
 
     private void MovePlayer()
@@ -118,15 +144,31 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
 
-        if (moveDirection != Vector3.zero)
+        if (animator.GetBool("isCrouched") == false)
         {
-            animator.SetBool("isWalking", true);
-            transform.forward = moveDirection;
+             if (moveDirection != Vector3.zero){
+                        animator.SetBool("isWalking", true);
+                        transform.forward = moveDirection;
+             }
+             else
+                    {
+                        animator.SetBool("isWalking", false); 
+                    }
         }
         else
         {
-            animator.SetBool("isWalking", false); 
+            if (moveDirection != Vector3.zero)
+            {
+                animator.SetBool("isCrawl", true);
+                transform.forward = moveDirection;
+            }
+            else
+            {
+                animator.SetBool("isCrawl", false);
+
+            }
         }
+       
 
         //on ground
         if (grounded)
@@ -162,4 +204,27 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
         animator.SetBool("isJumping", false);
     }
+
+    private void Crouch()
+{
+        // Reduce player height when crouching
+        characterCollider.height *= 0.5f;
+        characterCollider.center = new Vector3(0f, characterCollider.height * 0.5f, 0f);
+        boxCollide.size = new Vector3(boxCollide.size.x, .77f, boxCollide.size.z);
+        boxCollide.center = characterCollider.center; 
+    }
+
+private void StandUp()
+{
+        // Restore player height when standing up
+        characterCollider.height *= 2f;
+        characterCollider.center = new Vector3(0f, characterCollider.height * 0.5f, 0f);
+
+        // Adjust the BoxCollider
+        boxCollide.size = new Vector3(boxCollide.size.x, boxCollide.size.y * 2f, boxCollide.size.z);
+        boxCollide.center = new Vector3(0f, boxCollide.size.y * 0.5f, 0f);
+    
+
+}
+
 }
