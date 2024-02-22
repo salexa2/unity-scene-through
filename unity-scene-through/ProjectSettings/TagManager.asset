@@ -9,6 +9,8 @@ TagManager:
   - Goal
   - Pushable
   - Rideable
+  - TopCamera
+  - SideCamera
   layers:
   - Default
   - TransparentFX
