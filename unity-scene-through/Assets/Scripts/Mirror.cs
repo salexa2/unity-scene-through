@@ -9,14 +9,26 @@ public class Mirror : MonoBehaviour
     public GameObject mirrorWheel = null;
     public GameObject mirrorFrame = null;
     public float mirrorSpeed = 0.5f;
+
+
+    // Direction
+    public Quaternion[] mirrorDirection = new Quaternion[0];
+    public int mirrorIndex = 0;
+    public bool isTurn = true;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(mirrorDirection.Length != 0)
+        {
+            //this.gameObject.transform.Rotate(transform.up, mirrorDirection[mirrorIndex].y);
+            mirrorFrame.transform.rotation = Quaternion.Slerp(this.gameObject.transform.rotation,mirrorDirection[mirrorIndex], 3);
+            isTurn = true;
+        }
     }
     private void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        /*if(Input.GetKey(KeyCode.LeftArrow))
         {
             
             if (mirrorFrame != null)
@@ -48,15 +60,33 @@ public class Mirror : MonoBehaviour
             {
                 mirrorWheel.transform.Rotate(Vector3.up, mirrorSpeed);
             }
+        }*/
+        if (mirrorFrame.transform.rotation != mirrorDirection[mirrorIndex])
+        {
+            mirrorFrame.transform.rotation = Quaternion.Slerp(mirrorFrame.transform.rotation, mirrorDirection[mirrorIndex], 0.01f);
+        }
+        else
+        {
+            isTurn = true;
         }
     }
-
+    public void ChangeDirection()
+    {
+        if (mirrorDirection.Length != 0 && isTurn)
+        {
+            mirrorIndex++;
+            if(mirrorIndex >= mirrorDirection.Length)
+            {
+                mirrorIndex = 0;
+            }
+            isTurn = false;
+        }
+    }
     public GameObject[] NewCast(GameObject obj)
     {
         if (!isThereMultipleRay) { return null; }
         if(rayNum.Length == 0) { return null; }
         int index_size = 0;
-        Debug.Log("Problem 1");
         for(int i = 0; i < obj.GetComponent<Power>().raycreate.Length; i++)
         {
             Destroy(obj.GetComponent<Power>().raycreate[i]);
@@ -69,7 +99,6 @@ public class Mirror : MonoBehaviour
                 index_size ++;
             }
         }
-        Debug.Log("Problem 2");
         GameObject[] ret = new GameObject[index_size];
         int j = 0;
         for (int i = 0; i < rayNum.Length; i++)

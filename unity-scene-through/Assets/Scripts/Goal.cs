@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Goal : MonoBehaviour
@@ -15,13 +14,23 @@ public class Goal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isOpen)
+        if (door_aniamtor != null)
         {
-            door_aniamtor.Play("Door_Idle");
+            if (!isOpen)
+            {
+                door_aniamtor.Play("Door_Idle");
+            }
         }
     }
     public void CompleteGoal()
     {
-        door_aniamtor.Play("Door Open");
+        if (door_aniamtor != null)
+        {
+            if (!isOpen)
+            {
+                door_aniamtor.Play("Door Open");
+            }
+        }
+        
     }
 }

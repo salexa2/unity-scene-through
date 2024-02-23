@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interaction : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class Interaction : MonoBehaviour
     public KeyCode quitKey = KeyCode.Q;
     public KeyCode interactionKey = KeyCode.E;
     public bool deathFlag = false;
+    public bool hasJump = true;
     // Start is called before the first frame update
-
+    protected bool youDie = false;
 
     public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
@@ -23,12 +25,18 @@ public class Interaction : MonoBehaviour
     public float y_position = 0;
     public float max_y_factor = 5;
     public float y_factor = 1;
+    
 
     public Transform pivotPoint = null;
     void Start()
     {
         x_position = gameObject.transform.position.x;
         y_position = gameObject.transform.position.y;
+        if(sideCam != null)
+        {
+            sideCam.gameObject.SetActive(true);
+        }
+        
     }
 
     private void FixedUpdate()
@@ -64,41 +72,80 @@ public class Interaction : MonoBehaviour
             Vector3 new_position = new Vector3(this.transform.position.x, camTmp.y, camTmp.z);
             topCam.gameObject.transform.position = Vector3.Lerp(camTmp, new_position, 4);
             float new_y = y_position - this.gameObject.transform.position.x;
-            if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
-            {
-                sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.y = new_y;
-            }
+
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(quitKey))
+        /*if (Input.GetKey(quitKey))
         {
             Debug.Log("Stop interaction");
             stopInteraction();
-        }
+        }*/
 
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (deathFlag && collision.gameObject.tag.Equals("Death"))
         {
-            Debug.Log("You Die");
+            Debug.Log("You Die: you restart");
+            if (youDie)
+            {
+                SceneManager.LoadScene("NEWLEVEL1SCENE");
+            }
         }
+
         /*if (collision.gameObject.tag.Equals("Rideable"))
         {
            objectInteraction = collision.gameObject;
             this.gameObject.transform.position = collision.contacts[0].point;
         }*/
+        if (collision.gameObject.tag.Equals("Floatable"))
+        {
+            this.transform.parent = collision.transform;
+            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
+            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 10))
+            {
+                if (hit.distance <= 9 && hasJump)
+                {
+                    Debug.Log("Is land");
+                    hasJump = false;
+                }
+                else
+                {
+                    Debug.Log("Is in air");
+                    hasJump = true;
+                }
+            }
+
+        }
     }
     private void OnCollisionStay(Collision collision)
     {
-        /*(objectInteraction.gameObject.tag.Equals("Rideable"))
+        if (collision.gameObject.tag.Equals("Floatable"))
         {
-            objectInteraction = collision.gameObject;
-            this.gameObject.transform.position = collision.contacts[0].point;
-        }*/
+            this.transform.parent = collision.transform;
+            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
+            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 10))
+            {
+                if (hit.distance <= 9 && hasJump)
+                {
+                    Debug.Log("Is land");
+                    hasJump = false;
+                }
+                else
+                {
+                    Debug.Log("Is in air");
+                    hasJump = true;
+                }
+            }
+
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -119,6 +166,10 @@ public class Interaction : MonoBehaviour
         {
             this.transform.parent = null;
         }
+        if (other.gameObject.tag.Equals("Mirror"))
+        {
+            stopInteraction();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -126,26 +177,36 @@ public class Interaction : MonoBehaviour
         if (other.gameObject != null)
         {
             Debug.Log("Object:" + other.gameObject.name);
-            if (Input.GetKey(interactionKey))
+            if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
             {
-                if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
-                {
-                    Debug.Log("Mirror is control");
-                    interactionMirror(other.gameObject);
-                    return;
-                }
+                Debug.Log("Mirror is control");
+                interactionMirror(other.gameObject);
+                return;
             }
 
         }
     }
     private void interactionMirror(GameObject obj)
     {
-        objectInteraction = obj.gameObject;
-        if (objectInteraction.GetComponent<Mirror>() != null)
+        if (Input.GetKeyDown(interactionKey))
         {
-            this.gameObject.GetComponent<PlayerMovement>().enabled = false;
-            objectInteraction.GetComponent<Mirror>().enabled = true;
+            objectInteraction = obj.gameObject;
+            if (objectInteraction.GetComponent<Mirror>() != null)
+            {
+                //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                objectInteraction.GetComponent<Mirror>().enabled = true;
+                obj.gameObject.GetComponent<Mirror>().ChangeDirection();
+            }
+        }else if (Input.GetKeyUp(interactionKey))
+        {
+            if (objectInteraction.GetComponent<Mirror>() != null)
+            {
+                //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                objectInteraction.GetComponent<Mirror>().enabled = true;
+                obj.gameObject.GetComponent<Mirror>().isTurn = true;
+            }
         }
+        
     }
     private void stopInteraction()
     {
@@ -156,7 +217,7 @@ public class Interaction : MonoBehaviour
         }
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
-            objectInteraction.GetComponent<Mirror>().enabled = false;
+            //objectInteraction.GetComponent<Mirror>().enabled = false;
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
         }
     }
