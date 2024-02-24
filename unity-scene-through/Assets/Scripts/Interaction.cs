@@ -202,7 +202,10 @@ public class Interaction : MonoBehaviour
             {
                 //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
                 objectInteraction.GetComponent<Mirror>().enabled = true;
-                obj.gameObject.GetComponent<Mirror>().isTurn = true;
+                if (!objectInteraction.GetComponent<Mirror>().wheelisTurn)
+                {
+                    obj.gameObject.GetComponent<Mirror>().isTurn = false;
+                }
             }
         }
         
@@ -217,7 +220,8 @@ public class Interaction : MonoBehaviour
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
             
-            objectInteraction.gameObject.GetComponent<Mirror>().isTurn = true;
+            objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
+            objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
             objectInteraction.GetComponent<Mirror>().enabled = false;
             objectInteraction = null;
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;

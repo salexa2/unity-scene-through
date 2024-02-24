@@ -14,7 +14,8 @@ public class Mirror : MonoBehaviour
     // Direction
     public Quaternion[] mirrorDirection = new Quaternion[0];
     public int mirrorIndex = 0;
-    public bool isTurn = true;
+    public bool isTurn = false;
+    public bool wheelisTurn = false;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,8 @@ public class Mirror : MonoBehaviour
         {
             //this.gameObject.transform.Rotate(transform.up, mirrorDirection[mirrorIndex].y);
             mirrorFrame.transform.rotation = Quaternion.Slerp(this.gameObject.transform.rotation,mirrorDirection[mirrorIndex], 3);
-            isTurn = true;
+            isTurn = false;
+            wheelisTurn = false;
         }
     }
     private void Update()
@@ -63,23 +65,24 @@ public class Mirror : MonoBehaviour
         }*/
         if (mirrorFrame.transform.rotation != mirrorDirection[mirrorIndex])
         {
-            mirrorFrame.transform.rotation = Quaternion.Slerp(mirrorFrame.transform.rotation, mirrorDirection[mirrorIndex], 0.01f);
+            mirrorFrame.transform.rotation = mirrorDirection[mirrorIndex];
         }
         else
         {
-            isTurn = true;
+            wheelisTurn = false;
         }
     }
     public void ChangeDirection()
     {
-        if (mirrorDirection.Length != 0 && isTurn)
+        if (mirrorDirection.Length != 0 && !isTurn && !wheelisTurn)
         {
             mirrorIndex++;
             if(mirrorIndex >= mirrorDirection.Length)
             {
                 mirrorIndex = 0;
             }
-            isTurn = false;
+            wheelisTurn = true;
+            isTurn = true;
         }
     }
     public GameObject[] NewCast(GameObject obj)
