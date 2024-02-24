@@ -4,6 +4,7 @@ using UnityEngine;
 //Youtube: https://www.youtube.com/watch?v=iasDPyC0QOg&t=315s
 public class WaterBounce : MonoBehaviour
 {
+    public Transform[] floaters; 
     public float underWaterDrag = 3f; 
 
     public float underWaterAngularDrag = 1f;
@@ -17,43 +18,60 @@ public class WaterBounce : MonoBehaviour
     public float waterHeight = 0f;
 
     Rigidbody m_Rigidbody;
-    public GameObject water;
-    public Vector3 start_position;
-    public Quaternion start_rotation;
+    //number of floating objects
+
+    int floatersUnderWater;
+
     bool underwater;
+   // public GameObject water;
+   // public Vector3 start_position;
+   // public Quaternion start_rotation;
+  // 
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         
-        start_position = this.transform.position;
+      //  start_position = this.transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         transform.position = new Vector3(start_position.x, transform.position.y, start_position.z);
         transform.rotation = Quaternion.identity;
-    }
+    }*/
     private void FixedUpdate()
     {
-        float difference = transform.position.y - water.transform.position.y;
+       floatersUnderWater = 0;
 
-        if (difference < 0)
+
+
+        for (int i = 0; i < floaters.Length; i++)
         {
-            
-            m_Rigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(difference), transform.position, ForceMode.Force);
-            if(!underwater)
+
+            float difference = floaters[i].position.y - waterHeight;
+
+            if (difference < 0)
             {
-                underwater = true;
-                SwitchState(true);
+
+                m_Rigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(difference), transform.position, ForceMode.Force);
+                floatersUnderWater += 1;
+                if (!underwater)
+                {
+                    underwater = true;
+                    SwitchState(true);
+                }
             }
         }
-        else if(underwater)
-        {
-            underwater = false;
-            SwitchState(false);
-        }
+        if(underwater && floatersUnderWater == 0)
+         {
+               underwater = false;
+               SwitchState(false);
+          }
+
+        
+        
     }
     void SwitchState(bool underwater)
     {

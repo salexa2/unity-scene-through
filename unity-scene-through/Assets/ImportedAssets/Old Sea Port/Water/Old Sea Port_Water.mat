@@ -2,20 +2,30 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Old Sea Port_Water
   m_Shader: {fileID: 4800000, guid: 09216bdfd6523db4487ca393081c9eeb, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON _DETAIL_MULX2 _DETAIL_TEXTURED _EMISSION _NORMALMAP
-    _WETNESS_NONE
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  - _DETAIL_MULX2
+  - _DETAIL_TEXTURED
+  - _EMISSION
+  - _NORMALMAP
+  - _WETNESS_NONE
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -135,13 +145,34 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
     - _Base_Smoothness: 0.99
     - _BendNormalsFreq: 4
     - _BendNormalsStrength: 0.05
+    - _BlendMode: 0
     - _BumpScale: 1
     - _BumpScale2: 1
     - _ChromaticAberration: 0.02
+    - _ConservativeDepthOffsetEnable: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _CurvatureCustomU: 0
     - _CurvatureCustomV: 0
     - _CurvatureMultU: 1
@@ -150,6 +181,7 @@ Material:
     - _DecalMask: 1
     - _DecalMaskGUI: 3
     - _Depth: 0.1
+    - _DepthOffsetEnable: 0
     - _DepthReductionDistance: 20
     - _DepthWrite: 0
     - _DetailEmissiveness: 0
@@ -165,12 +197,18 @@ Material:
     - _Displacement: 0
     - _DistSteps: 64
     - _DistStepsShadows: 64
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
     - _DropletsAnimSpeed: 10
     - _DropletsTiling: 1
     - _DstBlend: 10
     - _EdgeOcclusion: 1
     - _EdgeTransparency: 1
     - _EmissionPulsateSpeed: 0
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _ExcludeFromTUAndAA: 0
     - _Float0: 0.06
     - _Float3: 1
     - _FlowCycleScale: 2
@@ -202,6 +240,7 @@ Material:
     - _OcclusionStrength: 1
     - _OcclusionStrength2: 0
     - _Occlusion_from_albedo_alpha: 1
+    - _OpaqueCullMode: 2
     - _POM: 0
     - _POMCurvatureType: 0
     - _POMPrecomputedFlag: 0
@@ -221,10 +260,16 @@ Material:
     - _PulsateEmission: 0
     - _RainIntensity: 1
     - _RainIntensityFromGlobal: 0
+    - _RayTracing: 0
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
     - _Refraction: 0.02
     - _RefractionBumpScale: 0.5
     - _RefractionChromaticAberration: 0
+    - _RefractionModel: 0
     - _ReliefMIPbias: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
     - _RippleAnimSpeed: 0.5
     - _RippleRefraction: 0.3
     - _RippleSpecFilter: 0.02
@@ -264,6 +309,18 @@ Material:
     - _SpecularHighlights: 1
     - _Speed: 0.266
     - _SrcBlend: 5
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
+    - _SupportDecals: 1
+    - _SurfaceType: 0
     - _Tan2ObjCustomU: 1
     - _Tan2ObjCustomV: 1
     - _Tan2ObjMultU: 1
@@ -284,10 +341,18 @@ Material:
     - _TranslucencyStrength: 4
     - _TranslucencySuppressRealtimeShadows: 0.5
     - _Transparency: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
     - _UVSec: 0
     - _UVSecOcclusion: 0
     - _UVSecOcclusionLightmapPacked: 0
     - _UV_Clip: 0
+    - _UseShadowThreshold: 0
     - _WetDroplets: 0
     - _WetRipples: 0
     - _Wetness: 0
@@ -305,6 +370,9 @@ Material:
     - _WetnessNormalInfluence: 0.5
     - _WetnessShown: 1
     - _WetnessUVMult: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
     - _ZWrite: 0
     - __dirty: 0
     - maxDist: 10
@@ -318,6 +386,7 @@ Material:
     - _DetailSpecGloss: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseScatteringColor: {r: 0, g: 0, b: 0, a: 0}
     - _DiffuseScatteringColor2: {r: 0, g: 0, b: 0, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlitterColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
     - _GlitterColor2: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
@@ -338,3 +407,4 @@ Material:
     - bumpMap2TexelSize: {r: 1, g: 1, b: 1, a: 1}
     - bumpMapTexelSize: {r: 0.0009765625, g: 0.0009765625, b: 1024, a: 1024}
     - heightMapTexelSize: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
