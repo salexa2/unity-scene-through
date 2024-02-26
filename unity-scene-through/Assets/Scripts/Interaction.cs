@@ -179,7 +179,6 @@ public class Interaction : MonoBehaviour
             Debug.Log("Object:" + other.gameObject.name);
             if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
             {
-                Debug.Log("Mirror is control");
                 interactionMirror(other.gameObject);
                 return;
             }
@@ -188,7 +187,7 @@ public class Interaction : MonoBehaviour
     }
     private void interactionMirror(GameObject obj)
     {
-        if (Input.GetKeyDown(interactionKey))
+        if (Input.GetKey(interactionKey))
         {
             objectInteraction = obj.gameObject;
             if (objectInteraction.GetComponent<Mirror>() != null)
@@ -203,7 +202,10 @@ public class Interaction : MonoBehaviour
             {
                 //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
                 objectInteraction.GetComponent<Mirror>().enabled = true;
-                obj.gameObject.GetComponent<Mirror>().isTurn = true;
+                if (!objectInteraction.GetComponent<Mirror>().wheelisTurn)
+                {
+                    obj.gameObject.GetComponent<Mirror>().isTurn = false;
+                }
             }
         }
         
@@ -217,8 +219,13 @@ public class Interaction : MonoBehaviour
         }
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
-            //objectInteraction.GetComponent<Mirror>().enabled = false;
+            
+            objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
+            objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
+            objectInteraction.GetComponent<Mirror>().enabled = false;
+            objectInteraction = null;
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+            
         }
     }
 }
