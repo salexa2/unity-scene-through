@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public bool deathFlag = false;
     public bool hasJump = true;
-    public bool canSeeTopDown = false;
+    //public bool canSeeTopDown = false;
 
 
     protected bool youDie = false;
@@ -28,6 +28,7 @@ public class Interaction : MonoBehaviour
     public float x_factor = 0;
 
     public Camera topCam = null;
+    public Camera sideCamera = null;
 
 
     // Start is called before the first frame update
@@ -41,23 +42,29 @@ public class Interaction : MonoBehaviour
             {
                 topCam.gameObject.SetActive(false);
             }
+            if (sideCam != null)
+            {
+                sideCamera.gameObject.SetActive(true);
+            }
         }
         
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.R) && canSeeTopDown)
+        if (Input.GetKey(KeyCode.R))
         {
-            if (topCam != null && sideCam != null)
+            if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
             {
                 topCam.gameObject.SetActive(true);
                 sideCam.gameObject.SetActive(false);
+                sideCamera.gameObject.SetActive(false);
             }
-            else if (topCam != null && sideCam != null && sideCam.isActiveAndEnabled)
+            else if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
             {
                 topCam.gameObject.SetActive(false);
                 sideCam.gameObject.SetActive(true);
+                sideCamera.gameObject.SetActive(true);
             }
         }
         if (sideCam != null && sideCam.isActiveAndEnabled)
@@ -147,9 +154,9 @@ public class Interaction : MonoBehaviour
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
 
         }
-        if(other.gameObject.tag == "topCam")
+        if(other.gameObject.tag.Equals("TopCamera"))
         {
-            canSeeTopDown = true;
+            //canSeeTopDown = !canSeeTopDown;
         }
     }
     private void OnTriggerExit(Collider other)

@@ -90,7 +90,7 @@ public class Power : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.tag.Equals("Player") || childernNameCheck(hit.collider.gameObject, "Player") && killPlayer)
                 {
-                    Debug.Log("Hit: Player");
+                    //Debug.Log("Hit: Player");
                     /*
                      * if(hit.collider.gameObject.GetComponent<[Player_script]>() != null){
                      *     hit.collider.gameObject.GetComponent<[Player_script]>().dies;

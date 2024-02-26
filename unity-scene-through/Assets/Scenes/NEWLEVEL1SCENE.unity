@@ -7857,11 +7857,11 @@ GameObject:
   - component: {fileID: 528325216}
   m_Layer: 0
   m_Name: Two
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &528325216
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11240,13 +11240,13 @@ MonoBehaviour:
   interactionKey: 101
   deathFlag: 1
   hasJump: 1
-  canSeeTopDown: 0
   swingpositon: {fileID: 0}
   sideCam: {fileID: 1736266780}
   x_position: 0
   max_x_factor: 5
   x_factor: 1
-  topCam: {fileID: 0}
+  topCam: {fileID: 528325217}
+  sideCamera: {fileID: 1303299977}
 --- !u!1 &679234741
 GameObject:
   m_ObjectHideFlags: 0
@@ -19428,6 +19428,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145550071}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1145708760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145708761}
+  - component: {fileID: 1145708762}
+  m_Layer: 0
+  m_Name: TopCameraTrigger
+  m_TagString: TopCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145708761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145708760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.27, y: 2.5, z: 4.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1860735085}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1145708762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145708760}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.44, y: 2.06, z: 0.33}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1149145839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2475165458568214697, guid: 151e99305d81735429c52b5ab842d21e, type: 3}
@@ -22055,8 +22108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303299975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18540147, y: 0.6734089, z: -0.18027292, w: 0.6925665}
-  m_LocalPosition: {x: -27.270452, y: 2.7335417, z: -8.342997}
+  m_LocalRotation: {x: 0.09174369, y: 0.7078613, z: -0.093563914, w: 0.6940903}
+  m_LocalPosition: {x: -27.20257, y: 2.0240045, z: 25.002783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27931,7 +27984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.28
+      value: 24.96
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -32787,8 +32840,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736266779}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18540147, y: 0.6734089, z: -0.18027292, w: 0.6925665}
-  m_LocalPosition: {x: -27.270452, y: 2.7335417, z: -8.342997}
+  m_LocalRotation: {x: 0.09174369, y: 0.7078613, z: -0.093563914, w: 0.6940903}
+  m_LocalPosition: {x: -27.20257, y: 2.0240045, z: 25.002783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34744,6 +34797,7 @@ Transform:
   - {fileID: 1103501020}
   - {fileID: 1820349492}
   - {fileID: 403331701}
+  - {fileID: 1145708761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863136980
@@ -35770,7 +35824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1632167100}
-  m_PathPosition: 2.6611612
+  m_PathPosition: 0.046795912
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
