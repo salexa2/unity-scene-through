@@ -13,45 +13,51 @@ public class Interaction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public bool deathFlag = false;
     public bool hasJump = true;
-    // Start is called before the first frame update
+    public bool canSeeTopDown = false;
+
+
     protected bool youDie = false;
+
+    public Transform swingpositon = null;
+    protected bool isSwing = false;
+
 
     public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
     public float max_x_factor = 5;
     public float x_factor = 0;
 
-    public CinemachineVirtualCamera topCam = null;
-    public float y_position = 0;
-    public float max_y_factor = 5;
-    public float y_factor = 1;
-    
+    public Camera topCam = null;
 
-    public Transform pivotPoint = null;
+
+    // Start is called before the first frame update
     void Start()
     {
         x_position = gameObject.transform.position.x;
-        y_position = gameObject.transform.position.y;
         if(sideCam != null)
         {
             sideCam.gameObject.SetActive(true);
+            if(topCam != null)
+            {
+                topCam.gameObject.SetActive(false);
+            }
         }
         
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) && canSeeTopDown)
         {
-            if (topCam != null && sideCam != null && topCam.isActiveAndEnabled)
+            if (topCam != null && sideCam != null)
             {
-                topCam.enabled = false;
-                sideCam.enabled = true;
+                topCam.gameObject.SetActive(true);
+                sideCam.gameObject.SetActive(false);
             }
             else if (topCam != null && sideCam != null && sideCam.isActiveAndEnabled)
             {
-                sideCam.enabled = false;
-                topCam.enabled = true;
+                topCam.gameObject.SetActive(false);
+                sideCam.gameObject.SetActive(true);
             }
         }
         if (sideCam != null && sideCam.isActiveAndEnabled)
@@ -66,24 +72,14 @@ public class Interaction : MonoBehaviour
                 sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
             }
         }
-        if (topCam != null && topCam.isActiveAndEnabled)
-        {
-            Vector3 camTmp = topCam.gameObject.transform.position;
-            Vector3 new_position = new Vector3(this.transform.position.x, camTmp.y, camTmp.z);
-            topCam.gameObject.transform.position = Vector3.Lerp(camTmp, new_position, 4);
-            float new_y = y_position - this.gameObject.transform.position.x;
-
-        }
     }
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKey(quitKey))
+        if (isSwing)
         {
-            Debug.Log("Stop interaction");
-            stopInteraction();
-        }*/
-
+            this.transform.position = swingpositon.position;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -96,36 +92,19 @@ public class Interaction : MonoBehaviour
             }
         }
 
-        /*if (collision.gameObject.tag.Equals("Rideable"))
+        if (collision.gameObject.tag == "Swingable")
         {
-           objectInteraction = collision.gameObject;
-            this.gameObject.transform.position = collision.contacts[0].point;
-        }*/
-        if (collision.gameObject.tag.Equals("Floatable"))
-        {
-            this.transform.parent = collision.transform;
-            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
-            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 10))
-            {
-                if (hit.distance <= 9 && hasJump)
-                {
-                    Debug.Log("Is land");
-                    hasJump = false;
-                }
-                else
-                {
-                    Debug.Log("Is in air");
-                    hasJump = true;
-                }
-            }
-
+            isSwing = true;
+            GameObject location = new GameObject();
+            location.name = "tmp location";
+            location.transform.position = this.transform.position;
+            location.transform.parent = collision.transform;
+            swingpositon = location.transform;
         }
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Floatable"))
+        /*if (collision.gameObject.tag.Equals("Floatable"))
         {
             this.transform.parent = collision.transform;
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
@@ -145,6 +124,15 @@ public class Interaction : MonoBehaviour
                 }
             }
 
+        }*/
+        if (collision.gameObject.tag == "Swingable")
+        {
+            isSwing = true;
+            GameObject location = new GameObject();
+            location.name = "tmp location";
+            location.transform.position = this.transform.position;
+            location.transform.parent = collision.transform;
+            swingpositon = location.transform;
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -158,6 +146,10 @@ public class Interaction : MonoBehaviour
             this.transform.parent = other.transform;
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
 
+        }
+        if(other.gameObject.tag == "topCam")
+        {
+            canSeeTopDown = true;
         }
     }
     private void OnTriggerExit(Collider other)

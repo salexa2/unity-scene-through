@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: DollyControl
-    m_To: 
+    m_To: '**ANY CAMERA**'
     m_Blend:
       m_Style: 1
       m_Time: 2
