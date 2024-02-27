@@ -13,28 +13,40 @@ public class Interaction : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public bool deathFlag = false;
     public bool hasJump = true;
-    // Start is called before the first frame update
+    //public bool canSeeTopDown = false;
+
+
     protected bool youDie = false;
+
+    public Transform swingpositon = null;
+    protected bool isSwing = false;
+    public Vector3 vineVelocityWhenGrabbed;
+    public float swingForce = 10f;
 
     public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
     public float max_x_factor = 5;
     public float x_factor = 0;
 
-    public CinemachineVirtualCamera topCam = null;
-    public float y_position = 0;
-    public float max_y_factor = 5;
-    public float y_factor = 1;
-    
+    public Camera topCam = null;
+    public Camera sideCamera = null;
 
-    public Transform pivotPoint = null;
+
+    // Start is called before the first frame update
     void Start()
     {
         x_position = gameObject.transform.position.x;
-        y_position = gameObject.transform.position.y;
         if(sideCam != null)
         {
             sideCam.gameObject.SetActive(true);
+            if(topCam != null)
+            {
+                topCam.gameObject.SetActive(false);
+            }
+            if (sideCam != null)
+            {
+                sideCamera.gameObject.SetActive(true);
+            }
         }
         
     }
@@ -43,15 +55,17 @@ public class Interaction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            if (topCam != null && sideCam != null && topCam.isActiveAndEnabled)
+            if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
             {
-                topCam.enabled = false;
-                sideCam.enabled = true;
+                topCam.gameObject.SetActive(true);
+                sideCam.gameObject.SetActive(false);
+                sideCamera.gameObject.SetActive(false);
             }
-            else if (topCam != null && sideCam != null && sideCam.isActiveAndEnabled)
+            else if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
             {
-                sideCam.enabled = false;
-                topCam.enabled = true;
+                topCam.gameObject.SetActive(false);
+                sideCam.gameObject.SetActive(true);
+                sideCamera.gameObject.SetActive(true);
             }
         }
         if (sideCam != null && sideCam.isActiveAndEnabled)
@@ -66,24 +80,21 @@ public class Interaction : MonoBehaviour
                 sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
             }
         }
-        if (topCam != null && topCam.isActiveAndEnabled)
-        {
-            Vector3 camTmp = topCam.gameObject.transform.position;
-            Vector3 new_position = new Vector3(this.transform.position.x, camTmp.y, camTmp.z);
-            topCam.gameObject.transform.position = Vector3.Lerp(camTmp, new_position, 4);
-            float new_y = y_position - this.gameObject.transform.position.x;
-
-        }
     }
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKey(quitKey))
+        if (isSwing)
         {
-            Debug.Log("Stop interaction");
-            stopInteraction();
-        }*/
-
+            this.transform.position = swingpositon.position;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSwing = false;
+                this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(swingpositon.GetComponent<Rigidbody>().velocity.x, swingpositon.GetComponent<Rigidbody>().velocity.y + swingForce,
+                    swingpositon.GetComponent<Rigidbody>().velocity.z);
+                this.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -96,56 +107,7 @@ public class Interaction : MonoBehaviour
             }
         }
 
-        /*if (collision.gameObject.tag.Equals("Rideable"))
-        {
-           objectInteraction = collision.gameObject;
-            this.gameObject.transform.position = collision.contacts[0].point;
-        }*/
-        if (collision.gameObject.tag.Equals("Floatable"))
-        {
-            this.transform.parent = collision.transform;
-            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
-            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 10))
-            {
-                if (hit.distance <= 9 && hasJump)
-                {
-                    Debug.Log("Is land");
-                    hasJump = false;
-                }
-                else
-                {
-                    Debug.Log("Is in air");
-                    hasJump = true;
-                }
-            }
-
-        }
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag.Equals("Floatable"))
-        {
-            this.transform.parent = collision.transform;
-            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
-            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 10))
-            {
-                if (hit.distance <= 9 && hasJump)
-                {
-                    Debug.Log("Is land");
-                    hasJump = false;
-                }
-                else
-                {
-                    Debug.Log("Is in air");
-                    hasJump = true;
-                }
-            }
-
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -158,6 +120,12 @@ public class Interaction : MonoBehaviour
             this.transform.parent = other.transform;
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
 
+        }
+        if (other.gameObject.tag == "Swingable")
+        {
+            other.GetComponent<Rigidbody>().velocity = vineVelocityWhenGrabbed;
+            isSwing = true;
+            swingpositon = other.transform;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -183,6 +151,10 @@ public class Interaction : MonoBehaviour
                 return;
             }
 
+        }
+        if (other.gameObject.tag == "Swingable")
+        {
+            swingpositon = other.transform;
         }
     }
     private void interactionMirror(GameObject obj)

@@ -12,6 +12,8 @@ TagManager:
   - TopCamera
   - SideCamera
   - invisible
+  - Vehicle
+  - Swingable
   layers:
   - Default
   - TransparentFX
