@@ -20,7 +20,8 @@ public class Interaction : MonoBehaviour
 
     public Transform swingpositon = null;
     protected bool isSwing = false;
-
+    public Vector3 vineVelocityWhenGrabbed;
+    public float swingForce = 10f;
 
     public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
@@ -86,6 +87,13 @@ public class Interaction : MonoBehaviour
         if (isSwing)
         {
             this.transform.position = swingpositon.position;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSwing = false;
+                this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(swingpositon.GetComponent<Rigidbody>().velocity.x, swingpositon.GetComponent<Rigidbody>().velocity.y + swingForce,
+                    swingpositon.GetComponent<Rigidbody>().velocity.z);
+                this.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -99,48 +107,7 @@ public class Interaction : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Swingable")
-        {
-            isSwing = true;
-            GameObject location = new GameObject();
-            location.name = "tmp location";
-            location.transform.position = this.transform.position;
-            location.transform.parent = collision.transform;
-            swingpositon = location.transform;
-        }
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        /*if (collision.gameObject.tag.Equals("Floatable"))
-        {
-            this.transform.parent = collision.transform;
-            this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
-            Ray ray = new Ray(this.gameObject.transform.position, (-1) * this.gameObject.transform.up);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 10))
-            {
-                if (hit.distance <= 9 && hasJump)
-                {
-                    Debug.Log("Is land");
-                    hasJump = false;
-                }
-                else
-                {
-                    Debug.Log("Is in air");
-                    hasJump = true;
-                }
-            }
-
-        }*/
-        if (collision.gameObject.tag == "Swingable")
-        {
-            isSwing = true;
-            GameObject location = new GameObject();
-            location.name = "tmp location";
-            location.transform.position = this.transform.position;
-            location.transform.parent = collision.transform;
-            swingpositon = location.transform;
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -154,9 +121,11 @@ public class Interaction : MonoBehaviour
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
 
         }
-        if(other.gameObject.tag.Equals("TopCamera"))
+        if (other.gameObject.tag == "Swingable")
         {
-            //canSeeTopDown = !canSeeTopDown;
+            other.GetComponent<Rigidbody>().velocity = vineVelocityWhenGrabbed;
+            isSwing = true;
+            swingpositon = other.transform;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -182,6 +151,10 @@ public class Interaction : MonoBehaviour
                 return;
             }
 
+        }
+        if (other.gameObject.tag == "Swingable")
+        {
+            swingpositon = other.transform;
         }
     }
     private void interactionMirror(GameObject obj)
