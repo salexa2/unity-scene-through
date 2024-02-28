@@ -12416,7 +12416,7 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1108152382}
   mirrorFrame: {fileID: 1392783912}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.04
   direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
@@ -13327,7 +13327,7 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1871946807}
   mirrorFrame: {fileID: 1117064999}
-  mirrorSpeed: 0.01
+  mirrorSpeed: 0.04
   direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
@@ -29917,7 +29917,7 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1888728464}
   mirrorFrame: {fileID: 872000652}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.04
   direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
@@ -30681,7 +30681,7 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 825938373}
   mirrorFrame: {fileID: 151383075}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.04
   direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
@@ -35178,7 +35178,7 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 2063989936}
   mirrorFrame: {fileID: 759496019}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.04
   direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
