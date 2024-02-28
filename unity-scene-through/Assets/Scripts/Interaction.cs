@@ -16,7 +16,7 @@ public class Interaction : MonoBehaviour
     //public bool canSeeTopDown = false;
 
 
-    protected bool youDie = false;
+    protected bool youDie = true;
 
     public Transform swingpositon = null;
     protected bool isSwing = false;
@@ -98,7 +98,8 @@ public class Interaction : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (deathFlag && collision.gameObject.tag.Equals("Death"))
+        //if (deathFlag && collision.gameObject.tag.Equals("Death"))
+        if (collision.gameObject.name == "water_plane")
         {
             Debug.Log("You Die: you restart");
             if (youDie)

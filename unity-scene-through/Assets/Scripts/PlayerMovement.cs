@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -248,6 +250,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Respawn()
     {
-        transform.position = new Vector3(-25.025f, 1.438f, 24.93f);
+        //transform.position = new Vector3(-25.025f, 1.438f, 24.93f);
+        SceneManager.LoadScene("NEWLEVEL1SCENE");
     }
 }
