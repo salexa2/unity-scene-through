@@ -53,7 +53,7 @@ public class Interaction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
             {
@@ -67,7 +67,7 @@ public class Interaction : MonoBehaviour
                 sideCam.gameObject.SetActive(true);
                 sideCamera.gameObject.SetActive(true);
             }
-        }
+        }*/
         if (sideCam != null && sideCam.isActiveAndEnabled)
         {
             float new_x = x_position - this.gameObject.transform.position.x;
@@ -84,6 +84,10 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(quitKey))
+        {
+            stopInteraction();
+        }
         if (isSwing)
         {
             this.transform.position = swingpositon.position;
@@ -162,37 +166,55 @@ public class Interaction : MonoBehaviour
     {
         if (Input.GetKey(interactionKey))
         {
+            if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
+            {
+                topCam.gameObject.SetActive(true);
+                sideCam.gameObject.SetActive(false);
+                sideCamera.gameObject.SetActive(false);
+            }
             objectInteraction = obj.gameObject;
             if (objectInteraction.GetComponent<Mirror>() != null)
             {
-                //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                this.gameObject.GetComponent<PlayerMovement>().enabled = false;
                 objectInteraction.GetComponent<Mirror>().enabled = true;
-                obj.gameObject.GetComponent<Mirror>().ChangeDirection();
+                //obj.gameObject.GetComponent<Mirror>().ChangeDirection();
             }
-        }else if (Input.GetKeyUp(interactionKey))
+        }
+        /*if (Input.GetKeyUp(interactionKey))
         {
             if (objectInteraction.GetComponent<Mirror>() != null)
             {
-                //this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                this.gameObject.GetComponent<PlayerMovement>().enabled = false;
                 objectInteraction.GetComponent<Mirror>().enabled = true;
                 if (!objectInteraction.GetComponent<Mirror>().wheelisTurn)
                 {
                     obj.gameObject.GetComponent<Mirror>().isTurn = false;
                 }
             }
-        }
+        }*/
         
     }
     private void stopInteraction()
     {
         if (objectInteraction == null)
         {
+            if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
+            {
+                topCam.gameObject.SetActive(false);
+                sideCam.gameObject.SetActive(true);
+                sideCamera.gameObject.SetActive(true);
+            }
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             return;
         }
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
-            
+            if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
+            {
+                topCam.gameObject.SetActive(false);
+                sideCam.gameObject.SetActive(true);
+                sideCamera.gameObject.SetActive(true);
+            }
             objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
             objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
             objectInteraction.GetComponent<Mirror>().enabled = false;

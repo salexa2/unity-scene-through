@@ -1560,14 +1560,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151383075}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.08098179, z: 0, w: 0.99671566}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1557988083}
   m_Father: {fileID: 344278986}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 9.29, z: 0}
 --- !u!23 &151383077
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7938,6 +7938,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 288909485}
   mirrorFrame: {fileID: 620698702}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection: []
   mirrorIndex: 0
   isTurn: 1
@@ -12349,13 +12350,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763659300}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.015358304, y: 0, z: 0, w: 0.9998821}
   m_LocalPosition: {x: -0.001499991, y: 0.058, z: 0}
   m_LocalScale: {x: 0.8865494, y: 0.90671015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1392783913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.76, y: 0, z: 0}
 --- !u!65 &763659302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12416,6 +12417,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1108152382}
   mirrorFrame: {fileID: 1392783912}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0.3689358, z: 0, w: -0.92945486}
@@ -13259,13 +13261,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830319225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0.003490679, y: 0, z: 0, w: 0.9999939}
   m_LocalPosition: {x: -0.001499991, y: 0.058, z: 0}
   m_LocalScale: {x: 0.8865494, y: 0.90671015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1117065000}
-  m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.4, y: 0, z: 0}
 --- !u!65 &830319227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13325,7 +13327,8 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1871946807}
   mirrorFrame: {fileID: 1117064999}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.01
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0.3995492, z: 0, w: 0.91671175}
@@ -18527,14 +18530,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117064999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.055647228, z: 0, w: 0.9984505}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1.0778, y: 1.0778, z: 1.0778}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 830319226}
   m_Father: {fileID: 21238117}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.38, z: 0}
 --- !u!23 &1117065001
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21764,8 +21767,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303299975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09174369, y: 0.7078613, z: -0.093563914, w: 0.6940903}
-  m_LocalPosition: {x: -27.20257, y: 2.0240045, z: 25.002783}
+  m_LocalRotation: {x: 0.09191627, y: 0.7078368, z: -0.09373958, w: 0.6940688}
+  m_LocalPosition: {x: -27.200739, y: 2.024671, z: 25.08674}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29915,6 +29918,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1888728464}
   mirrorFrame: {fileID: 872000652}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0.9258706, z: 0, w: 0.37784076}
@@ -30611,13 +30615,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557988082}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.017277863, z: 0, w: 0.99985075}
   m_LocalPosition: {x: -0.001499991, y: 0.058, z: 0}
   m_LocalScale: {x: 0.8865494, y: 0.90671015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 151383076}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.98, z: 0}
 --- !u!65 &1557988084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30678,6 +30682,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 825938373}
   mirrorFrame: {fileID: 151383075}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0.36528298, z: 0, w: 0.9308965}
@@ -35174,6 +35179,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 2063989936}
   mirrorFrame: {fileID: 759496019}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0.38348952, z: 0, w: 0.92354524}
@@ -39152,7 +39158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4364491190900093252, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.96
+      value: 25.044
       objectReference: {fileID: 0}
     - target: {fileID: 4364491190900093252, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39537,6 +39543,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 715708593625120825}
   mirrorFrame: {fileID: 7794846240768451395}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection: []
   mirrorIndex: 0
   isTurn: 1
@@ -39558,6 +39565,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 715708594054596572}
   mirrorFrame: {fileID: 7794846240858121382}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection: []
   mirrorIndex: 0
   isTurn: 1
@@ -40193,6 +40201,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 3609681623851271770}
   mirrorFrame: {fileID: 6330447234397349152}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection: []
   mirrorIndex: 0
   isTurn: 1
@@ -46451,6 +46460,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4777164196324222217}
   mirrorFrame: {fileID: 2848962107665024627}
   mirrorSpeed: 0.5
+  direction: {x: 0, y: 1, z: 0}
   mirrorDirection: []
   mirrorIndex: 0
   isTurn: 1
@@ -46957,31 +46967,31 @@ PrefabInstance:
       objectReference: {fileID: 676341200}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.20257
+      value: -27.200739
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0240045
+      value: 2.024671
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.002783
+      value: 25.08674
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6940903
+      value: 0.6940688
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09174369
+      value: 0.09191627
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7078613
+      value: 0.7078368
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.093563914
+      value: -0.09373958
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

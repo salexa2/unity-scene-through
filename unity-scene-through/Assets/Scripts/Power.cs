@@ -74,7 +74,7 @@ public class Power : MonoBehaviour
                     bounces++;
                     line_renderer.positionCount++;
                     p0 = hit.point;
-                    p1 = Vector3.Reflect(p1, hit.normal) * Mathf.Cos(hit.collider.gameObject.transform.rotation.y);
+                    p1 = Vector3.Reflect(p1, hit.normal);//* Mathf.Cos(hit.collider.gameObject.transform.rotation.y);
                     line_renderer.SetPosition(i + 1, hit.point);
                     if (reflectOnlyMirror)
                     {
