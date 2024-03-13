@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     //reference to animator
     private Animator animator;
+    public Animator door_aniamtor;
 
     //public float speed;
     public float rotationSpeed;
@@ -85,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+       
         MovePlayer();
         SpeedControl();
     }
@@ -240,12 +242,19 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player Should die. ");
             Respawn(); 
         }
-        else
-        {
-            Debug.Log("Player not dying... ");
+      
 
+        if(collision.gameObject.name == "nextscenecollider")
+        {
+            Debug.Log("Door should close... ");
+            door_aniamtor.Play("close_door2");
+           
+             SceneManager.LoadScene("Scene2");
+           
+           
         }
 
+     
     }
 
     public void Respawn()
