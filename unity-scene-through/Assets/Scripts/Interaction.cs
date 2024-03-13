@@ -6,29 +6,31 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The script for player to interaction with other if they trigger a collider of the object.
+/// </summary>
 public class Interaction : MonoBehaviour
 {
-    public GameObject objectInteraction = null;
-    public KeyCode quitKey = KeyCode.Q;
-    public KeyCode interactionKey = KeyCode.E;
-    public bool deathFlag = false;
-    public bool hasJump = true;
+    //Interaction Properties
+    public GameObject objectInteraction = null; //Store the current object the player is interacting with. 
+    public KeyCode quitKey = KeyCode.Q;  //Key for quitting an interaction.
+    public KeyCode interactionKey = KeyCode.E; //Key for interaction with object.
+    public bool deathFlag = false; // Set if you want to dies.
     //public bool canSeeTopDown = false;
 
+    
+    protected bool youDie = true; // Set if you want to more death.
 
-    protected bool youDie = true;
-
-    public Transform swingpositon = null;
+    /*public Transform swingpositon = null;
     protected bool isSwing = false;
     public Vector3 vineVelocityWhenGrabbed;
-    public float swingForce = 10f;
+    public float swingForce = 10f;*/
 
+    //Camera Properites.
     public CinemachineVirtualCamera sideCam = null;
     public float x_position = 0;
     public float max_x_factor = 5;
     public float x_factor = 0;
-
-    public Camera topCam = null;
     public Camera sideCamera = null;
 
 
@@ -39,13 +41,10 @@ public class Interaction : MonoBehaviour
         if(sideCam != null)
         {
             sideCam.gameObject.SetActive(true);
-            if(topCam != null)
-            {
-                topCam.gameObject.SetActive(false);
-            }
             if (sideCam != null)
             {
                 sideCamera.gameObject.SetActive(true);
+                sideCam.gameObject.SetActive(true);
             }
         }
         
@@ -68,13 +67,20 @@ public class Interaction : MonoBehaviour
                 sideCamera.gameObject.SetActive(true);
             }
         }*/
+
         if (sideCam != null && sideCam.isActiveAndEnabled)
         {
             float new_x = x_position - this.gameObject.transform.position.x;
+            /*if (new_x > 0 && new_x != 0)
+            {
+                new_x = -1 * new_x;
+            }
+            Debug.Log("new_x 1" + new_x);
             if (new_x != 0)
             {
-                new_x = new_x + x_factor * ((x_position - this.gameObject.transform.position.x) / x_position);
-            }
+                new_x = new_x + x_factor * ((new_x) / x_position);
+            }*/
+            Debug.Log("new_x 2 " + new_x);
             if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
             {
                 sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
@@ -84,11 +90,13 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //You player the quit key to stop interaction between the player and object.
         if (Input.GetKey(quitKey))
         {
             stopInteraction();
         }
-        if (isSwing)
+        //Swing Mechanic to stop swinging. 
+        /*if (isSwing)
         {
             this.transform.position = swingpositon.position;
             if (Input.GetKeyDown(KeyCode.Space))
@@ -98,9 +106,9 @@ public class Interaction : MonoBehaviour
                     swingpositon.GetComponent<Rigidbody>().velocity.z);
                 this.gameObject.GetComponent<Rigidbody>().useGravity = true;
             }
-        }
+        }*/
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         //if (deathFlag && collision.gameObject.tag.Equals("Death"))
         if (collision.gameObject.name == "water_plane")
@@ -113,43 +121,48 @@ public class Interaction : MonoBehaviour
         }
 
         
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-
-    }
+    }*/
+    /*
+     * Enter the Trigger Collider.
+     */
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Rideable"))
+        if (other.gameObject.tag.Equals("Rideable")) //Interaction with Rideable
         {
             this.transform.parent = other.transform;
             this.gameObject.GetComponent<PlayerMovement>().orientation = this.transform.parent;
 
         }
-        if (other.gameObject.tag == "Swingable")
+        /*if (other.gameObject.tag == "Swingable") //Interaction with Swingable
         {
             other.GetComponent<Rigidbody>().velocity = vineVelocityWhenGrabbed;
             isSwing = true;
             swingpositon = other.transform;
-        }
+        }*/
     }
+    /*
+     * Exit the Trigger Collider.
+     */
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag.Equals("Rideable"))
+        if (other.gameObject.tag.Equals("Rideable")) //Interaction with Rideable
         {
             this.transform.parent = null;
         }
-        if (other.gameObject.tag.Equals("Mirror"))
+        if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
         {
             stopInteraction();
         }
     }
+    /*
+     * Stay Trigger
+     */
     private void OnTriggerStay(Collider other)
     {
 
         if (other.gameObject != null)
         {
-            Debug.Log("Object:" + other.gameObject.name);
+            //Debug.Log("Object:" + other.gameObject.name);
             if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
             {
                 interactionMirror(other.gameObject);
@@ -157,27 +170,32 @@ public class Interaction : MonoBehaviour
             }
 
         }
-        if (other.gameObject.tag == "Swingable")
+        /*if (other.gameObject.tag == "Swingable") //Interaction with Swingable
         {
             swingpositon = other.transform;
-        }
+        }*/
     }
+    //Method for interaction with a mirror.
     private void interactionMirror(GameObject obj)
     {
+        //Press the interteraction key to the active mirror script. 
         if (Input.GetKey(interactionKey))
         {
-            if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
-            {
-                topCam.gameObject.SetActive(true);
-                sideCam.gameObject.SetActive(false);
-                sideCamera.gameObject.SetActive(false);
-            }
+            
             objectInteraction = obj.gameObject;
             if (objectInteraction.GetComponent<Mirror>() != null)
             {
                 this.gameObject.GetComponent<PlayerMovement>().enabled = false;
                 objectInteraction.GetComponent<Mirror>().enabled = true;
                 //obj.gameObject.GetComponent<Mirror>().ChangeDirection();
+                Debug.Log("Mirror Click");
+                if (obj.GetComponent<Mirror>().topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
+                {
+                    Debug.Log("Click Click Click");
+                    obj.GetComponent<Mirror>().topCam.gameObject.SetActive(true);
+                    sideCam.gameObject.SetActive(false);
+                    sideCamera.gameObject.SetActive(false);
+                }
             }
         }
         /*if (Input.GetKeyUp(interactionKey))
@@ -194,33 +212,38 @@ public class Interaction : MonoBehaviour
         }*/
         
     }
+
+    //Stop all interaction between player and object.
     private void stopInteraction()
     {
+        //Give control back thte player movement script.
         if (objectInteraction == null)
         {
-            if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
+            if (!sideCam.gameObject.activeSelf)
             {
-                topCam.gameObject.SetActive(false);
                 sideCam.gameObject.SetActive(true);
                 sideCamera.gameObject.SetActive(true);
             }
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             return;
         }
+        //Stop mirror interaction.
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
-            if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
+            if (objectInteraction.GetComponent<Mirror>().topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
             {
-                topCam.gameObject.SetActive(false);
+                objectInteraction.GetComponent<Mirror>().topCam.gameObject.SetActive(false);
                 sideCam.gameObject.SetActive(true);
                 sideCamera.gameObject.SetActive(true);
             }
-            objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
-            objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
+            //objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
+            //objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
             objectInteraction.GetComponent<Mirror>().enabled = false;
             objectInteraction = null;
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             
         }
+        //Add more stop interaction code below
+        //----------------------------------------------------------
     }
 }

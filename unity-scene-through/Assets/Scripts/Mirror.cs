@@ -5,72 +5,120 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
-    public GameObject[] rayNum = new GameObject[0]; // Plug-in starting position.
-    public bool isThereMultipleRay = false;
-    public GameObject mirrorWheel = null;
-    public GameObject mirrorFrame = null;
-    public float mirrorSpeed = 0.01f;
+    [Header("Mirror Properties")]
+    public GameObject[] rayNum = new GameObject[0]; // Plug-in starting position for multiple rays when reflect off.
+    public bool isThereMultipleRay = false; //Boolean to check if the mirror will cast multiple rays.
+    public GameObject mirrorWheel = null; //Mirror wheel for turning the wheel if any.
+    public GameObject mirrorFrame = null; //Mirror frame that hold the mirror if any.
+    
     public Vector3 direction = Vector3.up;
 
-    // Direction
-    public Quaternion[] mirrorDirection = new Quaternion[0];
+
+    //Speed of the moving the mirror.
+    public float mirrorSpeed = 0.01f; 
+    public float currentAngle = 0;
+    public float maxSpeed = 0.6f;
+    public float acceleration = 0.05f;
+    public float decceleration = 0.01f;
+
+    //Mirror Camera when it being interaction.
+    public Camera topCam = null;
+    // Direction of previous set angle.
+    /*public Quaternion[] mirrorDirection = new Quaternion[0];
     public int mirrorIndex = 0;
     public bool isTurn = false;
-    public bool wheelisTurn = false;
-    
+    public bool wheelisTurn = false;*/
+
 
     // Start is called before the first frame update
     void Start()
     {
-        if(mirrorDirection.Length != 0)
+        //No Initial at the start.
+        /*if(mirrorDirection.Length != 0)
         {
             //this.gameObject.transform.Rotate(transform.up, mirrorDirection[mirrorIndex].y);
             //mirrorFrame.transform.rotation = Quaternion.Slerp(this.gameObject.transform.rotation,mirrorDirection[mirrorIndex], 3);
             //isTurn = false;
             //wheelisTurn = false;
         }
+        if (mirrorFrame != null)
+        {
+            currentAngle = mirrorFrame.transform.eulerAngles.y;
+        }
+        else
+        {
+            currentAngle = this.transform.transform.eulerAngles.y;
+        }*/
+
     }
     private void Update()
     {
-        Quaternion mirrorAngle = mirrorFrame.transform.rotation;
-        
+        /*Quaternion mirrorAngle = mirrorFrame.transform.rotation;
+        if (mirrorFrame != null)
+        {
+            currentAngle = mirrorFrame.transform.eulerAngles.y;
+        }
+        else
+        {
+            currentAngle = this.transform.transform.eulerAngles.y;
+        }
+        */
+        /*
+         * Left Arrow to rotate the frame the hold the mirror to the left
+         * and accerelation speed. PS. Modified if needed. 
+         */
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            
+            mirrorSpeed += acceleration;
+            if (mirrorSpeed > maxSpeed)
+            {
+                mirrorSpeed = maxSpeed;
+            }
+
             if (mirrorFrame != null)
             {
-                //mirrorFrame.transform.Rotate(direction, mirrorSpeed);
-                mirrorFrame.transform.rotation = new Quaternion(mirrorAngle.x, mirrorAngle.y + mirrorSpeed*Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
+                mirrorFrame.transform.Rotate(direction, mirrorSpeed);
             }
             else
             {
-
-                mirrorFrame.transform.rotation = new Quaternion(mirrorAngle.x, mirrorAngle.y + mirrorSpeed * Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
-                // this.gameObject.transform.Rotate(direction, mirrorSpeed);
+                this.gameObject.transform.Rotate(direction, mirrorSpeed);
             }
             if (mirrorWheel != null)
             {
-                mirrorWheel.transform.localRotation = new Quaternion(mirrorAngle.x, mirrorAngle.y - mirrorSpeed * Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
-                // mirrorWheel.transform.Rotate(direction, -1 * mirrorSpeed);
+                mirrorWheel.transform.Rotate(direction, -1 * mirrorSpeed);
             }
         }
-        if(Input.GetKey(KeyCode.RightArrow))
+        /*
+         * Right Arrow to rotate the frame the hold the mirror to the Right
+         * and accerelation speed. PS. Modified if needed. 
+         */
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            
+            mirrorSpeed += acceleration;
+            if (mirrorSpeed > maxSpeed)
+            {
+                mirrorSpeed = maxSpeed;
+            }
             if (mirrorFrame != null)
             {
-                //mirrorFrame.transform.Rotate(direction, -1 * mirrorSpeed);
-                mirrorFrame.transform.rotation = new Quaternion(mirrorAngle.x, mirrorAngle.y - mirrorSpeed * Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
+                mirrorFrame.transform.Rotate(direction, -1 * mirrorSpeed);
             }
             else
             {
-                //this.gameObject.transform.Rotate(direction, -1 * mirrorSpeed);
-                this.gameObject.transform.rotation = new Quaternion(mirrorAngle.x, mirrorAngle.y - mirrorSpeed * Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
+                this.gameObject.transform.Rotate(direction, -1 * mirrorSpeed);
             }
             if (mirrorWheel != null)
             {
-                //mirrorWheel.transform.Rotate(direction, mirrorSpeed);
-                mirrorWheel.transform.rotation = new Quaternion(mirrorAngle.x, mirrorAngle.y + mirrorSpeed * Time.deltaTime, mirrorAngle.z, mirrorAngle.w);
+                mirrorWheel.transform.Rotate(direction, mirrorSpeed);
+            }
+        }
+        else
+        {
+            /*Decceleration the speed*/
+            mirrorSpeed -= decceleration;
+            if(mirrorSpeed < 0)
+            {
+                mirrorSpeed = 0;
             }
         }
         /*if (mirrorFrame.transform.rotation != mirrorDirection[mirrorIndex])
@@ -95,16 +143,21 @@ public class Mirror : MonoBehaviour
             isTurn = true;
         }
     }*/
+
+    //Method for creating more ray with the 
     public GameObject[] NewCast(GameObject obj)
     {
+        //Check if the mirror create more ray.
         if (!isThereMultipleRay) { return null; }
         if(rayNum.Length == 0) { return null; }
         int index_size = 0;
+        //Destory the orignal ray list in power script/
         for(int i = 0; i < obj.GetComponent<Power>().raycreate.Length; i++)
         {
             Destroy(obj.GetComponent<Power>().raycreate[i]);
             obj.GetComponent<Power>().raycreate[i] = null;
         }
+
         for (int i = 0; i < rayNum.Length; i++)
         {
             if (rayNum[i] != null)
@@ -112,8 +165,10 @@ public class Mirror : MonoBehaviour
                 index_size ++;
             }
         }
+        //Create a need ray list for the power script.
         GameObject[] ret = new GameObject[index_size];
         int j = 0;
+        //Make a copy of the rays and add to the ray list.
         for (int i = 0; i < rayNum.Length; i++)
         {
             if (rayNum[i] != null && j < index_size)
@@ -121,7 +176,7 @@ public class Mirror : MonoBehaviour
                 GameObject temp = Instantiate(obj) as GameObject;
                 if(temp.GetComponent<Power>() != null)
                 {
-                    Debug.Log("Problem with loop");
+                    //Set the new ray properites.
                     temp.GetComponent<Power>().start_position = rayNum[i];
                     temp.GetComponent<Power>().direciton = transform.forward * Mathf.Cos(rayNum[i].transform.rotation.y);
                     temp.GetComponent<Power>().direciton = transform.right * Mathf.Sin(rayNum[i].transform.rotation.y);

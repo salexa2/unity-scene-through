@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class Power : MonoBehaviour
 {
-    public GameObject start_position;
-    public LineRenderer line_renderer;
+    /*Power Source Proporites*/
+    public GameObject start_position; //Location of the source of power/
+    public LineRenderer line_renderer; //The laser.
     public int bounces = 2;
     bool reflectOnlyMirror = false;
     public float angle = 0;
-    public bool killPlayer = true;
+    public bool killPlayer = false;
     public GameObject player;
     public Vector3 direciton; 
     float power_range = 100;
@@ -31,12 +32,13 @@ public class Power : MonoBehaviour
 
     void Start()
     {
-        line_renderer = GetComponent<LineRenderer>();
-        line_renderer.SetPosition(0, start_position.transform.position);
+        line_renderer = GetComponent<LineRenderer>(); //Set up the line Renderer
+        line_renderer.SetPosition(0, start_position.transform.position); // Set the line renderer first position to the starting position.
     }
     // Update is called once per frame
     void Update()
     {
+        //Reset all rays
         if(raycreate != null)
         {
             for (int i = 0; i < raycreate.Length; i++)
@@ -49,7 +51,7 @@ public class Power : MonoBehaviour
         line_renderer.positionCount = 2 + bounces;
         line_renderer.SetPosition(0, start_position.transform.position);
         direciton = transform.forward;
-        castRay(start_position.transform.position, direciton);
+        castRay(start_position.transform.position, direciton); //Cast the array
     }
     /*
      * A method to cast a ray from source.
@@ -59,7 +61,7 @@ public class Power : MonoBehaviour
     public void castRay(Vector3 p0, Vector3 p1) 
     {
         line_renderer.SetPosition(0, start_position.transform.position);
-        Ray ray = new Ray(p0, p1);
+        Ray ray = new Ray(p0, p1); //Cast the ray of the laser
         RaycastHit hit;
         for (int i = 0; i < bounces+1; i++)
         {
@@ -67,9 +69,8 @@ public class Power : MonoBehaviour
             if (Physics.Raycast(ray, out hit, power_range, 1))
             {
                 
-                if (hit.collider.gameObject.tag.Equals("Mirror") || childernNameCheck(hit.collider.gameObject, "Mirror"))
+                if (hit.collider.gameObject.tag.Equals("Mirror") || childernNameCheck(hit.collider.gameObject, "Mirror") && !hit.collider.isTrigger) //When the laser cast hit a Mirror.
                 {
-                    //Debug.Log("Hit Mirror");
                     reflectOnlyMirror = true;
                     bounces++;
                     line_renderer.positionCount++;
@@ -91,18 +92,13 @@ public class Power : MonoBehaviour
                 else if (hit.collider.gameObject.tag.Equals("Player") || childernNameCheck(hit.collider.gameObject, "Player") && killPlayer)
                 {
                     //Debug.Log("Hit: Player");
-                    /*
-                     * if(hit.collider.gameObject.GetComponent<[Player_script]>() != null){
-                     *     hit.collider.gameObject.GetComponent<[Player_script]>().dies;
-                     * }
-                     */
                       
                 }
-                else if(hit.transform.gameObject.tag.Equals("Ray") || childernNameCheck(hit.collider.gameObject, "Ray"))
+                else if(hit.transform.gameObject.tag.Equals("Ray") || childernNameCheck(hit.collider.gameObject, "Ray")) //If the ray hit another ray.
                 {
 
                 }
-                else if(hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal"))
+                else if(hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal")) //If the ray hit goal. 
                 {
                     Debug.Log("Play video");
                     Debug.Log("Door Open");
@@ -119,7 +115,7 @@ public class Power : MonoBehaviour
 
         }
         ray = new Ray(p0, p1);
-        if (Physics.Raycast(ray, out hit, power_range))
+        if (Physics.Raycast(ray, out hit, power_range)) //If the ray hit the goals.
         {
             line_renderer.SetPosition(line_renderer.positionCount - 1, hit.point);
             if (hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal")){
@@ -144,8 +140,8 @@ public class Power : MonoBehaviour
         }
         else
         {
-            line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1);
-            if(tmp_goal_object != null)
+            line_renderer.SetPosition(line_renderer.positionCount - 1, power_range * p1); //If ray don't hit anything
+            if (tmp_goal_object != null)
             {
                 if(tmp_goal_object.GetComponent<Goal>() != null)
                 {
@@ -153,18 +149,21 @@ public class Power : MonoBehaviour
                 }
             }
         }
+        //Destroy the lightpoint.
         for (int j = 0; j < lightPoint.Length; j++){
             Destroy(lightPoint[j]);
         }
         lightPoint = new GameObject[line_renderer.positionCount];
+        //Add in need lightPoint at the end of each line renderer position.
         for (int j = 0; j < lightPoint.Length; j++)
         {
             GameObject tmp_light = Instantiate(power_Light);
             tmp_light.transform.position = line_renderer.GetPosition(j);
             lightPoint[j] = tmp_light;
         }
-        bounces =  0;
+        bounces =  0; //Reset Bounces.
     }
+    //A method for check if the object hit have a childern with the pass in tag.
     bool childernNameCheck(GameObject obj, string name)
     {
         if(obj.GetComponent<GameObject>() == null) { return false; }
