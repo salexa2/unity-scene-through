@@ -8,10 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Old Sea Port_Water
-  m_Shader: {fileID: 4800000, guid: 09216bdfd6523db4487ca393081c9eeb, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7252379db4c18b641b517f2c91bb57e1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _DISABLE_DECALS
+  - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords:
   - _ALPHABLEND_ON
   - _DETAIL_MULX2
@@ -19,12 +21,18 @@ Material:
   - _EMISSION
   - _NORMALMAP
   - _WETNESS_NONE
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -133,6 +141,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8311693489c9728459f451148124b4ae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularRGBGlossADetail:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -202,11 +214,11 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DropletsAnimSpeed: 10
     - _DropletsTiling: 1
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EdgeOcclusion: 1
     - _EdgeTransparency: 1
     - _EmissionPulsateSpeed: 0
-    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _Float0: 0.06
@@ -225,7 +237,7 @@ Material:
     - _GlossMapScale: 1
     - _GlossMax: 1
     - _GlossMin: 0
-    - _Glossiness: 0.933
+    - _Glossiness: 1.35
     - _Glossiness2: 1
     - _GlossyReflections: 1
     - _IndexofRefraction: 1.05
@@ -308,7 +320,7 @@ Material:
     - _Specular: 0
     - _SpecularHighlights: 1
     - _Speed: 0.266
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
@@ -319,7 +331,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
     - _StencilWriteMaskMV: 41
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 0
     - _Tan2ObjCustomU: 1
     - _Tan2ObjCustomV: 1
@@ -352,6 +364,12 @@ Material:
     - _UVSecOcclusion: 0
     - _UVSecOcclusionLightmapPacked: 0
     - _UV_Clip: 0
+    - _UseAoMap: 0
+    - _UseColorMap: 0
+    - _UseEmissiveMap: 0
+    - _UseMetallicMap: 0
+    - _UseNormalMap: 1
+    - _UseRoughnessMap: 0
     - _UseShadowThreshold: 0
     - _WetDroplets: 0
     - _WetRipples: 0
@@ -373,7 +391,7 @@ Material:
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - __dirty: 0
     - maxDist: 10
     - minDist: 1
@@ -387,7 +405,8 @@ Material:
     - _DiffuseScatteringColor: {r: 0, g: 0, b: 0, a: 0}
     - _DiffuseScatteringColor2: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Emissive: {r: 0, g: 0, b: 0, a: 0}
     - _GlitterColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
     - _GlitterColor2: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
     - _OcclusionColor: {r: 0.75, g: 0.75, b: 0.75, a: 0}
@@ -402,9 +421,27 @@ Material:
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor2: {r: 1, g: 1, b: 1, a: 1}
     - _UV_Clip_Borders: {r: 0, g: 0, b: 1, a: 1}
+    - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
     - _WetnessColor: {r: 0, g: 0, b: 0, a: 0}
     - _WetnessSpecGloss: {r: 0.049999982, g: 0.049999982, b: 0.049999982, a: 0.7}
     - bumpMap2TexelSize: {r: 1, g: 1, b: 1, a: 1}
     - bumpMapTexelSize: {r: 0.0009765625, g: 0.0009765625, b: 1024, a: 1024}
     - heightMapTexelSize: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &2637137131945414771
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
