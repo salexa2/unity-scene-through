@@ -503,13 +503,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974836760691044072}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.01221705, y: 0, z: 0, w: 0.9999254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.001499991, y: 0.058, z: 0}
   m_LocalScale: {x: 0.8865494, y: 0.90671015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7365906454517708328}
-  m_LocalEulerAnglesHint: {x: -1.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7422074577707556775
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -576,13 +576,12 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 4790382958965601089}
   mirrorFrame: {fileID: 4608891312494793563}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.9258706, z: 0, w: 0.37784076}
-  mirrorIndex: 0
-  isTurn: 1
-  wheelisTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
 --- !u!64 &3525632303080447416
 MeshCollider:
   m_ObjectHideFlags: 0
