@@ -697,7 +697,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3505769555136713524, guid: 247b3ab4afbf2a2428127d0ca7141b03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.54
+      value: -6.515
       objectReference: {fileID: 0}
     - target: {fileID: 3505769555136713524, guid: 247b3ab4afbf2a2428127d0ca7141b03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5383,6 +5383,7 @@ MonoBehaviour:
   maxSpeed: 0.6
   acceleration: 0.05
   decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!4 &2104597918
 Transform:
   m_ObjectHideFlags: 0
@@ -10856,6 +10857,7 @@ MonoBehaviour:
   maxSpeed: 0.6
   acceleration: 0.05
   decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!1 &6114008340516466533
 GameObject:
   m_ObjectHideFlags: 0
@@ -11171,7 +11173,6 @@ MonoBehaviour:
   x_position: 0
   max_x_factor: 5
   x_factor: 1
-  topCam: {fileID: 0}
   sideCamera: {fileID: 0}
 --- !u!95 &6445317226724654465
 Animator:
