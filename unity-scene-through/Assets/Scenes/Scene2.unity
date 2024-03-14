@@ -4507,6 +4507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forklift
       objectReference: {fileID: 0}
+    - target: {fileID: 4000012997749338, guid: 6705bd914fa08eb4992f4e2e178dcf28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013476106956, guid: 6705bd914fa08eb4992f4e2e178dcf28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.526352
@@ -10070,111 +10074,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793903183}
   m_Mesh: {fileID: 3854640917496123260, guid: d1cbbd2375c62fa4d8c49ba6b6a435b1, type: 3}
---- !u!1 &796733353
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 796733357}
-  - component: {fileID: 796733356}
-  - component: {fileID: 796733355}
-  - component: {fileID: 796733354}
-  m_Layer: 0
-  m_Name: Cube (12)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &796733354
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796733353}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &796733355
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796733353}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 3523125602175331193, guid: 84d00d5ec9d11694fbf6c8986cec8e51, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &796733356
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796733353}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &796733357
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796733353}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.729, y: 10.703, z: -76.115}
-  m_LocalScale: {x: 0.27703008, y: 0.0717203, z: 0.21829942}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808658032
 GameObject:
   m_ObjectHideFlags: 0
@@ -17727,12 +17626,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 0}
   mirrorFrame: {fileID: 0}
-  mirrorSpeed: 0.01
   direction: {x: 0, y: 1, z: 0}
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 0
-  wheelisTurn: 0
+  mirrorSpeed: 0.01
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!65 &1381808646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19558,14 +19458,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1060989894}
   mirrorFrame: {fileID: 1702541024}
-  mirrorSpeed: 0.5
   direction: {x: 0, y: 1, z: 0}
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.9258706, z: 0, w: 0.37784076}
-  mirrorIndex: 0
-  isTurn: 1
-  wheelisTurn: 1
+  mirrorSpeed: 0.5
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1525032428
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21991,112 +21890,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682643565}
   m_Mesh: {fileID: -4371102408539638621, guid: d1cbbd2375c62fa4d8c49ba6b6a435b1, type: 3}
---- !u!1 &1682853848
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1682853852}
-  - component: {fileID: 1682853851}
-  - component: {fileID: 1682853850}
-  - component: {fileID: 1682853849}
-  m_Layer: 0
-  m_Name: Cube (13)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1682853849
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682853848}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1682853850
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682853848}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 3523125602175331193, guid: 84d00d5ec9d11694fbf6c8986cec8e51, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1682853851
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682853848}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1682853852
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682853848}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.729, y: 10.703, z: -77.276}
-  m_LocalScale: {x: 0.27703008, y: 0.0717203, z: 0.21829942}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1854158671}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1687432605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24380,37 +24173,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839847698}
   m_Mesh: {fileID: 7974562538338528181, guid: d1cbbd2375c62fa4d8c49ba6b6a435b1, type: 3}
---- !u!1 &1854158670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1854158671}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1854158671
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854158670}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1682853852}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1866813582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24563,14 +24325,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1971033955}
   mirrorFrame: {fileID: 1175470943}
-  mirrorSpeed: 0.5
   direction: {x: 0, y: 1, z: 0}
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.9258706, z: 0, w: 0.37784076}
-  mirrorIndex: 0
-  isTurn: 1
-  wheelisTurn: 1
+  mirrorSpeed: 0.5
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1882795842
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26609,13 +26370,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 0}
   mirrorFrame: {fileID: 2102956790}
-  mirrorSpeed: 0.5
   direction: {x: 0, y: 1, z: 0}
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
-  mirrorIndex: 0
-  isTurn: 0
-  wheelisTurn: 0
+  mirrorSpeed: 0.5
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!65 &2102956792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28019,14 +27780,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 4790382960046887943}
   mirrorFrame: {fileID: 4608891311413900317}
-  mirrorSpeed: 0.5
   direction: {x: 0, y: 1, z: 0}
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.9258706, z: 0, w: 0.37784076}
-  mirrorIndex: 0
-  isTurn: 1
-  wheelisTurn: 1
+  mirrorSpeed: 0.5
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &3672787620871984188
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28777,7 +28537,6 @@ SceneRoots:
   - {fileID: 949433675}
   - {fileID: 392328901}
   - {fileID: 654735113}
-  - {fileID: 796733357}
   - {fileID: 1038166294}
   - {fileID: 1060616675}
   - {fileID: 1258423718}
@@ -28785,7 +28544,6 @@ SceneRoots:
   - {fileID: 1710839241}
   - {fileID: 1381808649}
   - {fileID: 115261024}
-  - {fileID: 1682853852}
   - {fileID: 1748349937}
   - {fileID: 1810610634}
   - {fileID: 2694899795784083275}
