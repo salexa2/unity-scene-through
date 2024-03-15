@@ -19199,7 +19199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.y
-      value: -0.47168636
+      value: 0.7247343
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.z
@@ -19207,11 +19207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.x
-      value: 2.0103238
+      value: 1.0916183
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.y
-      value: -0.05195999
+      value: -0.3237238
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.z
@@ -19219,7 +19219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.x
-      value: 1.0582166
+      value: 0.013967276
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.y
@@ -25362,7 +25362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1891517214
 Light:
   m_ObjectHideFlags: 0
@@ -25375,7 +25375,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 100000
+  m_Intensity: 0.43424118
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -25416,9 +25416,9 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 17261
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 2.479558e-39, y: 9.1835e-41, z: 1.8e-43, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -25452,7 +25452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 100000
+  m_Intensity: 0.43424118
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
