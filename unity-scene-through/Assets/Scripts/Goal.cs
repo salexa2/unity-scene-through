@@ -20,6 +20,12 @@ public class Goal : MonoBehaviour
             {
                 door_aniamtor.Play("Door_Idle");
             }
+            if (isOpen)
+            {
+                isOpen = true;
+                door_aniamtor.Play("Door Open");
+            }
+
         }
     }
     public void CompleteGoal()
@@ -28,6 +34,7 @@ public class Goal : MonoBehaviour
         {
             if (!isOpen)
             {
+                isOpen = true;
                 door_aniamtor.Play("Door Open");
             }
         }
