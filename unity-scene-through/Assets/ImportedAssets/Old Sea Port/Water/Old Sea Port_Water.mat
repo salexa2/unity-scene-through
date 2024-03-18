@@ -8,23 +8,23 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Old Sea Port_Water
-  m_Shader: {fileID: 4800000, guid: 7252379db4c18b641b517f2c91bb57e1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 09216bdfd6523db4487ca393081c9eeb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _DISABLE_DECALS
-  - _DISABLE_SSR_TRANSPARENT
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHABLEND_ON
   - _DETAIL_MULX2
   - _DETAIL_TEXTURED
+  - _DISABLE_DECALS
+  - _DISABLE_SSR_TRANSPARENT
   - _EMISSION
   - _NORMALMAP
   - _WETNESS_NONE
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -214,7 +214,7 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DropletsAnimSpeed: 10
     - _DropletsTiling: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EdgeOcclusion: 1
     - _EdgeTransparency: 1
     - _EmissionPulsateSpeed: 0
@@ -320,7 +320,7 @@ Material:
     - _Specular: 0
     - _SpecularHighlights: 1
     - _Speed: 0.266
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
@@ -391,7 +391,7 @@ Material:
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     - __dirty: 0
     - maxDist: 10
     - minDist: 1
