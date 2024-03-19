@@ -2427,7 +2427,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: d538140f4435d554bb657ee6910ad9ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7804,7 +7804,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: d538140f4435d554bb657ee6910ad9ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14004,7 +14004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 464826, guid: badfc17e759c1584a94b14b23c5f19b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.518902
+      value: -25.68
       objectReference: {fileID: 0}
     - target: {fileID: 464826, guid: badfc17e759c1584a94b14b23c5f19b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14133,7 +14133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: b7097a053b53621428f413173e52edb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14397,17 +14397,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 942925955054991972, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d538140f4435d554bb657ee6910ad9ef, type: 2}
+    - target: {fileID: 1301052134836268978, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d538140f4435d554bb657ee6910ad9ef, type: 2}
     - target: {fileID: 2066965934151875931, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
       propertyPath: m_Name
       value: PTK_Elevator_3Floors 1 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6231482086997874026, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.91
+      value: 0.921
       objectReference: {fileID: 0}
     - target: {fileID: 7079904605787048853, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.95
+      value: -0.981
       objectReference: {fileID: 0}
     - target: {fileID: 8610488194315930550, guid: 0d11f75472f099e47a1bc19d58b4b953, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15428,7 +15436,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: b7097a053b53621428f413173e52edb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15467,8 +15475,8 @@ Transform:
   m_GameObject: {fileID: 1236765949}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.927999, y: 12.066, z: -81.663994}
-  m_LocalScale: {x: 0.38112715, y: 4.3792257, z: 1.9278998}
+  m_LocalPosition: {x: 7.927999, y: 12.066, z: -81.7353}
+  m_LocalScale: {x: 0.38112715, y: 4.052077, z: 1.9278998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -15644,7 +15652,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: b7097a053b53621428f413173e52edb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17710,7 +17718,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: d538140f4435d554bb657ee6910ad9ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
