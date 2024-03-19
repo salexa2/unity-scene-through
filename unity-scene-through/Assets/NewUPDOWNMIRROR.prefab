@@ -253,7 +253,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5097931965437094108}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b081f24fce87b654bbce1b5218d82ea1, type: 3}
   m_Name: 
@@ -268,6 +268,7 @@ MonoBehaviour:
   maxSpeed: 0.6
   acceleration: 0.05
   decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!65 &4857035800791232597
 BoxCollider:
   m_ObjectHideFlags: 0

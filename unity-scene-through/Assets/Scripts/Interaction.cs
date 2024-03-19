@@ -240,7 +240,12 @@ public class Interaction : MonoBehaviour
             //objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
             objectInteraction.GetComponent<Mirror>().enabled = false;
             objectInteraction = null;
-            this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+            if(objectInteraction == null)
+            {
+                Debug.Log("Hello Move");
+                this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+            }
+            
             
         }
         //Add more stop interaction code below
