@@ -21,10 +21,13 @@ public class Interaction : MonoBehaviour
     
     protected bool youDie = true; // Set if you want to more death.
 
+    //Swing Mechanic
     /*public Transform swingpositon = null;
     protected bool isSwing = false;
     public Vector3 vineVelocityWhenGrabbed;
     public float swingForce = 10f;*/
+
+    
 
     //Camera Properites.
     public CinemachineVirtualCamera sideCam = null;
@@ -52,34 +55,10 @@ public class Interaction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
-            {
-                topCam.gameObject.SetActive(true);
-                sideCam.gameObject.SetActive(false);
-                sideCamera.gameObject.SetActive(false);
-            }
-            else if (topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
-            {
-                topCam.gameObject.SetActive(false);
-                sideCam.gameObject.SetActive(true);
-                sideCamera.gameObject.SetActive(true);
-            }
-        }*/
 
         if (sideCam != null && sideCam.isActiveAndEnabled)
         {
             float new_x = x_position - this.gameObject.transform.position.x;
-            /*if (new_x > 0 && new_x != 0)
-            {
-                new_x = -1 * new_x;
-            }
-            Debug.Log("new_x 1" + new_x);
-            if (new_x != 0)
-            {
-                new_x = new_x + x_factor * ((new_x) / x_position);
-            }*/
             Debug.Log("new_x 2 " + new_x);
             if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
             {
@@ -108,20 +87,7 @@ public class Interaction : MonoBehaviour
             }
         }*/
     }
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        //if (deathFlag && collision.gameObject.tag.Equals("Death"))
-        if (collision.gameObject.name == "water_plane")
-        {
-            Debug.Log("You Die: you restart");
-            if (youDie)
-            {
-                SceneManager.LoadScene("NEWLEVEL1SCENE");
-            }
-        }
 
-        
-    }*/
     /*
      * Enter the Trigger Collider.
      */
@@ -139,6 +105,12 @@ public class Interaction : MonoBehaviour
             isSwing = true;
             swingpositon = other.transform;
         }*/
+        if (objectInteraction != null) return;
+        if (other.gameObject.tag.Equals("Key"))
+        {
+            objectInteraction = other.gameObject;
+            other.gameObject.SetActive(false);
+        }
     }
     /*
      * Exit the Trigger Collider.
@@ -162,18 +134,19 @@ public class Interaction : MonoBehaviour
 
         if (other.gameObject != null)
         {
+            if (objectInteraction != null)
+            {
+                return;
+            }
             //Debug.Log("Object:" + other.gameObject.name);
             if (other.gameObject.tag.Equals("Mirror")) //Interaction with mirror
             {
                 interactionMirror(other.gameObject);
                 return;
             }
+            
 
         }
-        /*if (other.gameObject.tag == "Swingable") //Interaction with Swingable
-        {
-            swingpositon = other.transform;
-        }*/
     }
     //Method for interaction with a mirror.
     private void interactionMirror(GameObject obj)
@@ -198,18 +171,6 @@ public class Interaction : MonoBehaviour
                 }
             }
         }
-        /*if (Input.GetKeyUp(interactionKey))
-        {
-            if (objectInteraction.GetComponent<Mirror>() != null)
-            {
-                this.gameObject.GetComponent<PlayerMovement>().enabled = false;
-                objectInteraction.GetComponent<Mirror>().enabled = true;
-                if (!objectInteraction.GetComponent<Mirror>().wheelisTurn)
-                {
-                    obj.gameObject.GetComponent<Mirror>().isTurn = false;
-                }
-            }
-        }*/
         
     }
 
@@ -236,8 +197,6 @@ public class Interaction : MonoBehaviour
                 sideCam.gameObject.SetActive(true);
                 sideCamera.gameObject.SetActive(true);
             }
-            //objectInteraction.gameObject.GetComponent<Mirror>().isTurn = false;
-            //objectInteraction.gameObject.GetComponent<Mirror>().wheelisTurn = false;
             objectInteraction.GetComponent<Mirror>().enabled = false;
             objectInteraction = null;
             if(objectInteraction == null)
