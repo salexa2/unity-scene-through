@@ -24,7 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: barrel-1
-  m_Shader: {fileID: 4800000, guid: 09216bdfd6523db4487ca393081c9eeb, type: 3}
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -219,6 +219,7 @@ Material:
     - _BlendMode: 0
     - _BumpScale: 1
     - _CoatMask: 0
+    - _ColorMask: 15
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -293,6 +294,10 @@ Material:
     - _SpecularOcclusionMode: 1
     - _Speed: 0
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefGBuffer: 10
@@ -322,6 +327,7 @@ Material:
     - _UVSec: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
+    - _UseUIAlphaClip: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
@@ -330,6 +336,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
