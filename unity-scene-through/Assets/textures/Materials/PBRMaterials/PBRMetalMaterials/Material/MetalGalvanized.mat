@@ -173,15 +173,15 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.601
+    - _Glossiness: 0.01
     - _GlossyReflections: 1
     - _METALNESS: 0
-    - _Metallic: 0.48
+    - _Metallic: 0.065
     - _Mode: 0
     - _OPACITY: 1
-    - _OcclusionStrength: 1
+    - _OcclusionStrength: 0.971
     - _OpaqueCullMode: 2
-    - _Parallax: 0.033
+    - _Parallax: 0.0217
     - _RayTracing: 0
     - _ReceivesSSR: 0
     - _ReceivesSSRTransparent: 0
