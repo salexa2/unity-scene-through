@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3654,6 +3654,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -1.68
       objectReference: {fileID: 0}
+    - target: {fileID: 8529904636403368380, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
+      propertyPath: m_Name
+      value: PTK_Elevator (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5509,6 +5513,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4514057795867420285, guid: 283c4906eab00be439f0165beefd638e, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
     - target: {fileID: 8197016390425144071, guid: 283c4906eab00be439f0165beefd638e, type: 3}
       propertyPath: m_LocalScale.x
       value: 21.117088
@@ -5568,8 +5576,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4514057795867420285, guid: 283c4906eab00be439f0165beefd638e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1625640803}
   m_SourcePrefab: {fileID: 100100000, guid: 283c4906eab00be439f0165beefd638e, type: 3}
+--- !u!1 &1625640802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4514057795867420285, guid: 283c4906eab00be439f0165beefd638e, type: 3}
+  m_PrefabInstance: {fileID: 1625640801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625640803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625640802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138c595accb3d444982669cee571a668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door_aniamtor: {fileID: 1807856070}
+  isOpen: 0
 --- !u!1 &1634937190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6371,11 +6401,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTK_Elevator_3Floors 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8529904636403368380, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
+      propertyPath: m_Name
+      value: PTK_Elevator (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
+--- !u!95 &1807856070 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4525127657048824473, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
+  m_PrefabInstance: {fileID: 1807856069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1893974861
 GameObject:
   m_ObjectHideFlags: 0
