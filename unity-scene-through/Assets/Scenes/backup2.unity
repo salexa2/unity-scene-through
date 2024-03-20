@@ -8781,8 +8781,8 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.05, y: 0.89, z: 2.57}
@@ -28718,7 +28718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010717186600, guid: 34087d80786f6d94288218bb721161ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.211
+      value: 5.372
       objectReference: {fileID: 0}
     - target: {fileID: 4000010717186600, guid: 34087d80786f6d94288218bb721161ec, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29201,11 +29201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975092945989357402, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.269
+      value: 0.956
       objectReference: {fileID: 0}
     - target: {fileID: 7880920563663321202, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.302
+      value: -0.938
       objectReference: {fileID: 0}
     - target: {fileID: 8529904636403368380, guid: ff9f4cd5bc5ce8a45bca3612a4412913, type: 3}
       propertyPath: m_Name
