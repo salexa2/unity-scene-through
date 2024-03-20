@@ -238,11 +238,13 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "death_coll")
+        if (collision.gameObject.name == "death_coll" || collision.gameObject.name == "death_bridge")
         {
             Debug.Log("Player Should die. ");
             Respawn(); 
         }
+
+
 
         Debug.Log("should detect collision. ");
         if (collision.gameObject.name == "nextscenecollider")
