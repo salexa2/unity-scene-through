@@ -267,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("LOAD SCENE");
+            Debug.Log("Collided");
             SceneManager.LoadScene(nextSceneIndex);
         }
        // SceneManager.LoadScene("backup2");
