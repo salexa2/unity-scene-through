@@ -11,11 +11,15 @@ public class ConveyorBelt1 : MonoBehaviour
     [SerializeField]
     private List<GameObject> onBelt;
 
+    [SerializeField]
+    private int texture_directionx,texture_directiony;
+
     private Material material;
 
     // Start is called before the first frame update
     void Start()
     {
+       
         /* Create an instance of this texture
          * This should only be necessary if the belts are using the same material and are moving different speeds
          */
@@ -25,8 +29,9 @@ public class ConveyorBelt1 : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         // Move the conveyor belt texture to make it look like it's moving
-        material.mainTextureOffset += new Vector2(0, 1) * conveyorSpeed * Time.deltaTime;
+        material.mainTextureOffset += new Vector2(texture_directionx, texture_directiony) * conveyorSpeed * Time.deltaTime;
     }
 
     // Fixed update for physics
