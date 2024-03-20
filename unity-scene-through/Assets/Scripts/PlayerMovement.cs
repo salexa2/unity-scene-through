@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 cameraForward;
     Vector3 cameraRight;
 
+    [SerializeField] private List<Scene> _sceneList;
     // Start is called before the first frame update
     void Start()
     {
@@ -242,24 +243,40 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player Should die. ");
             Respawn(); 
         }
-      
 
-        if(collision.gameObject.name == "nextscenecollider")
+        Debug.Log("should detect collision. ");
+        if (collision.gameObject.name == "nextscenecollider")
         {
             Debug.Log("Door should close... ");
             door_aniamtor.Play("close_door2");
-           
-             SceneManager.LoadScene("Scene2");
-           
-           
+            loadNextScene(); 
+          
         }
 
      
     }
 
+    public void loadNextScene() {
+
+      //  int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log("LOAD SCENE");
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+       // SceneManager.LoadScene("backup2");
+        
+        Debug.Log("LOAD SCENE");
+    }
+
     public void Respawn()
     {
         //transform.position = new Vector3(-25.025f, 1.438f, 24.93f);
-        SceneManager.LoadScene("NEWLEVEL1SCENE");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+

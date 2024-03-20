@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NEWLEVEL1SCENE.unity
     guid: a3a07972c06a6bc40ad47455c6a51494
   - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: 8405a23c12de4864d9955ff9238955ce
+    path: Assets/Scenes/backup2.unity
+    guid: 8fe984231b0e2644ab19912c1f85ea99
+  - enabled: 1
+    path: Assets/Scenes/level3.unity
+    guid: 1f79d2f2ec9de2645bce446cc7728c43
   m_configObjects: {}

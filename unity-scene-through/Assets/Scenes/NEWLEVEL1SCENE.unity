@@ -382,8 +382,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.18431373, g: 0.9411765, b: 0.6901961, a: 1}
-  m_Intensity: 376.1529
-  m_Range: 1.58
+  m_Intensity: 40
+  m_Range: 1.8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2139,7 +2139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8ef64c05c36ff6468fd836930b1dfd3, type: 2}
+  - {fileID: 2100000, guid: 22fed2e6e60ced74c827042b65ecddf2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8381,13 +8381,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791656115}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.8, y: 3.3, z: -6.73}
+  m_LocalRotation: {x: 0.7060883, y: 0.00093926885, z: -0.0007901611, w: 0.7081228}
+  m_LocalPosition: {x: -15.83, y: 3.3, z: -6.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1860735085}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.837, y: 4.262, z: 4.122}
 --- !u!114 &791656117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8507,7 +8507,7 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
+  m_PointlightHDType: 1
   m_SpotLightShape: 0
   m_AreaLightShape: 0
 --- !u!114 &791656118
@@ -8532,10 +8532,10 @@ Light:
   m_GameObject: {fileID: 791656115}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.18431373, g: 0.9411765, b: 0.6901961, a: 1}
-  m_Intensity: 45.82
+  m_Intensity: 0
   m_Range: 2.4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8580,7 +8580,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 20000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 6.8098957e-29, z: 7.33e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 2.4}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -14784,7 +14784,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.18431373, g: 0.9411765, b: 0.6901961, a: 1}
-  m_Intensity: 18.025076
+  m_Intensity: 2.8
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -15868,7 +15868,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.18431373, g: 0.9411765, b: 0.6901961, a: 1}
-  m_Intensity: 47.746483
+  m_Intensity: 10
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -16426,7 +16426,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.18431373, g: 0.9411765, b: 0.6901961, a: 1}
-  m_Intensity: 47.89
+  m_Intensity: 1.2
   m_Range: 2.4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -18262,8 +18262,8 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.88, y: 1, z: 4.41}
@@ -21969,6 +21969,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1860735085}
     m_Modifications:
+    - target: {fileID: 3565553020966802128, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4024556918077631486, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
       propertyPath: m_Name
       value: Player
@@ -22653,6 +22657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1860735085}
     m_Modifications:
+    - target: {fileID: 2165824813430947388, guid: 2dc592b6a579e7a458a6e756f4378211, type: 3}
+      propertyPath: m_Intensity
+      value: 4.67
+      objectReference: {fileID: 0}
     - target: {fileID: 2636616006774182118, guid: 2dc592b6a579e7a458a6e756f4378211, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.62
