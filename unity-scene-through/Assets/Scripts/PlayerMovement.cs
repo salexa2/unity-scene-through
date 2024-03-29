@@ -216,22 +216,23 @@ public class PlayerMovement : MonoBehaviour
     private void Crouch()
     {
         // Reduce player height when crouching
-        characterCollider.height = .03f;
-        characterCollider.center = new Vector3(0f, -1.21f, 0f);
-        boxCollide.size = new Vector3(.49f, .38f, .75f);
-        boxCollide.center = new Vector3(0f, .15f, .06f);
+        characterCollider.height = .06f;
+        characterCollider.center = new Vector3(0.003f, .03f, 0f);
+        boxCollide.size = new Vector3(.06f, .02f, .07f);
+        boxCollide.center = new Vector3(0f, .03f, 0f);
+
 
     }
 
     private void StandUp()
     {
         // Restore player height when standing up
-        characterCollider.height = 1.08f;
-        characterCollider.center = new Vector3(0f, .49f, 0f);
+        characterCollider.height = .19f;
+        characterCollider.center = new Vector3(0.003f, .08f, 0f);
 
         // Adjust the BoxCollider
-        boxCollide.size = new Vector3(0f, .7f, 0f);
-        boxCollide.center = new Vector3(.49f, .71f, .45f);
+        boxCollide.size = new Vector3(0.06f, .1f, 0.07f);
+        boxCollide.center = new Vector3(0f, .07f, 0f);
 
 
     }
