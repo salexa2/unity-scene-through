@@ -6,6 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public MovementState state;
+
+    public enum MovementState
+    {
+        freeze,
+        unlimited
+    }
+
+    public bool freeze;
+    public bool unlimited;
+
+    public bool restricted;
+
     [Header("Movement")]
     public float moveSpeed;
 
@@ -125,11 +138,27 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void StateHandler()
+    {
+        //Mode - Freeze
+        if (freeze)
+        {
+            state = MovementState.freeze;
+            rb.velocity = Vector3.zero;
+        }
 
+        //Mode - Unlimited
+        else if (unlimited)
+        {
+            state = MovementState.unlimited;
+            moveSpeed = 999f;
+            return;
+        }
+    }
 
     private void MovePlayer()
     {
-
+        if (restricted) return;
 
         cameraForward = Camera.main.transform.forward;
         cameraRight = Camera.main.transform.right;
