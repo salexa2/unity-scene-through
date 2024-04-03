@@ -40,16 +40,16 @@ public class Lock : MonoBehaviour
         if(other.gameObject.GetComponent<Interaction>() != null)
         {
            
-            other.gameObject.GetComponent<Interaction>().objectInteraction.gameObject.SetActive(true);
+            other.gameObject.GetComponent<Interaction>().objectInteractionkey.gameObject.SetActive(true);
             Interaction tempInteraction = other.gameObject.GetComponent<Interaction>();
 
-            if (tempInteraction.objectInteraction != null 
-                && tempInteraction.objectInteraction.tag.Equals("Key") 
-                && tempInteraction.objectInteraction.GetComponent<Key>() != null 
-                && tempInteraction.objectInteraction.GetComponent<Key>().keyPassword.Equals(lockPassword))
+            if (tempInteraction.objectInteractionkey != null 
+                && tempInteraction.objectInteractionkey.tag.Equals("Key") 
+                && tempInteraction.objectInteractionkey.GetComponent<Key>() != null 
+                && tempInteraction.objectInteractionkey.GetComponent<Key>().keyPassword.Equals(lockPassword))
             {
-                Destroy(other.gameObject.GetComponent<Interaction>().objectInteraction);
-                other.gameObject.GetComponent<Interaction>().objectInteraction = null;
+                Destroy(other.gameObject.GetComponent<Interaction>().objectInteractionkey);
+                other.gameObject.GetComponent<Interaction>().objectInteractionkey = null;
                 isLock = true;
             }
         }
