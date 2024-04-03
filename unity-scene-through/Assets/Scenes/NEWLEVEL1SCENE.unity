@@ -14632,7 +14632,7 @@ Camera:
     y: -0.24
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 2.5
   far clip plane: 1000
   field of view: 30
   orthographic: 0
@@ -14660,7 +14660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303299975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.015895434, y: 0.7141568, z: -0.016225778, w: 0.69961715}
+  m_LocalRotation: {x: 0.015895437, y: 0.7141568, z: -0.01622578, w: 0.69961715}
   m_LocalPosition: {x: -28.590988, y: 2.02531, z: 25.167114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18483,6 +18483,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
   m_PrefabInstance: {fileID: 7240904833492113776}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736266782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2110960375045872849, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
+  m_PrefabInstance: {fileID: 7240904833492113776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1737019888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26910,6 +26921,7 @@ GameObject:
   - component: {fileID: 4082944768636194911}
   - component: {fileID: 5539768163408958545}
   - component: {fileID: 2533548315725700275}
+  - component: {fileID: 8459902557305299027}
   m_Layer: 0
   m_Name: Player-Rue
   m_TagString: Player
@@ -32340,6 +32352,10 @@ PrefabInstance:
       propertyPath: m_Lens.FieldOfView
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2110960375045872849, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2583104796722497903, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_BiasY
       value: -0.29
@@ -32366,7 +32382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.015895434
+      value: 0.015895437
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.y
@@ -32374,7 +32390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.016225778
+      value: -0.01622578
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33937,6 +33953,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06, y: 0.1, z: 0.07}
   m_Center: {x: 0, y: 0.08, z: 0}
+--- !u!114 &8459902557305299027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211632028491473889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d2f603726b3b0429af5cb79919a5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectInteraction: {fileID: 0}
+  objectInteractionkey: {fileID: 0}
+  quitKey: 113
+  interactionKey: 101
+  deathFlag: 0
+  sideCam: {fileID: 1736266782}
+  x_position: 0
+  max_x_factor: 5
+  x_factor: 0
+  sideCamera: {fileID: 0}
 --- !u!4 &8462526986930988559
 Transform:
   m_ObjectHideFlags: 0
