@@ -39,7 +39,7 @@ public class Lock : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Interaction>() != null)
         {
-           
+            if (other.gameObject.GetComponent<Interaction>().objectInteractionkey == null ) { return; }
             other.gameObject.GetComponent<Interaction>().objectInteractionkey.gameObject.SetActive(true);
             Interaction tempInteraction = other.gameObject.GetComponent<Interaction>();
 

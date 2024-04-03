@@ -121,10 +121,10 @@ public class Interaction : MonoBehaviour
             }
             
         }
-        if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
-        {
-            other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
-        }
+        //if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+        //{
+        //    other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
+        //}
     }
     /*
      * Exit the Trigger Collider.
@@ -158,9 +158,9 @@ public class Interaction : MonoBehaviour
                 interactionMirror(other.gameObject);
                 return;
             }
-            if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+            if (other.gameObject.tag.Equals("Cabinet") && Input.GetKeyDown(interactionKey))
             {
-                other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
+                other.gameObject.GetComponent<Cabinet>().isNotLock = true;
             }
 
         }
