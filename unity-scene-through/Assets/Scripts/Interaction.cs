@@ -111,6 +111,10 @@ public class Interaction : MonoBehaviour
             objectInteraction = other.gameObject;
             other.gameObject.SetActive(false);
         }
+        if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+        {
+            other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
+        }
     }
     /*
      * Exit the Trigger Collider.
@@ -144,7 +148,10 @@ public class Interaction : MonoBehaviour
                 interactionMirror(other.gameObject);
                 return;
             }
-            
+            if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+            {
+                other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
+            }
 
         }
     }
