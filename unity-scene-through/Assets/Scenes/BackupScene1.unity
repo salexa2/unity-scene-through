@@ -7949,10 +7949,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 288909485}
   mirrorFrame: {fileID: 620698702}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &535892123
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11039,6 +11042,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803d21f61a484854f9ca0f6d8b86cdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  freeze: 0
+  unlimited: 0
+  restricted: 0
   moveSpeed: 0.89
   groundDrag: 1.5
   jumpForce: 2.5
@@ -11053,7 +11060,9 @@ MonoBehaviour:
   characterCollider: {fileID: 0}
   boxCollide: {fileID: 0}
   orientation: {fileID: 1124700716}
+  door_aniamtor: {fileID: 0}
   rotationSpeed: 0
+  _sceneList: []
 --- !u!54 &676341198
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11144,16 +11153,41 @@ MonoBehaviour:
   quitKey: 113
   interactionKey: 101
   deathFlag: 1
-  hasJump: 1
   sideCam: {fileID: 1736266780}
   x_position: 0
   max_x_factor: 5
   x_factor: 1
-  topCam: {fileID: 0}
-  y_position: 0
-  max_y_factor: 5
-  y_factor: 1
-  pivotPoint: {fileID: 0}
+  sideCamera: {fileID: 0}
+--- !u!114 &676341205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676341196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a471d7a316da6f74bbab5ce3bd4ab371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pm: {fileID: 676341197}
+  orientation: {fileID: 1124700716}
+  cam: {fileID: 1846467022}
+  rb: {fileID: 676341198}
+  moveToLedgeSpeed: 2
+  maxLedgeGrabDistance: 0.6
+  minTimeOnLedge: 0.5
+  holding: 0
+  jumpKey: 32
+  ledgeJumpForwardForce: 0.5
+  ledgeJumpUpwardForce: 2
+  ledgeDetectionLength: 3
+  ledgeSphereCastRadius: 0.5
+  whatIsLedge:
+    serializedVersion: 2
+    m_Bits: 2048
+  exitingLedge: 0
+  exitLedgeTime: 0.2
 --- !u!1 &679234741
 GameObject:
   m_ObjectHideFlags: 0
@@ -12645,12 +12679,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1108152382}
   mirrorFrame: {fileID: 1392783912}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.344479, z: 0, w: -0.938794}
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &763659305
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13607,12 +13642,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1871946807}
   mirrorFrame: {fileID: 1117064999}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.32556814, z: 0, w: 0.94551855}
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &830319230
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17206,7 +17242,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 414072, guid: 79f4a5d9d4e53fe49b734dc823fc7fc5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1210436194}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 149300, guid: 79f4a5d9d4e53fe49b734dc823fc7fc5, type: 3}
       insertIndex: -1
@@ -20467,13 +20506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf553a22a4fd97d469b80814e7e32adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypointPath: {fileID: 0}
-  _speed: 0
-  _targetWaypointIndex: 0
-  _previousWaypoint: {fileID: 0}
-  _targetWaypoint: {fileID: 0}
-  _timeToWaypoint: 0
-  _elapsedTime: 0
 --- !u!65 &1167951859
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21187,6 +21219,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 292453234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1210436193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210436194}
+  - component: {fileID: 1210436197}
+  - component: {fileID: 1210436196}
+  - component: {fileID: 1210436195}
+  m_Layer: 11
+  m_Name: Ledge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210436194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210436193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -54.6, z: 29.44}
+  m_LocalScale: {x: 27.81091, y: 10.477186, z: 10.20467}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1027327033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1210436195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210436193}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1210436196
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210436193}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 46039f3dd967e4d9e8186cb0915ddd1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1210436197
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210436193}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1211410383
 GameObject:
   m_ObjectHideFlags: 0
@@ -22171,8 +22308,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303299975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09168212, y: 0.70787054, z: -0.093501404, w: 0.6940974}
-  m_LocalPosition: {x: -27.203222, y: 2.0237665, z: 24.972803}
+  m_LocalRotation: {x: 0.09020397, y: 0.70114285, z: -0.09015513, w: 0.7015227}
+  m_LocalPosition: {x: -27.55234, y: 2.9483342, z: 1.9577732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28036,15 +28173,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.025
+      value: -23.44
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.438
+      value: 1.873
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.93
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28079,6 +28216,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4484111761750686190, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484111761750686190, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -28108,6 +28249,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1199626449}
+    - targetCorrespondingSourceObject: {fileID: 3850880387190137684, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1846467022}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4484111761750686190, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       insertIndex: -1
@@ -28124,6 +28268,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4484111761750686190, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 676341204}
+    - targetCorrespondingSourceObject: {fileID: 4484111761750686190, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 676341205}
   m_SourcePrefab: {fileID: 100100000, guid: 472eda4c7fef9044098f07d1125affaf, type: 3}
 --- !u!1001 &1378260915
 PrefabInstance:
@@ -30307,12 +30454,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 1888728464}
   mirrorFrame: {fileID: 872000652}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.9099613, z: 0, w: 0.41469327}
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1510283707
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31095,14 +31243,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 825938373}
   mirrorFrame: {fileID: 151383075}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.36528298, z: 0, w: 0.9308965}
-  - {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  - {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1557988087
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32847,8 +32994,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736266779}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09168212, y: 0.70787054, z: -0.093501404, w: 0.6940974}
-  m_LocalPosition: {x: -27.203222, y: 2.0237665, z: 24.972803}
+  m_LocalRotation: {x: 0.09020397, y: 0.70114285, z: -0.09015513, w: 0.7015227}
+  m_LocalPosition: {x: -27.55234, y: 2.9483342, z: 1.9577732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34600,6 +34747,98 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6366835605697640928, guid: c970106cbbb945645ba01af49bbc732f, type: 3}
+--- !u!1 &1846467021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1846467022}
+  - component: {fileID: 1846467024}
+  - component: {fileID: 1846467023}
+  m_Layer: 0
+  m_Name: PlayerPOV
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1846467022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846467021}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.036, y: 0.943, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676341200}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1846467023
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846467021}
+  m_Enabled: 1
+--- !u!20 &1846467024
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846467021}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1
+  field of view: 11.8
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &1848380155 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 890d5d8745b9c164ab518b85d3a67324, type: 3}
@@ -35738,12 +35977,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 2063989936}
   mirrorFrame: {fileID: 759496019}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0.38348952, z: 0, w: 0.92354524}
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1909166062
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -35841,7 +36081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1632167100}
-  m_PathPosition: 0.048041686
+  m_PathPosition: 2.0668921
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -40191,10 +40431,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 715708593625120825}
   mirrorFrame: {fileID: 7794846240768451395}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!114 &1323309756426459680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40211,10 +40454,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 715708594054596572}
   mirrorFrame: {fileID: 7794846240858121382}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &1332490950318137673
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40866,10 +41112,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 3609681623851271770}
   mirrorFrame: {fileID: 6330447234397349152}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!4 &3029494304201701447
 Transform:
   m_ObjectHideFlags: 0
@@ -47123,10 +47372,13 @@ MonoBehaviour:
   isThereMultipleRay: 0
   mirrorWheel: {fileID: 4777164196324222217}
   mirrorFrame: {fileID: 2848962107665024627}
+  direction: {x: 0, y: 1, z: 0}
   mirrorSpeed: 0.5
-  mirrorDirection: []
-  mirrorIndex: 0
-  isTurn: 1
+  currentAngle: 0
+  maxSpeed: 0.6
+  acceleration: 0.05
+  decceleration: 0.01
+  topCam: {fileID: 0}
 --- !u!23 &6523203820871074436
 MeshRenderer:
   m_ObjectHideFlags: 0

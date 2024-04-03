@@ -40330,8 +40330,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4364491190900093252, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1912003091}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4024556918077631486, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1905986815}
   m_SourcePrefab: {fileID: 100100000, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
 --- !u!1 &951907943
 GameObject:
@@ -83964,6 +83970,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4364491190900093252, guid: dc04bea7c566f4a47923bd6350806119, type: 3}
   m_PrefabInstance: {fileID: 951418673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1905986815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951418674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a471d7a316da6f74bbab5ce3bd4ab371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pm: {fileID: 951418676}
+  orientation: {fileID: 951418675}
+  cam: {fileID: 1912003091}
+  rb: {fileID: 951418677}
+  moveToLedgeSpeed: 0
+  maxLedgeGrabDistance: 0
+  minTimeOnLedge: 0
+  holding: 0
+  jumpKey: 32
+  ledgeJumpForwardForce: 0
+  ledgeJumpUpwardForce: 0
+  ledgeDetectionLength: 0
+  ledgeSphereCastRadius: 0
+  whatIsLedge:
+    serializedVersion: 2
+    m_Bits: 0
+  exitingLedge: 0
+  exitLedgeTime: 0
 --- !u!1 &1905999882
 GameObject:
   m_ObjectHideFlags: 0
