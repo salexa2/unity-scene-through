@@ -15,6 +15,7 @@ TagManager:
   - Vehicle
   - Swingable
   - Key
+  - Cabinet
   layers:
   - Default
   - TransparentFX

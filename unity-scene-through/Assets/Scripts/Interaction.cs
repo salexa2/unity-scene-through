@@ -13,6 +13,7 @@ public class Interaction : MonoBehaviour
 {
     //Interaction Properties
     public GameObject objectInteraction = null; //Store the current object the player is interacting with. 
+    public GameObject objectInteractionkey = null; //Store the current object the player is interacting with. 
     public KeyCode quitKey = KeyCode.Q;  //Key for quitting an interaction.
     public KeyCode interactionKey = KeyCode.E; //Key for interaction with object.
     public bool deathFlag = false; // Set if you want to dies.
@@ -105,11 +106,24 @@ public class Interaction : MonoBehaviour
             isSwing = true;
             swingpositon = other.transform;
         }*/
-        if (objectInteraction != null) return;
         if (other.gameObject.tag.Equals("Key"))
         {
-            objectInteraction = other.gameObject;
-            other.gameObject.SetActive(false);
+            if(objectInteractionkey != null)
+            {
+                objectInteractionkey.SetActive(true);
+                objectInteractionkey = other.gameObject;
+                other.gameObject.SetActive(false);
+            }
+            else
+            {
+                objectInteractionkey = other.gameObject;
+                other.gameObject.SetActive(false);
+            }
+            
+        }
+        if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+        {
+            other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
         }
     }
     /*
@@ -144,7 +158,10 @@ public class Interaction : MonoBehaviour
                 interactionMirror(other.gameObject);
                 return;
             }
-            
+            if (other.gameObject.tag.Equals("Cabinet") && Input.GetKey(interactionKey))
+            {
+                other.gameObject.GetComponent<Cabinet>().isNotLock = !other.gameObject.GetComponent<Cabinet>().isNotLock;
+            }
 
         }
     }
