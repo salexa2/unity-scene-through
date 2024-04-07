@@ -5,6 +5,11 @@ public class Goal : MonoBehaviour
 {
     public Animator door_aniamtor;
     public bool isOpen = false;
+
+    [SerializeField]
+    public GameObject projectionToActivate;
+    [SerializeField]
+    public GameObject lightToActivate;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +24,8 @@ public class Goal : MonoBehaviour
             if (!isOpen)
             {
                 door_aniamtor.Play("Door_Idle");
+                projectionToActivate.SetActive(false);
+                lightToActivate.SetActive(false);
             }
             if (isOpen)
             {
@@ -28,13 +35,21 @@ public class Goal : MonoBehaviour
 
         }
     }
-    public void CompleteGoal()
-    {
-        if (door_aniamtor != null)
+    public void CompleteGoal() { 
+
+        
+     
         {
+
             if (!isOpen)
             {
-                isOpen = true;
+                //projection should show! 
+               
+
+                if (door_aniamtor != null)
+                isOpen = true;  
+                projectionToActivate.SetActive(true);
+                lightToActivate.SetActive(true);
                 door_aniamtor.Play("Door Open");
             }
         }
