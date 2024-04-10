@@ -9,8 +9,8 @@ public class AllPurposeMirror : MonoBehaviour
     public GameObject[] rayNum = new GameObject[0]; // Plug-in starting position for multiple rays when reflect off.
     public bool isThereMultipleRay = false; //Boolean to check if the mirror will cast multiple rays.
     public GameObject mirrorWheel = null; //Mirror wheel for turning the wheel if any.
-    public GameObject mirrorFrame = null; //Mirror frame that hold the mirror if any.
-    
+    public GameObject[] mirrorFrame = null; //Mirror frame that hold the mirror if any.
+    public int[] poster = new int[4];
     public Vector3[] directions;
     public KeyCode[] buttons;
 
@@ -23,7 +23,7 @@ public class AllPurposeMirror : MonoBehaviour
     public float decceleration = 0.01f;
 
     public Camera topCam = null;
-
+        
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +48,9 @@ public class AllPurposeMirror : MonoBehaviour
                     mirrorSpeed = maxSpeed;
                 }
 
-                if (mirrorFrame != null)
+                if (mirrorFrame[poster[i]] != null)
                 {
-                    mirrorFrame.transform.Rotate(directions[i], mirrorSpeed);
+                    mirrorFrame[poster[i]].transform.Rotate(directions[i], mirrorSpeed);
                 }
                 else
                 {
