@@ -187,6 +187,20 @@ public class Interaction : MonoBehaviour
                     sideCamera.gameObject.SetActive(false);
                 }
             }
+            if (objectInteraction.GetComponent<AllPurposeMirror>() != null)
+            {
+                this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+                objectInteraction.GetComponent<AllPurposeMirror>().enabled = true;
+                //obj.gameObject.GetComponent<Mirror>().ChangeDirection();
+                Debug.Log("Mirror Click");
+                if (obj.GetComponent<AllPurposeMirror>().topCam != null && sideCam != null && sideCam.gameObject.activeSelf)
+                {
+                    Debug.Log("Click Click Click");
+                    obj.GetComponent<AllPurposeMirror>().topCam.gameObject.SetActive(true);
+                    sideCam.gameObject.SetActive(false);
+                    sideCamera.gameObject.SetActive(false);
+                }
+            }
         }
         
     }
@@ -223,6 +237,24 @@ public class Interaction : MonoBehaviour
             }
             
             
+        }
+        if (objectInteraction.GetComponent<AllPurposeMirror>() != null)
+        {
+            if (objectInteraction.GetComponent<AllPurposeMirror>().topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
+            {
+                objectInteraction.GetComponent<AllPurposeMirror>().topCam.gameObject.SetActive(false);
+                sideCam.gameObject.SetActive(true);
+                sideCamera.gameObject.SetActive(true);
+            }
+            objectInteraction.GetComponent<AllPurposeMirror>().enabled = false;
+            objectInteraction = null;
+            if (objectInteraction == null)
+            {
+                Debug.Log("Hello Move");
+                this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+            }
+
+
         }
         //Add more stop interaction code below
         //----------------------------------------------------------
