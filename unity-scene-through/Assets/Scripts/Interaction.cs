@@ -237,8 +237,7 @@ public class Interaction : MonoBehaviour
             }
             
             
-        }
-        if (objectInteraction.GetComponent<AllPurposeMirror>() != null)
+        }else if (objectInteraction.GetComponent<AllPurposeMirror>() != null)
         {
             if (objectInteraction.GetComponent<AllPurposeMirror>().topCam != null && sideCam != null && !sideCam.gameObject.activeSelf)
             {
