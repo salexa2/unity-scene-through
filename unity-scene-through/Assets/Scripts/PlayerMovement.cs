@@ -277,7 +277,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         Debug.Log("should detect collision. ");
-        if (collision.gameObject.name == "nextscenecollider")
+        if (collision.gameObject.name == "nextscenecollider") //chase says this sucks , ask him to help fix later
         {
             Debug.Log("Door should close... ");
             door_aniamtor.Play("close_door2");
