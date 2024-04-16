@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PickUpTextScript : MonoBehaviour
 {
 
-    public Text pickUpText;
-    public GameObject background;
+    //public Text pickUpText;
+    //public GameObject background;
     //public GameObject player;
     public GameObject eKey;
 
@@ -52,17 +52,17 @@ public class PickUpTextScript : MonoBehaviour
 
     private void EnableText()
     {
-        pickUpText.gameObject.SetActive(true);
-        pickUpText.text = "Press        to Interact";
-        background.gameObject.SetActive(true);
+        //pickUpText.gameObject.SetActive(true);
+        //pickUpText.text = "Press        to Interact";
+        //background.gameObject.SetActive(true);
         eKey.gameObject.SetActive(true);
         pickUpAllowed = true;
     }
 
     private void DisableText()
     {
-        pickUpText.gameObject.SetActive(false);
-        background.gameObject.SetActive(false);
+        //pickUpText.gameObject.SetActive(false);
+        //background.gameObject.SetActive(false);
         eKey.gameObject.SetActive(false);
     }
 
