@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 448656}
   - component: {fileID: 9513004}
   - component: {fileID: 5443655608919230429}
-  - component: {fileID: 4586464892349224094}
+  - component: {fileID: 1194437818730170969}
   m_Layer: 12
   m_Name: Camera
   m_TagString: Untagged
@@ -72,16 +72,18 @@ MonoBehaviour:
   SecCamera: {fileID: 2036148}
   DetectionHalfAngle: 30
   DetectionRange: 20
-  DetectionTrigger: {fileID: 4586464892349224094}
+  DetectionTrigger: {fileID: 1194437818730170969}
   DetectionLight: {fileID: 4315471753586010340}
   Color_NothingDetected: {r: 0, g: 1, b: 0, a: 1}
   Color_FullyDetected: {r: 1, g: 0, b: 0, a: 1}
+  DetectionBuildRate: 0.5
+  DetectionDecayRate: 0.25
   DetectableTag:
   - Player
   DetectionLayerMask:
     serializedVersion: 2
     m_Bits: 17
---- !u!135 &4586464892349224094
+--- !u!135 &1194437818730170969
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +102,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.5
+  m_Center: {x: 3.87, y: -0.83, z: 0}
 --- !u!1 &149336
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +175,7 @@ Camera:
   field of view: 26.991467
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -5
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
