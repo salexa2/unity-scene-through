@@ -6,14 +6,15 @@ public class SecurityCamera : MonoBehaviour
 {
 
     public Camera SecCamera;
+    //public Collider playerCollider;
     public float DetectionHalfAngle = 30f;
     public float DetectionRange = 20f;
     public SphereCollider DetectionTrigger;
     public Light DetectionLight;
     public Color Color_NothingDetected = Color.green;
     public Color Color_FullyDetected = Color.red;
-    float DetectionBuildRate = 0.5f;
-    float DetectionDecayRate = 0.5f;
+    public float DetectionBuildRate = 0.5f;
+    public float DetectionDecayRate = 0.5f;
     public List<string> DetectableTag;
     public LayerMask DetectionLayerMask = ~0;
     public GameObject CurrentlyDetectedTarget { get; private set; }
@@ -34,7 +35,7 @@ public class SecurityCamera : MonoBehaviour
         DetectionLight.color = Color_NothingDetected;
         DetectionLight.range = DetectionRange;
         DetectionLight.spotAngle = DetectionHalfAngle * 2f;
-        DetectionTrigger.radius = DetectionRange;
+        //DetectionTrigger.radius = 1f;
 
         // cache detection data
         CosDetectionHalfAngle = Mathf.Cos(Mathf.Deg2Rad * DetectionHalfAngle);
@@ -64,18 +65,6 @@ public class SecurityCamera : MonoBehaviour
             // It is target in field of view
             Vector3 vecToTarget = targetInfo.LinkedGO.transform.position - transform.position;
             //Vector3 vecToTarget = targetInfo.LinkedGO.transform.position - SecCamera.transform.position;
-            /*if (Vector3.Dot(SecCamera.transform.forward, vecToTarget.normalized) >= CosDetectionHalfAngle)
-            {
-                // Check If We Can See Target
-                RaycastHit hitInfo;
-                if (Physics.Raycast(SecCamera.transform.position, SecCamera.transform.forward, out hitInfo, DetectionRange, DetectionLayerMask, QueryTriggerInteraction.Ignore))
-                {
-                    if(hitInfo.collider.gameObject == targetInfo.LinkedGO)
-                    {
-                        isVisible = true;
-                    }
-                }
-            }*/
 
             if (Vector3.Dot(transform.forward, vecToTarget.normalized) >= CosDetectionHalfAngle)
             {
@@ -89,7 +78,6 @@ public class SecurityCamera : MonoBehaviour
                     }
                 }
             }
-
             targetInfo.InFOV = isVisible;
             if (isVisible)
             {
@@ -103,7 +91,7 @@ public class SecurityCamera : MonoBehaviour
             {
                 highestDetectionLevel = targetInfo.DetectionLevel;
                 CurrentlyDetectedTarget = targetInfo.LinkedGO;
-                Debug.Log("Currently Detected Target is: " + CurrentlyDetectedTarget);
+                //Debug.Log("Currently Detected Target is: " + CurrentlyDetectedTarget);
             }
         }
         // update light color
