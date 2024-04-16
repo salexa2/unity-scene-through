@@ -3931,7 +3931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   conveyorSpeed: 0.4
   direction: {x: -1, y: 0, z: 0}
   onBelt: []
@@ -5194,8 +5194,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.79, y: 3.9391615, z: 1}
-  m_Center: {x: 1, y: -0.8796452, z: -0.00000003026593}
+  m_Size: {x: 8.79, y: 7.434746, z: 1}
+  m_Center: {x: 1, y: 0.8681404, z: -0.000000061493616}
 --- !u!1001 &317918305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6040,7 +6040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   conveyorSpeed: 0.4
   direction: {x: -1, y: 0, z: 0}
   onBelt: []
@@ -9190,7 +9190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 3
   conveyorSpeed: 0.4
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -11215,7 +11215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   conveyorSpeed: 0.1
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -13115,7 +13115,7 @@ Transform:
   m_GameObject: {fileID: 960943644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1570995, y: 3.0300002, z: 52.36}
+  m_LocalPosition: {x: 2.1570995, y: 3.0300002, z: 52.264}
   m_LocalScale: {x: 1, y: 1, z: 0.4153039}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13755,7 +13755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   conveyorSpeed: 0.1
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -14934,7 +14934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.061658822
+      value: 0.061658807
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.y
@@ -14942,7 +14942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.06432742
+      value: -0.064327404
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17138,7 +17138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 6
   conveyorSpeed: 0.4
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -17318,8 +17318,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.030083833, y: 0.015114266, z: 0.021558283}
-  m_Center: {x: -0.0000017582443, y: -0.004200175, z: 0.0107791405}
+  m_Size: {x: 0.030083833, y: 0.018414825, z: 0.031083409}
+  m_Center: {x: -0.0000017582443, y: -0.0058504594, z: 0.015541712}
 --- !u!1001 &1290065850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19758,7 +19758,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.y
@@ -19794,7 +19794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.x
-      value: 0
+      value: -1.6667924
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.y
@@ -19806,39 +19806,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.x
-      value: 0
+      value: -2.5223532
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.y
-      value: -0.84863186
+      value: 0.118382454
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.z
-      value: -35.50537
+      value: -35.455643
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.x
-      value: -4.642776
+      value: -2.601582
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.y
-      value: -0.9878645
+      value: -0.89825153
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.z
-      value: -40.66636
+      value: -37.174667
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.x
-      value: -3.8377995
+      value: -4.642776
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.y
-      value: -1.4453535
+      value: -0.9878645
       objectReference: {fileID: 0}
     - target: {fileID: 4029993296070687653, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.z
-      value: -54.105568
+      value: -40.66636
       objectReference: {fileID: 0}
     - target: {fileID: 4537977876903029083, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20324,7 +20324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   conveyorSpeed: 0.4
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -21532,7 +21532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549095953}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.061658822, y: 0.7190509, z: -0.06432742, w: 0.6892213}
+  m_LocalRotation: {x: 0.061658807, y: 0.7190509, z: -0.064327404, w: 0.6892213}
   m_LocalPosition: {x: -5.29, y: 1.5771656, z: 7.05624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23321,7 +23321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   conveyorSpeed: 0.1
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -27361,7 +27361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 6
   conveyorSpeed: 0.4
   direction: {x: -1, y: 0, z: 0}
   onBelt: []
