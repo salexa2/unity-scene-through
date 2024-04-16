@@ -1,4 +1,0 @@
-repository "scene-through-game@gmudirection@cloud"
-  path "/"
-    br "/main"
-    co "/main"
