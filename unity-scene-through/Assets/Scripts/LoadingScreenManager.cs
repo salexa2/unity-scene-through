@@ -42,10 +42,16 @@ public class LoadingScreenManager : MonoBehaviour
              
     }
 
+
     public void SwitchToScene(int id)
     { 
         loading_screen.SetActive(true);
-        mainmenu.SetActive(false);
+        if(mainmenu != null)
+        {
+            mainmenu.SetActive(false);
+
+        }
+       
         cam.SetActive(true);
         mcam.SetActive(false);
         ProgressBar.value = 0;

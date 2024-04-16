@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
 
-
+        Vector3 cameraForward = new Vector3(); 
         // Get the Animator component attached to the player
         animator = GetComponent<Animator>();
         // Get the CapsuleCollider component attached to the player
@@ -158,60 +158,66 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (restricted) return;
 
-        cameraForward = Camera.main.transform.forward;
-        cameraRight = Camera.main.transform.right;
-
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
-        moveDirection.Normalize();
-
-        horizontalInput = moveDirection.x;
-        verticalInput = moveDirection.z;
-
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-
-        if (animator.GetBool("isCrouched") == false)
+        if(Camera.main != null)
         {
-            if (moveDirection != Vector3.zero)
+            if (restricted) return;
+
+            cameraForward = Camera.main.transform.forward;
+            cameraRight = Camera.main.transform.right;
+
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
+
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+
+            Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
+            moveDirection.Normalize();
+
+            horizontalInput = moveDirection.x;
+            verticalInput = moveDirection.z;
+
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+
+            if (animator.GetBool("isCrouched") == false)
             {
-                animator.SetBool("isWalking", true);
-                transform.forward = moveDirection;
+                if (moveDirection != Vector3.zero)
+                {
+                    animator.SetBool("isWalking", true);
+                    transform.forward = moveDirection;
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false);
+                }
             }
             else
             {
-                animator.SetBool("isWalking", false);
+                if (moveDirection != Vector3.zero)
+                {
+                    animator.SetBool("isCrawl", true);
+                    transform.forward = moveDirection;
+                }
+                else
+                {
+                    animator.SetBool("isCrawl", false);
+
+                }
             }
+
+
+            //on ground
+            if (grounded)
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            else if (!grounded)
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-        else
-        {
-            if (moveDirection != Vector3.zero)
-            {
-                animator.SetBool("isCrawl", true);
-                transform.forward = moveDirection;
-            }
-            else
-            {
-                animator.SetBool("isCrawl", false);
+     
 
-            }
-        }
-
-
-        //on ground
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else if (!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
     }
 
@@ -290,9 +296,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void loadNextScene() {
 
-      //  int currentScene = SceneManager.GetActiveScene().buildIndex;
-
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //  int currentScene = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("IN LOAD SCENE\n");
+        LoadingScreenManager.Instance.SwitchToScene(SceneManager.GetActiveScene().buildIndex + 1);
+        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
@@ -300,7 +307,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Collided");
             SceneManager.LoadScene(nextSceneIndex);
         }
-       // SceneManager.LoadScene("backup2");
+       // SceneManager.LoadScene("backup2");*/
         
         Debug.Log("LOAD SCENE");
     }
