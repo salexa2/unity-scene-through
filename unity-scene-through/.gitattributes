@@ -1,1 +1,2 @@
 .asset filter=lfs diff=lfs merge=lfs -text
+C:/Users/shana/Documents/GitHub/myweb/unity-scene-through/unity-scene-through/Assets/mostusedassets/FinalCutscene.mp4 filter=lfs diff=lfs merge=lfs -text
