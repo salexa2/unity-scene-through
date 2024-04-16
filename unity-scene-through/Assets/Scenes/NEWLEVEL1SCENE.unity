@@ -22191,8 +22191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478925831c6be4249b98489b576f4b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpText: {fileID: 236573699}
-  background: {fileID: 494459606}
   eKey: {fileID: 1433707601}
 --- !u!65 &2894500954613991778
 BoxCollider:
