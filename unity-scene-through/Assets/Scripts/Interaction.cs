@@ -73,7 +73,7 @@ public class Interaction : MonoBehaviour
         //You player the quit key to stop interaction between the player and object.
         if (Input.GetKey(quitKey))
         {
-            Debug.Log("You press Q");
+            
             stopInteraction();
         }
         //Swing Mechanic to stop swinging. 
@@ -220,6 +220,7 @@ public class Interaction : MonoBehaviour
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             return;
         }
+        Debug.Log("You press Q");
         //Stop mirror interaction.
         if (objectInteraction.GetComponent<Mirror>() != null)
         {
