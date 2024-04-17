@@ -18264,7 +18264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392261421}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0892799, y: 0.6889833, z: -0.08614207, w: 0.71408033}
+  m_LocalRotation: {x: 0.08927988, y: 0.6889833, z: -0.086142056, w: 0.71408033}
   m_LocalPosition: {x: -1.5900879, y: -1.1490374, z: 15.698128}
   m_LocalScale: {x: 0.07365201, y: 0.07365201, z: 0.073652}
   m_ConstrainProportionsScale: 0
@@ -50837,7 +50837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072654468}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0892799, y: 0.6889833, z: -0.08614207, w: 0.71408033}
+  m_LocalRotation: {x: 0.08927988, y: 0.6889833, z: -0.086142056, w: 0.71408033}
   m_LocalPosition: {x: -0.008442345, y: -0.012598776, z: 0.1456434}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -101143,7 +101143,7 @@ GameObject:
   - component: {fileID: 2098436247}
   m_Layer: 0
   m_Name: Wheel (1)
-  m_TagString: Untagged
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101186,12 +101186,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.42, y: 0.19064242, z: 0.3}
-  m_Center: {x: -1.1283952e-10, y: -0.077336386, z: 4.967939e-10}
+  m_Size: {x: 0.64946544, y: 0.15864798, z: 0.49592367}
+  m_Center: {x: 0.016444907, y: -0.09333592, z: 0.022498157}
 --- !u!114 &2098436247
 MonoBehaviour:
   m_ObjectHideFlags: 0
