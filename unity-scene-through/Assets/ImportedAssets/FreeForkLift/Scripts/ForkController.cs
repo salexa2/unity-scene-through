@@ -13,6 +13,7 @@ public class ForkController : MonoBehaviour {
     public Vector3 minYmast; //The minimum height of the mast
     public GameObject player;
     public GameObject box;
+    public AudioSource audio;
 
     private bool mastMoveTrue = false; //Activate or deactivate the movement of the mast
     private bool moveBox = false; // Stop box from moving
@@ -73,14 +74,17 @@ public class ForkController : MonoBehaviour {
             if (mastMoveTrue)
             {
                 mast.transform.localPosition = Vector3.MoveTowards(mast.transform.localPosition, maxYmast, speedTranslate * Time.deltaTime);
+                audio.Play();
             }
             if (moveBox == false)
             {
                 box.transform.Translate(Vector3.up * speedTranslate * Time.deltaTime);
+                //audio.Play();
             }
             if (box.transform.position.y >= maxY.y + yInitialPosition)
             {
                 moveBox = true;
+                //audio.Pause();
             }
         }
 

@@ -10,7 +10,7 @@ public class PlayAudioOnTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio.Pause();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class PlayAudioOnTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !audio.isPlaying)
+        if (other.tag == "Player" && !audio.isPlaying && !audio.mute)
         {
             audio.Play();
         }
@@ -31,7 +31,14 @@ public class PlayAudioOnTrigger : MonoBehaviour
     {
         if (other.tag == "Player" && audio.isPlaying)
         {
-            audio.Pause();
+            if(transform.name != "Forklift")
+            {
+                audio.Pause();
+            }
+            if(transform.name == "Forklift")
+            {
+                audio.mute = true;
+            }
         }
     }
 }
