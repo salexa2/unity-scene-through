@@ -27,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
+    public AudioSource audio;
     bool readyToJump;
+    private float seconds = 0;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -182,6 +184,16 @@ public class PlayerMovement : MonoBehaviour
             verticalInput = moveDirection.z;
 
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+            //Debug.Log(moveDirection);
+            if(moveDirection.x != 0 || moveDirection.z != 0)
+            {
+                seconds -= 1 * Time.deltaTime;
+                if (seconds <= 0)
+                {
+                    audio.Play();
+                    seconds = 0.5f;
+                }
+            }
 
             if (animator.GetBool("isCrouched") == false)
             {
