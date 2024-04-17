@@ -30,6 +30,9 @@ public class Goal : MonoBehaviour
             }
             if (isOpen)
             {
+                projectionToActivate.SetActive(true);
+                lightToActivate.SetActive(true);
+                isOpen = true;
                 bool allTrigger = true;
                 if (other.Length != 0)
                 {
@@ -51,9 +54,6 @@ public class Goal : MonoBehaviour
                         return;
                     }
                 }
-                projectionToActivate.SetActive(true);
-                lightToActivate.SetActive(true);
-                isOpen = true;
                 door_aniamtor.Play("Door Open");
             }
 
