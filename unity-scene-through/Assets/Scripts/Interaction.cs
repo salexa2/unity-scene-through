@@ -73,6 +73,7 @@ public class Interaction : MonoBehaviour
         //You player the quit key to stop interaction between the player and object.
         if (Input.GetKey(quitKey))
         {
+            Debug.Log("You press Q");
             stopInteraction();
         }
         //Swing Mechanic to stop swinging. 

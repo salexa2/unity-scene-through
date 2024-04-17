@@ -5,6 +5,7 @@ public class Goal : MonoBehaviour
 {
     public Animator door_aniamtor;
     public bool isOpen = false;
+    public GameObject[] other = new GameObject[0]; 
 
     [SerializeField]
     public GameObject projectionToActivate;
@@ -29,6 +30,29 @@ public class Goal : MonoBehaviour
             }
             if (isOpen)
             {
+                bool allTrigger = true;
+                if (other.Length != 0)
+                {
+                    for(int i = 0; i < other.Length; i++)
+                    {
+                        if (other[i] != null)
+                        {
+                            if (other[i].GetComponent<Goal>() != null)
+                            {
+                                if (other[i].GetComponent<Goal>().isOpen == false)
+                                {
+                                    allTrigger = false;
+                                }
+                            }
+                        }
+                    }
+                    if (!allTrigger)
+                    {
+                        return;
+                    }
+                }
+                projectionToActivate.SetActive(true);
+                lightToActivate.SetActive(true);
                 isOpen = true;
                 door_aniamtor.Play("Door Open");
             }
@@ -44,13 +68,8 @@ public class Goal : MonoBehaviour
             if (!isOpen)
             {
                 //projection should show! 
-               
-
-                if (door_aniamtor != null)
                 isOpen = true;  
-                projectionToActivate.SetActive(true);
-                lightToActivate.SetActive(true);
-                door_aniamtor.Play("Door Open");
+                
             }
         }
         
