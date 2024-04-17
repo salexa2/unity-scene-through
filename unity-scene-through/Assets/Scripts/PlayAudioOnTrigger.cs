@@ -39,6 +39,11 @@ public class PlayAudioOnTrigger : MonoBehaviour
             {
                 audio.mute = true;
             }
+            if(transform.name == "Key Collider Sound")
+            {
+                audio.mute = true;
+                gameObject.SetActive(false);
+            }
         }
     }
 }
