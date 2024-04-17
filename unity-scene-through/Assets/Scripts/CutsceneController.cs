@@ -26,6 +26,6 @@ public class CutsceneController : MonoBehaviour
         finalCutscenePlayer.loopPointReached -= OnFinalCutsceneEnd;
 
         // Load the main menu scene
-        SceneManager.LoadScene("MainMenu");
+        LoadingScreenManager.Instance.SwitchToScene(1);
     }
 }
