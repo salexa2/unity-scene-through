@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 448656}
   - component: {fileID: 9513004}
-  - component: {fileID: 5443655608919230429}
-  - component: {fileID: 1194437818730170969}
   m_Layer: 12
   m_Name: Camera
   m_TagString: Untagged
@@ -57,53 +55,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5443655608919230429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10d6e7e410aa2c4eb18f7a79139ac85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SecCamera: {fileID: 2036148}
-  DetectionHalfAngle: 30
-  DetectionRange: 20
-  DetectionTrigger: {fileID: 1194437818730170969}
-  DetectionLight: {fileID: 4315471753586010340}
-  Color_NothingDetected: {r: 0, g: 1, b: 0, a: 1}
-  Color_FullyDetected: {r: 1, g: 0, b: 0, a: 1}
-  DetectionBuildRate: 0.5
-  DetectionDecayRate: 0.25
-  DetectableTag:
-  - Player
-  DetectionLayerMask:
-    serializedVersion: 2
-    m_Bits: 17
---- !u!135 &1194437818730170969
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103126}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 3.87, y: -0.83, z: 0}
 --- !u!1 &149336
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +452,8 @@ GameObject:
   - component: {fileID: 447370}
   - component: {fileID: 3323390}
   - component: {fileID: 2342928}
+  - component: {fileID: 7958767543967839214}
+  - component: {fileID: 7659034147531670619}
   m_Layer: 12
   m_Name: Swivel
   m_TagString: Untagged
@@ -574,6 +527,57 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &7958767543967839214
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184230}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 3.87, y: -0.83, z: 0}
+--- !u!114 &7659034147531670619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10d6e7e410aa2c4eb18f7a79139ac85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecCamera: {fileID: 2036148}
+  PivotPoint: {fileID: 447370}
+  DefaultPitch: 0
+  AngleSwept: 60
+  SweepSpeed: 6
+  DetectionHalfAngle: 30
+  DetectionRange: 20
+  DetectionTrigger: {fileID: 7958767543967839214}
+  DetectionLight: {fileID: 4315471753586010340}
+  Color_NothingDetected: {r: 0, g: 1, b: 0, a: 1}
+  Color_FullyDetected: {r: 1, g: 0, b: 0, a: 1}
+  DetectionBuildRate: 0.5
+  DetectionDecayRate: 0.25
+  DetectableTag:
+  - Player
+  DetectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 17
 --- !u!1 &185254
 GameObject:
   m_ObjectHideFlags: 0
