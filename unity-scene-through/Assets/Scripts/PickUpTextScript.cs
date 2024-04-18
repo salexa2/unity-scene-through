@@ -12,6 +12,7 @@ public class PickUpTextScript : MonoBehaviour
     public GameObject eKey;
 
     private bool pickUpAllowed;
+    private bool display = true;
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,12 @@ public class PickUpTextScript : MonoBehaviour
         {
             DisableText();
             pickUpAllowed = false;
+            display = false;
         }
-        if (pickUpAllowed == false && Input.GetKeyDown(KeyCode.Q))
+        if (pickUpAllowed == false && Input.GetKeyDown(KeyCode.Q) && display == false)
         {
             pickUpAllowed = true;
+            display = true;
         }
     }
 
