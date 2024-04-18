@@ -17856,7 +17856,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755473400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 30826a88cb916624687da5cd9100550d, type: 2}
   m_CullingMode: 0
@@ -18384,10 +18384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   conveyorSpeed: 0.1
-  direction: {x: 0, y: 0, z: 1}
+  direction: {x: 0, y: 0, z: -1}
   onBelt: []
   texture_directionx: 0
-  texture_directiony: 1
+  texture_directiony: -1
 --- !u!65 &774977530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23116,7 +23116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
   conveyorSpeed: 0.1
   direction: {x: 0, y: 0, z: 1}
   onBelt: []
@@ -29087,12 +29087,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac96de08de4584fa5e92ec92a4b4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   conveyorSpeed: 0.1
-  direction: {x: 0, y: 0, z: 1}
+  direction: {x: 0, y: 0, z: -1}
   onBelt: []
   texture_directionx: 0
-  texture_directiony: 1
+  texture_directiony: -1
 --- !u!65 &1342455943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36488,10 +36488,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   conveyorSpeed: 0.1
-  direction: {x: 0, y: 0, z: 1}
+  direction: {x: 0, y: 0, z: -1}
   onBelt: []
   texture_directionx: 0
-  texture_directiony: 1
+  texture_directiony: -1
 --- !u!65 &1676643087
 BoxCollider:
   m_ObjectHideFlags: 0
