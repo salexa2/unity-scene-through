@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -94,8 +95,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-
 
 
     }
@@ -289,12 +288,35 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "death_coll" || collision.gameObject.name == "death_bridge" || collision.gameObject.name ==  "deatharm")
         {
             Debug.Log("Player Should die. ");
-            Respawn(); 
+
+            if (collision.gameObject.name == "deatharm")
+            {
+                Debug.Log("Player Should get zapped.\n ");
+
+                StartCoroutine(PlayAnimationAndRespawn());
+            }
+            else
+            {
+                Respawn(); 
+            }
+           
+        }
+
+        IEnumerator PlayAnimationAndRespawn()
+        {
+            // Play animation
+            animator.Play("rueelectrocuted");
+
+            // Wait for a few seconds
+            yield return new WaitForSeconds(4.0f); // Adjust the duration as needed
+
+            // After waiting, respawn the player
+            Respawn();
         }
 
 
 
-      //  Debug.Log("should detect collision. ");
+        //  Debug.Log("should detect collision. ");
         if (collision.gameObject.name == "nextscenecollider") //chase says this sucks , ask him to help fix later
         {
             Debug.Log("Door should close... ");
