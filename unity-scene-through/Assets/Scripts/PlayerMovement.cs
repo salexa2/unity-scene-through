@@ -286,7 +286,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "death_coll" || collision.gameObject.name == "death_bridge")
+        if (collision.gameObject.name == "death_coll" || collision.gameObject.name == "death_bridge" || collision.gameObject.name ==  "deatharm")
         {
             Debug.Log("Player Should die. ");
             Respawn(); 
@@ -294,7 +294,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        Debug.Log("should detect collision. ");
+      //  Debug.Log("should detect collision. ");
         if (collision.gameObject.name == "nextscenecollider") //chase says this sucks , ask him to help fix later
         {
             Debug.Log("Door should close... ");
@@ -303,7 +303,6 @@ public class PlayerMovement : MonoBehaviour
           
         }
 
-     
     }
 
     public void loadNextScene() {
