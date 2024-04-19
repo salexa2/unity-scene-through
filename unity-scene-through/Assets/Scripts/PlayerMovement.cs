@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public bool unlimited;
 
     public bool restricted;
+    
+    private bool stopMovement = false; // Used to display animation and stop player from moving (Level 2 & 3)
 
     [Header("Movement")]
     public float moveSpeed;
@@ -159,75 +161,76 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-
-        if(Camera.main != null)
+        if (!stopMovement)
         {
-            if (restricted) return;
-
-            cameraForward = Camera.main.transform.forward;
-            cameraRight = Camera.main.transform.right;
-
-            cameraForward.y = 0f;
-            cameraRight.y = 0f;
-
-            cameraForward.Normalize();
-            cameraRight.Normalize();
-
-            horizontalInput = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxisRaw("Vertical");
-
-            Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
-            moveDirection.Normalize();
-
-            horizontalInput = moveDirection.x;
-            verticalInput = moveDirection.z;
-
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-            //Debug.Log(moveDirection);
-            if(moveDirection.x != 0 || moveDirection.z != 0)
+            if (Camera.main != null)
             {
-                seconds -= 1 * Time.deltaTime;
-                if (seconds <= 0)
+                if (restricted) return;
+
+                cameraForward = Camera.main.transform.forward;
+                cameraRight = Camera.main.transform.right;
+
+                cameraForward.y = 0f;
+                cameraRight.y = 0f;
+
+                cameraForward.Normalize();
+                cameraRight.Normalize();
+
+                horizontalInput = Input.GetAxisRaw("Horizontal");
+                verticalInput = Input.GetAxisRaw("Vertical");
+
+                Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
+                moveDirection.Normalize();
+
+                horizontalInput = moveDirection.x;
+                verticalInput = moveDirection.z;
+
+                transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+                //Debug.Log(moveDirection);
+                if (moveDirection.x != 0 || moveDirection.z != 0)
                 {
-                    audio.Play();
-                    seconds = 0.5f;
+                    seconds -= 1 * Time.deltaTime;
+                    if (seconds <= 0)
+                    {
+                        audio.Play();
+                        seconds = 0.5f;
+                    }
                 }
-            }
 
-            if (animator.GetBool("isCrouched") == false)
-            {
-                if (moveDirection != Vector3.zero)
+                if (animator.GetBool("isCrouched") == false)
                 {
-                    animator.SetBool("isWalking", true);
-                    transform.forward = moveDirection;
+                    if (moveDirection != Vector3.zero)
+                    {
+                        animator.SetBool("isWalking", true);
+                        transform.forward = moveDirection;
+                    }
+                    else
+                    {
+                        animator.SetBool("isWalking", false);
+                    }
                 }
                 else
                 {
-                    animator.SetBool("isWalking", false);
+                    if (moveDirection != Vector3.zero)
+                    {
+                        animator.SetBool("isCrawl", true);
+                        transform.forward = moveDirection;
+                    }
+                    else
+                    {
+                        animator.SetBool("isCrawl", false);
+
+                    }
                 }
+
+
+                //on ground
+                if (grounded)
+                    rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+                else if (!grounded)
+                    rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
             }
-            else
-            {
-                if (moveDirection != Vector3.zero)
-                {
-                    animator.SetBool("isCrawl", true);
-                    transform.forward = moveDirection;
-                }
-                else
-                {
-                    animator.SetBool("isCrawl", false);
-
-                }
-            }
-
-
-            //on ground
-            if (grounded)
-                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            else if (!grounded)
-                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-        }
-     
+        } 
 
 
     }
@@ -293,7 +296,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Player Should get zapped.\n ");
 
-                StartCoroutine(PlayAnimationAndRespawn());
+                StartCoroutine(PlayAnimationAndRespawn(1));
             }
             else
             {
@@ -301,20 +304,6 @@ public class PlayerMovement : MonoBehaviour
             }
            
         }
-
-        IEnumerator PlayAnimationAndRespawn()
-        {
-            // Play animation
-            animator.Play("rueelectrocuted");
-
-            // Wait for a few seconds
-            yield return new WaitForSeconds(4.0f); // Adjust the duration as needed
-
-            // After waiting, respawn the player
-            Respawn();
-        }
-
-
 
         //  Debug.Log("should detect collision. ");
         if (collision.gameObject.name == "nextscenecollider") //chase says this sucks , ask him to help fix later
@@ -325,6 +314,28 @@ public class PlayerMovement : MonoBehaviour
           
         }
 
+    }
+
+    private IEnumerator PlayAnimationAndRespawn(int option)
+    {
+
+        stopMovement = true;
+
+        // Play animation
+
+        if(option == 1)
+        {
+            animator.Play("rueelectrocuted");
+        } else if (option == 2)
+        {
+            animator.Play("ruecaughtbycam");
+        }
+
+        // Wait for a few seconds
+        yield return new WaitForSeconds(4.0f); // Adjust the duration as needed
+
+        // After waiting, respawn the player
+        Respawn();
     }
 
     public void loadNextScene() {
@@ -349,6 +360,14 @@ public class PlayerMovement : MonoBehaviour
     {
         //transform.position = new Vector3(-25.025f, 1.438f, 24.93f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnDetected(GameObject target)
+    {
+
+        Debug.Log("Camera Detected Player");
+
+        StartCoroutine(PlayAnimationAndRespawn(2));
     }
 }
 

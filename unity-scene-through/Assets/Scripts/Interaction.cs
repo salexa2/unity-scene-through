@@ -60,7 +60,7 @@ public class Interaction : MonoBehaviour
         if (sideCam != null && sideCam.isActiveAndEnabled)
         {
             float new_x = x_position - this.gameObject.transform.position.x;
-            Debug.Log("new_x 2 " + new_x);
+            //Debug.Log("new_x 2 " + new_x);
             if (sideCam.GetCinemachineComponent<CinemachineTrackedDolly>() != null)
             {
                 sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
