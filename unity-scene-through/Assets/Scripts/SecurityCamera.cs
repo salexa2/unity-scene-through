@@ -6,31 +6,20 @@ public class SecurityCamera : MonoBehaviour
 {
 
     public Camera SecCamera;
-
-    [SerializeField] Transform PivotPoint;
-    [SerializeField] float DefaultPitch = 20f;
-    [SerializeField] float AngleSwept = 60f;
-    [SerializeField] float SweepSpeed = 6f;
-    [SerializeField] float MaxRotationSpeed = 15f;
-
     //public Collider playerCollider;
     public float DetectionHalfAngle = 30f;
     public float DetectionRange = 20f;
-    [SerializeField] float TargetVOffset = 1f;
     public SphereCollider DetectionTrigger;
     public Light DetectionLight;
     public Color Color_NothingDetected = Color.green;
     public Color Color_FullyDetected = Color.red;
     public float DetectionBuildRate = 0.5f;
     public float DetectionDecayRate = 0.5f;
-    [SerializeField][Range(0f, 1f)] float SuspicionThreshold = 0.5f;
     public List<string> DetectableTag;
     public LayerMask DetectionLayerMask = ~0;
     public GameObject CurrentlyDetectedTarget { get; private set; }
 
-    float CurrentAngle = 0f;
     private float CosDetectionHalfAngle;
-    bool SweepClockwise = true;
 
     class PotentialTarget
     {
@@ -55,33 +44,7 @@ public class SecurityCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         RefreshTargetInfo();
-
-        Quaternion desiredRotation = PivotPoint.transform.rotation;
-
-        // Don't auto-rotate if player in FOV
-        if(CurrentlyDetectedTarget != null && AllTargets[CurrentlyDetectedTarget].DetectionLevel >= SuspicionThreshold)
-        {
-            if (AllTargets[CurrentlyDetectedTarget].InFOV)
-            {
-                var vecToTarget = (CurrentlyDetectedTarget.transform.position + TargetVOffset * Vector3.up - PivotPoint.transform.position).normalized;
-                desiredRotation = Quaternion.LookRotation(vecToTarget, Vector3.up) * Quaternion.Euler(0f, 90f, 0f);
-            }
-        } else
-        {
-            //Update Angle
-            CurrentAngle += SweepSpeed * Time.deltaTime * (SweepClockwise ? 1f : -1f);
-            if (Mathf.Abs(CurrentAngle) >= (AngleSwept * 0.5f))
-            {
-                SweepClockwise = !SweepClockwise;
-            }
-
-            // Calculate Rotation
-            desiredRotation = PivotPoint.transform.parent.rotation * Quaternion.Euler(0f, CurrentAngle, DefaultPitch);
-        }
-
-        PivotPoint.transform.rotation = Quaternion.RotateTowards(PivotPoint.transform.rotation, desiredRotation, MaxRotationSpeed * Time.deltaTime);
 
     }
 
@@ -99,15 +62,15 @@ public class SecurityCamera : MonoBehaviour
 
             bool isVisible = false;
 
-            // Is target in field of view
-            Vector3 vecToTarget = (targetInfo.LinkedGO.transform.position + TargetVOffset * Vector3.up - transform.position).normalized;
+            // It is target in field of view
+            Vector3 vecToTarget = targetInfo.LinkedGO.transform.position - transform.position;
             //Vector3 vecToTarget = targetInfo.LinkedGO.transform.position - SecCamera.transform.position;
 
-            if (Vector3.Dot(transform.forward, vecToTarget) >= CosDetectionHalfAngle)
+            if (Vector3.Dot(transform.forward, vecToTarget.normalized) >= CosDetectionHalfAngle)
             {
                 // Check If We Can See Target
                 RaycastHit hitInfo;
-                if (Physics.Raycast(transform.position, vecToTarget, out hitInfo, DetectionRange, DetectionLayerMask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(transform.position, transform.forward, out hitInfo, DetectionRange, DetectionLayerMask, QueryTriggerInteraction.Ignore))
                 {
                     if (hitInfo.collider.gameObject == targetInfo.LinkedGO)
                     {
