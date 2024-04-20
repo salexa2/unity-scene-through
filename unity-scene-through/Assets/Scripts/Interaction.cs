@@ -19,6 +19,8 @@ public class Interaction : MonoBehaviour
     public bool deathFlag = false; // Set if you want to dies.
     //public bool canSeeTopDown = false;
 
+    public GameObject UI;
+
     
     protected bool youDie = true; // Set if you want to more death.
 
@@ -41,6 +43,10 @@ public class Interaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(UI != null)
+        {
+            UI.SetActive(false);
+        }
         x_position = gameObject.transform.position.x;
         if(sideCam != null)
         {
@@ -184,6 +190,10 @@ public class Interaction : MonoBehaviour
                 {
                     Debug.Log("Click Click Click");
                     obj.GetComponent<Mirror>().topCam.gameObject.SetActive(true);
+                    if(UI != null)
+                    {
+                        this.UI.SetActive(true);
+                    }
                     sideCam.gameObject.SetActive(false);
                     sideCamera.gameObject.SetActive(false);
                 }
@@ -198,6 +208,10 @@ public class Interaction : MonoBehaviour
                 {
                     Debug.Log("Click Click Click");
                     obj.GetComponent<AllPurposeMirror>().topCam.gameObject.SetActive(true);
+                    if (UI != null)
+                    {
+                        this.UI.SetActive(true);
+                    }
                     sideCam.gameObject.SetActive(false);
                     sideCamera.gameObject.SetActive(false);
                 }
@@ -218,6 +232,10 @@ public class Interaction : MonoBehaviour
                 sideCamera.gameObject.SetActive(true);
             }
             this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+            if (UI != null)
+            {
+                this.UI.SetActive(false);
+            }
             return;
         }
         Debug.Log("You press Q");
@@ -235,6 +253,10 @@ public class Interaction : MonoBehaviour
             if(objectInteraction == null)
             {
                 Debug.Log("Hello Move");
+                if (UI != null)
+                {
+                    this.UI.SetActive(false);
+                }
                 this.gameObject.GetComponent<PlayerMovement>().enabled = true;
             }
             
@@ -248,11 +270,19 @@ public class Interaction : MonoBehaviour
                 sideCamera.gameObject.SetActive(true);
             }
             objectInteraction.GetComponent<AllPurposeMirror>().enabled = false;
+            if (UI != null)
+            {
+                this.UI.SetActive(false);
+            }
             objectInteraction = null;
             if (objectInteraction == null)
             {
                 Debug.Log("Hello Move");
                 this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+                if (UI != null)
+                {
+                    this.UI.SetActive(false);
+                }
             }
 
 
