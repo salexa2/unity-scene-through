@@ -1,117 +1,138 @@
-﻿using UnityEngine ;
-using UnityEngine.UI ;
-using UnityEngine.Events ;
-using System.Collections ;
+﻿//Open Source Clock Timer code provided from https://github.com/herbou/Unity_ReusableTimers.git
+//Thank you Hamza Herbou
 
-public class ClockTimer : MonoBehaviour {
-   [Header ("Timer UI references :")]
-   [SerializeField] private Image uiFillImage ;
-   [SerializeField] private Text uiText ;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using System.Collections;
+using TMPro; // Added TextMeshPro namespace
 
-   public int Duration { get; private set; }
+public class ClockTimer : MonoBehaviour
+{
+    [Header("Timer UI references :")]
+    [SerializeField] private Image uiFillImage;
+    [SerializeField] private TMP_Text uiText; // Replaced Text with TMP_Text
 
-   public bool IsPaused { get; private set; }
+    public int Duration { get; private set; }
 
-   private int remainingDuration ;
+    public bool IsPaused { get; private set; }
 
-   // Events --
-   private UnityAction onTimerBeginAction ;
-   private UnityAction<int> onTimerChangeAction ;
-   private UnityAction onTimerEndAction ;
-   private UnityAction<bool> onTimerPauseAction ;
+    private int remainingDuration;
 
-   private void Awake () {
-      ResetTimer () ;
-   }
+    // Events --
+    private UnityAction onTimerBeginAction;
+    private UnityAction<int> onTimerChangeAction;
+    private UnityAction onTimerEndAction;
+    private UnityAction<bool> onTimerPauseAction;
 
-   private void ResetTimer () {
-      uiText.text = "00:00" ;
-      uiFillImage.fillAmount = 0f ;
+    private void Awake()
+    {
+        ResetTimer();
+    }
 
-      Duration = remainingDuration = 0 ;
+    private void ResetTimer()
+    {
+        uiText.text = "00:00";
+        uiFillImage.fillAmount = 0f;
 
-      onTimerBeginAction = null ;
-      onTimerChangeAction = null ;
-      onTimerEndAction = null ;
-      onTimerPauseAction = null ;
+        Duration = remainingDuration = 0;
 
-      IsPaused = false ;
-   }
+        onTimerBeginAction = null;
+        onTimerChangeAction = null;
+        onTimerEndAction = null;
+        onTimerPauseAction = null;
 
-   public void SetPaused (bool paused) {
-      IsPaused = paused ;
+        IsPaused = false;
+    }
 
-      if (onTimerPauseAction != null)
-         onTimerPauseAction.Invoke (IsPaused) ;
-   }
+    public void SetPaused(bool paused)
+    {
+        IsPaused = paused;
 
-
-   public ClockTimer SetDuration (int seconds) {
-      Duration = remainingDuration = seconds ;
-      return this ;
-   }
-
-   //-- Events ----------------------------------
-   public ClockTimer OnBegin (UnityAction action) {
-      onTimerBeginAction = action ;
-      return this ;
-   }
-
-   public ClockTimer OnChange (UnityAction<int> action) {
-      onTimerChangeAction = action ;
-      return this ;
-   }
-
-   public ClockTimer OnEnd (UnityAction action) {
-      onTimerEndAction = action ;
-      return this ;
-   }
-
-   public ClockTimer OnPause (UnityAction<bool> action) {
-      onTimerPauseAction = action ;
-      return this ;
-   }
+        if (onTimerPauseAction != null)
+            onTimerPauseAction.Invoke(IsPaused);
+    }
 
 
+    public ClockTimer SetDuration(int seconds)
+    {
+        Duration = remainingDuration = seconds;
+        return this;
+    }
+
+    //-- Events ----------------------------------
+    public ClockTimer OnBegin(UnityAction action)
+    {
+        onTimerBeginAction = action;
+        return this;
+    }
+
+    public ClockTimer OnChange(UnityAction<int> action)
+    {
+        onTimerChangeAction = action;
+        return this;
+    }
+
+    public ClockTimer OnEnd(UnityAction action)
+    {
+        onTimerEndAction = action;
+        return this;
+    }
+
+    public ClockTimer OnPause(UnityAction<bool> action)
+    {
+        onTimerPauseAction = action;
+        return this;
+    }
 
 
 
-   public void Begin () {
-      if (onTimerBeginAction != null)
-         onTimerBeginAction.Invoke () ;
-
-      StopAllCoroutines () ;
-      StartCoroutine (UpdateTimer ()) ;
-   }
-
-   private IEnumerator UpdateTimer () {
-      while (remainingDuration > 0) {
-         if (!IsPaused) {
-            if (onTimerChangeAction != null)
-               onTimerChangeAction.Invoke (remainingDuration) ;
-
-            UpdateUI (remainingDuration) ;
-            remainingDuration-- ;
-         }
-         yield return new WaitForSeconds (1f) ;
-      }
-      End () ;
-   }
-
-   private void UpdateUI (int seconds) {
-      uiText.text = string.Format ("{0:D2}:{1:D2}", seconds / 60, seconds % 60) ;
-      uiFillImage.fillAmount = Mathf.InverseLerp (0, Duration, seconds) ;
-   }
-
-   public void End () {
-      if (onTimerEndAction != null)
-         onTimerEndAction.Invoke () ;
-
-      ResetTimer () ;
-   }
 
 
-   private void OnDestroy () {
-      StopAllCoroutines () ;
-   }
+    public void Begin()
+    {
+        if (onTimerBeginAction != null)
+            onTimerBeginAction.Invoke();
+
+        StopAllCoroutines();
+        StartCoroutine(UpdateTimer());
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        while (remainingDuration > 0)
+        {
+            if (!IsPaused)
+            {
+                if (onTimerChangeAction != null)
+                    onTimerChangeAction.Invoke(remainingDuration);
+
+                UpdateUI(remainingDuration);
+                remainingDuration--;
+            }
+            yield return new WaitForSeconds(1f);
+        }
+        End();
+    }
+
+    private void UpdateUI(int seconds)
+    {
+        uiText.text = string.Format("{0:D2}:{1:D2}", seconds / 60, seconds % 60);
+        uiFillImage.fillAmount = Mathf.InverseLerp(0, Duration, seconds);
+    }
+
+    public void End()
+    {
+        if (onTimerEndAction != null)
+            onTimerEndAction.Invoke();
+
+        ResetTimer();
+    }
+
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 }
+
