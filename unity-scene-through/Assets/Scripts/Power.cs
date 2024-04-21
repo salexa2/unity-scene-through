@@ -88,6 +88,17 @@ public class Power : MonoBehaviour
                     {
                         raycreate = hit.collider.gameObject.GetComponent<Mirror>().NewCast(this.gameObject);
                     }
+                }else if (hit.collider.gameObject.tag.Equals("SCam") || childernNameCheck(hit.collider.gameObject, "SCam"))
+                {
+                    if(hit.collider.GetComponent<SphereCollider>() != null)
+                    {
+                        bounces++;
+                        line_renderer.positionCount++;
+                        p0 = hit.point + p1 * 2*hit.collider.GetComponent<SphereCollider>().radius;
+                        line_renderer.SetPosition(i + 1, p0);
+
+                    }
+
                 }
                 else if (hit.collider.gameObject.tag.Equals("Player") || childernNameCheck(hit.collider.gameObject, "Player") && killPlayer)
                 {

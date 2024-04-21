@@ -16,6 +16,7 @@ TagManager:
   - Swingable
   - Key
   - Cabinet
+  - SCam
   layers:
   - Default
   - TransparentFX
