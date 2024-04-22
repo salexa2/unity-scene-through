@@ -61,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public Animator door_aniamtor;
 
+    //Transition Animation
+    public Animator transition_aniamtor;
+
     //public float speed;
     public float rotationSpeed;
 
@@ -76,7 +79,10 @@ public class PlayerMovement : MonoBehaviour
 
         readyToJump = true;
 
-
+        if(transition_aniamtor != null)
+        {
+            StartCoroutine(Transition(0));
+        }
         Vector3 cameraForward = new Vector3(); 
         // Get the Animator component attached to the player
         animator = GetComponent<Animator>();
@@ -300,7 +306,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Respawn(); 
+                StartCoroutine(PlayAnimationAndRespawn(0));
+                //Respawn(); 
             }
            
         }
@@ -315,7 +322,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
+    public void UniveralDie(int option)
+    {
+        StartCoroutine(PlayAnimationAndRespawn(option));
+    }
     private IEnumerator PlayAnimationAndRespawn(int option)
     {
 
@@ -332,10 +342,33 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Wait for a few seconds
-        yield return new WaitForSeconds(4.0f); // Adjust the duration as needed
-
+        if (option != 0)
+        {
+            yield return new WaitForSeconds(4.0f); // Adjust the duration as needed
+        }
+       
+        if (transition_aniamtor != null)
+        {
+            transition_aniamtor.Play("Left");
+            yield return new WaitForSeconds(1.5f); // Adjust the duration as needed
+        }
+        
         // After waiting, respawn the player
         Respawn();
+    }
+    private IEnumerator Transition(int option)
+    {
+
+        stopMovement = true;
+
+        // Play animation
+
+        transition_aniamtor.Play("Right");
+
+        // Wait for a few seconds
+        yield return new WaitForSeconds(1.5f); // Adjust the duration as needed
+        stopMovement = false;
+
     }
 
     public void loadNextScene() {
