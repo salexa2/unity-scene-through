@@ -27798,6 +27798,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2752461882046489253}
     - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: crouchKey
+      value: 304
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: door_aniamtor
       value: 
       objectReference: {fileID: 1784907163}
