@@ -116070,13 +116070,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974836761550228350}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001499991, y: 0.058, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7818314, z: -0, w: 0.62349}
+  m_LocalPosition: {x: -0.0014968615, y: 0.0580001, z: -0.00000091809375}
   m_LocalScale: {x: 0.8865494, y: 0.90671015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7365906453690979262}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -102.857, z: 0}
 --- !u!4 &1626061562953697771
 Transform:
   m_ObjectHideFlags: 0
@@ -117793,27 +117793,6 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974836761236438020}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: -0.0000009536743, y: -0.17, z: 0.0000009536743}
---- !u!65 &3452007887318946018
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4974836761550228350}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -120408,7 +120387,6 @@ GameObject:
   - component: {fileID: 4415031487590272293}
   - component: {fileID: 3593564561879869824}
   - component: {fileID: 3525632302288369710}
-  - component: {fileID: 3452007887318946018}
   m_Layer: 0
   m_Name: pCylinder9
   m_TagString: Mirror
