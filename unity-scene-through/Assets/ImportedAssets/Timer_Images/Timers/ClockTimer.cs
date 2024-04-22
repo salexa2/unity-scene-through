@@ -19,6 +19,8 @@ public class ClockTimer : MonoBehaviour
 
     private int remainingDuration;
 
+    public PlayerMovement pmt;
+
     // Events --
     private UnityAction onTimerBeginAction;
     private UnityAction<int> onTimerChangeAction;
@@ -126,6 +128,7 @@ public class ClockTimer : MonoBehaviour
         if (onTimerEndAction != null)
             onTimerEndAction.Invoke();
 
+        pmt.UniveralDie(0);
         ResetTimer();
     }
 

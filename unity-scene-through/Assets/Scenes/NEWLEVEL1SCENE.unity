@@ -1619,6 +1619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiFillImage: {fileID: 1213436571}
   uiText: {fileID: 1742219833}
+  pmt: {fileID: 2752461882046489255}
 --- !u!114 &214655410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14996,7 +14997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer1: {fileID: 214655409}
-  seconds: 69
+  seconds: 132
 --- !u!1 &1212647886
 GameObject:
   m_ObjectHideFlags: 0
@@ -28145,6 +28146,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2752461882046489255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+  m_PrefabInstance: {fileID: 2172390257451278585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135618302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803d21f61a484854f9ca0f6d8b86cdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2894500954613991778
 BoxCollider:
   m_ObjectHideFlags: 0
