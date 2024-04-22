@@ -20053,7 +20053,6 @@ GameObject:
   - component: {fileID: 371767106}
   - component: {fileID: 371767105}
   - component: {fileID: 371767104}
-  - component: {fileID: 371767103}
   - component: {fileID: 371767109}
   m_Layer: 5
   m_Name: Canvas
@@ -20062,20 +20061,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &371767103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371767102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b5236ce1653b0d47a599d6154397fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
-  remainingTime: 20
 --- !u!114 &371767104
 MonoBehaviour:
   m_ObjectHideFlags: 0
