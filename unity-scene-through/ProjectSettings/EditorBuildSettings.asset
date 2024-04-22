@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/finalcutscene.unity
     guid: 872faf17fbc1fda4082cb37a0a2aedaa
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 94d0755d9a9e73244af3bd12f2923cf8, type: 2}
