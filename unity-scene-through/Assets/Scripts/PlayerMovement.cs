@@ -322,7 +322,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
+    public void UniveralDie(int option)
+    {
+        StartCoroutine(PlayAnimationAndRespawn(option));
+    }
     private IEnumerator PlayAnimationAndRespawn(int option)
     {
 
