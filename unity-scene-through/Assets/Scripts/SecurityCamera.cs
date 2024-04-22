@@ -16,7 +16,7 @@ public class SecurityCamera : MonoBehaviour
 
     //public Collider playerCollider;
     public float DetectionHalfAngle = 30f;
-    public float DetectionRange = 20f;
+    public float DetectionRange = 6.5f;
     [SerializeField] float TargetVOffset = 1f;
     public SphereCollider DetectionTrigger;
     public Light DetectionLight;
