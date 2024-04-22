@@ -28,7 +28,7 @@ public class roboticarmscripts : MonoBehaviour
         timer += Time.deltaTime;
 
         // Check if it's time to move the arm down
-        if (timer >=4.0f)
+        if (timer >=3.0f)
         {
             Debug.Log("[roboticarmscript.c]ARM SHOULD MOVE\n ");
             MoveArmDown();
