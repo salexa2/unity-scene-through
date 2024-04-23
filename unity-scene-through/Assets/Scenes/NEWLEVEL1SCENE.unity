@@ -27946,6 +27946,10 @@ PrefabInstance:
       propertyPath: sideCamera
       value: 
       objectReference: {fileID: 1303299977}
+    - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: projectionMain
+      value: 
+      objectReference: {fileID: 842721781}
     - target: {fileID: 1907614527093454701, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_Name
       value: Player-Rue
