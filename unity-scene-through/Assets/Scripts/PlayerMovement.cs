@@ -395,7 +395,7 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void OnDetected(GameObject target)
+    public void OnDetected(GameObject target) // On Detected Security Camera Event Handle
     {
 
         Debug.Log("Camera Detected Player");
