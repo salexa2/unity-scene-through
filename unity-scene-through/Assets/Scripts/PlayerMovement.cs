@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    public AudioSource audio;
     bool readyToJump;
     private float seconds = 0;
 
@@ -70,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 cameraForward;
     Vector3 cameraRight;
 
+    [Header("Audio")]
+    public AudioSource audio;
+    public AudioClip playerWalkAudio;
+    public AudioClip playerJumpAudio;
+    public AudioClip playerDyingAudio;
+
     [SerializeField] private List<Scene> _sceneList;
     // Start is called before the first frame update
     void Start()
@@ -89,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
         // Get the CapsuleCollider component attached to the player
         characterCollider = GetComponent<CapsuleCollider>();
         boxCollide = GetComponent<BoxCollider>();
+
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -198,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
                     seconds -= 1 * Time.deltaTime;
                     if (seconds <= 0)
                     {
-                        audio.Play();
+                        audio.PlayOneShot(playerWalkAudio, 1.25f);
                         seconds = 0.5f;
                     }
                 }
@@ -260,6 +267,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        audio.PlayOneShot(playerJumpAudio, 2.0f);
     }
 
     private void ResetJump()
@@ -330,6 +339,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         stopMovement = true;
+        audio.PlayOneShot(playerDyingAudio, 3.0f);
 
         // Play animation
 

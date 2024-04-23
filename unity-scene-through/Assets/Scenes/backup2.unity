@@ -11969,6 +11969,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 500019137}
     - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerJumpAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: a26f97d901b566b4ab2724cf2828c375, type: 3}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerWalkAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: d2907f725b939d9479a500b0601ff6bc, type: 3}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerDyingAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fdb4dddf33453c4b9afa439dfc5c388, type: 3}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: transition_aniamtor
       value: 
       objectReference: {fileID: 2572061}
