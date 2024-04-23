@@ -19,6 +19,12 @@ public class Interaction : MonoBehaviour
     public bool deathFlag = false; // Set if you want to dies.
     //public bool canSeeTopDown = false;
 
+    public GameObject projectionMain; //Projection Object that lights up on completion.
+    public GameObject projectionSecondary; //Sometimes there's two!
+    public bool twoProjectors = false; //Inside the update call this makes sure to wait for both if set.
+    public Animator animator; //Animator for each Camera that will be used.
+    public bool animationPlayed = false; //Inside the update I need this to make sure the animator is called only once!
+
     public GameObject UI;
 
     
@@ -57,6 +63,11 @@ public class Interaction : MonoBehaviour
                 sideCam.gameObject.SetActive(true);
             }
         }
+
+        if(projectionSecondary != null)
+        {
+            twoProjectors = true;
+        }
         
     }
 
@@ -82,6 +93,24 @@ public class Interaction : MonoBehaviour
             
             stopInteraction();
         }
+
+        if (twoProjectors)
+        {
+            if(projectionMain.activeSelf && projectionSecondary.activeSelf)
+            {
+                stopInteraction();
+                if(animationPlayed == false)
+                {
+                    int i = SceneManager.GetActiveScene().buildIndex;
+                    playAnimation(i);
+                    animationPlayed = true;
+                }
+            }
+        }
+        else if (projectionMain.activeSelf)
+        {
+            stopInteraction();
+        }
         //Swing Mechanic to stop swinging. 
         /*if (isSwing)
         {
@@ -94,6 +123,21 @@ public class Interaction : MonoBehaviour
                 this.gameObject.GetComponent<Rigidbody>().useGravity = true;
             }
         }*/
+    }
+
+    /*
+     * Called once inside update on level completion.
+     */
+    private void playAnimation(int option)
+    {
+        if(option == 2)
+        {
+            animator.Play("GoalCam1");
+        }
+        else if(option == 3)
+        {
+            animator.Play("GoalCam2");
+        }
     }
 
     /*
