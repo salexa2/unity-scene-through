@@ -148,10 +148,6 @@ public class Interaction : MonoBehaviour
             {
                 animator.Play("GoalCamIble3");
             }
-            if(sideCam != null)
-            {
-                sideCam.gameObject.SetActive(true);
-            }
             //The Ible for  animator scene 3
         }
         //Swing Mechanic to stop swinging. 
