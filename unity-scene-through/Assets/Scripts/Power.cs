@@ -127,7 +127,7 @@ public class Power : MonoBehaviour
 
         }
         ray = new Ray(p0, p1);
-        if (Physics.Raycast(ray, out hit, power_range)) //If the ray hit the goals.
+        if (Physics.Raycast(ray, out hit, power_range, mask)) //If the ray hit the goals.
         {
             line_renderer.SetPosition(line_renderer.positionCount - 1, hit.point);
             if (hit.transform.gameObject.tag.Equals("Goal") || childernNameCheck(hit.collider.gameObject, "Goal")){
