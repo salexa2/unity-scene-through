@@ -36,6 +36,8 @@ public class SecurityCamera : MonoBehaviour
     private float CosDetectionHalfAngle;
     bool SweepClockwise = true;
 
+    public AudioSource audio;
+
     class PotentialTarget
     {
         public GameObject LinkedGO;
@@ -151,6 +153,7 @@ public class SecurityCamera : MonoBehaviour
                 //Debug.Log("Hello");
                 HasDetectedTarget = true;
                 targetInfo.OnDetectedEventSent = true;
+                audio.Play();
                 OnDetected.Invoke(targetInfo.LinkedGO);
             }
             // Found a new more Detected Target?

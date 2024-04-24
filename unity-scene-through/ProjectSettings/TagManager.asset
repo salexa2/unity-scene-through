@@ -17,6 +17,7 @@ TagManager:
   - Key
   - Cabinet
   - SCam
+  - KeyCollider
   layers:
   - Default
   - TransparentFX

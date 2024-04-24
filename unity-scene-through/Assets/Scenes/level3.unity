@@ -48132,12 +48132,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915639805}
+  - component: {fileID: 915639802}
   - component: {fileID: 915639804}
   - component: {fileID: 915639803}
-  - component: {fileID: 915639802}
   m_Layer: 0
   m_Name: Key Collider Sound (1)
-  m_TagString: Untagged
+  m_TagString: KeyCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48161,8 +48161,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35635757, y: 0.6025591, z: 0.35916138}
-  m_Center: {x: 0.029294968, y: -0.19872046, z: 0.32564163}
+  m_Size: {x: 0.3441391, y: 0.4671569, z: 0.35916138}
+  m_Center: {x: 0.035404205, y: -0.13101935, z: 0.32564163}
 --- !u!82 &915639803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50964,7 +50964,7 @@ GameObject:
   - component: {fileID: 964795294}
   m_Layer: 0
   m_Name: Key Collider Sound
-  m_TagString: Untagged
+  m_TagString: KeyCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50988,8 +50988,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35635757, y: 0.6025591, z: 0.35916138}
-  m_Center: {x: 0.029294968, y: -0.19872046, z: 0.32564163}
+  m_Size: {x: 0.35635757, y: 0.25373197, z: 0.2937622}
+  m_Center: {x: 0.029294968, y: -0.024306893, z: 0.35834122}
 --- !u!82 &964795295
 AudioSource:
   m_ObjectHideFlags: 0
