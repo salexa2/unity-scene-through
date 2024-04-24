@@ -143,6 +143,10 @@ public class Interaction : MonoBehaviour
             {
                 animator.Play("GoalCamIble2");
             }
+            else if (i == 4)
+            {
+                animator.Play("GoalCamIble3");
+            }
             //The Ible for  animator scene 3
         }
         //Swing Mechanic to stop swinging. 
@@ -184,8 +188,13 @@ public class Interaction : MonoBehaviour
             animator.Play("GoalCam2");
             yield return new WaitForSeconds(7f);
         }
-        //The animator camera is move in scene 3
-        if(sideCam != null)
+        else if (option == 4)
+        {
+            yield return new WaitForSeconds(0.5f);
+            animator.Play("GoalCam3");
+            yield return new WaitForSeconds(5f);
+        }
+        if (sideCam != null)
         {
             goalCam.gameObject.SetActive(false);
             sideCam.gameObject.SetActive(true);
