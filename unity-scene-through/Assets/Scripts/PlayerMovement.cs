@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
                     seconds -= 1 * Time.deltaTime;
                     if (seconds <= 0)
                     {
-                        audio.PlayOneShot(playerWalkAudio, 1.25f);
+                        audio.PlayOneShot(playerWalkAudio, 1.0f);
                         seconds = 0.5f;
                     }
                 }
@@ -268,7 +268,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-        audio.PlayOneShot(playerJumpAudio, 2.0f);
+        audio.PlayOneShot(playerJumpAudio, 1.75f);
     }
 
     private void ResetJump()

@@ -146,7 +146,7 @@ public class SecurityCamera : MonoBehaviour
                 Debug.Log(targetInfo.DetectionLevel);
                 //Debug.Log(targetInfo.OnDetectedEventSent);
             }*/
-            if (targetInfo.DetectionLevel >= 0.3f && !targetInfo.OnDetectedEventSent)
+            if (targetInfo.DetectionLevel >= 0.25f && !targetInfo.OnDetectedEventSent)
             {
                 //Debug.Log("Hello");
                 HasDetectedTarget = true;
