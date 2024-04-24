@@ -168,31 +168,35 @@ public class Interaction : MonoBehaviour
      */
     private IEnumerator playAnimation(int option)
     {
-        if(sideCam != null)
+        bool istrue = false;
+        if(sideCam != null && sideCam.gameObject.activeSelf)
         {
             sideCam.gameObject.SetActive(false);
             goalCam.gameObject.SetActive(true);
             this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            istrue = true;
 
-
         }
-        if (option == 2)
+        if (istrue)
         {
-            yield return new WaitForSeconds(0.5f);
-            animator.Play("GoalCam1");
-            yield return new WaitForSeconds(5f);
-        }
-        else if(option == 3)
-        {
-            yield return new WaitForSeconds(0.5f);
-            animator.Play("GoalCam2");
-            yield return new WaitForSeconds(7f);
-        }
-        else if (option == 4)
-        {
-            yield return new WaitForSeconds(0.5f);
-            animator.Play("GoalCam3");
-            yield return new WaitForSeconds(5f);
+            if (option == 2)
+            {
+                yield return new WaitForSeconds(0.5f);
+                animator.Play("GoalCam1");
+                yield return new WaitForSeconds(5f);
+            }
+            else if (option == 3)
+            {
+                yield return new WaitForSeconds(0.5f);
+                animator.Play("GoalCam2");
+                yield return new WaitForSeconds(7f);
+            }
+            else if (option == 4)
+            {
+                yield return new WaitForSeconds(0.5f);
+                animator.Play("GoalCam3");
+                yield return new WaitForSeconds(5f);
+            }
         }
         if (sideCam != null)
         {
