@@ -108,8 +108,8 @@ public class Interaction : MonoBehaviour
                     stopInteraction();
                     int i = SceneManager.GetActiveScene().buildIndex;
                     Debug.Log(i);
-                    StartCoroutine(playAnimation(i));
                     animationPlayed = true;
+                    StartCoroutine(playAnimation(i));
                 }
             }
             else
@@ -124,8 +124,9 @@ public class Interaction : MonoBehaviour
             {
                 stopInteraction();
                 int i = SceneManager.GetActiveScene().buildIndex;
-                StartCoroutine(playAnimation(i));
                 animationPlayed = true;
+                StartCoroutine(playAnimation(i));
+                
             }
         }
         else
@@ -146,6 +147,10 @@ public class Interaction : MonoBehaviour
             else if (i == 4)
             {
                 animator.Play("GoalCamIble3");
+            }
+            if(sideCam != null)
+            {
+                sideCam.gameObject.SetActive(true);
             }
             //The Ible for  animator scene 3
         }
@@ -169,7 +174,7 @@ public class Interaction : MonoBehaviour
     private IEnumerator playAnimation(int option)
     {
         bool istrue = false;
-        if(sideCam != null && sideCam.gameObject.activeSelf)
+        if(sideCam != null && sideCam.gameObject.activeSelf && animationPlayed)
         {
             sideCam.gameObject.SetActive(false);
             goalCam.gameObject.SetActive(true);
