@@ -64646,6 +64646,10 @@ PrefabInstance:
       propertyPath: transition_aniamtor
       value: 
       objectReference: {fileID: 1975819611}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerDeathByArmAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: dbc65bedc08895147a8bf6819e01bc40, type: 3}
     - target: {fileID: 9176433233367582049, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_Layer
       value: 13

@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip playerWalkAudio;
     public AudioClip playerJumpAudio;
     public AudioClip playerDyingAudio;
+    public AudioClip playerDeathByArmAudio;
 
     [SerializeField] private List<Scene> _sceneList;
     // Start is called before the first frame update
@@ -311,6 +312,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Player Should get zapped.\n ");
 
+                audio.PlayOneShot(playerDeathByArmAudio, 0.6f);
+
                 StartCoroutine(PlayAnimationAndRespawn(1));
             }
             else
@@ -339,7 +342,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         stopMovement = true;
-        audio.PlayOneShot(playerDyingAudio, 3.0f);
+        audio.PlayOneShot(playerDyingAudio, 3.5f);
 
         // Play animation
 

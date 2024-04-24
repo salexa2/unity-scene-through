@@ -13054,6 +13054,10 @@ PrefabInstance:
       propertyPath: transition_aniamtor
       value: 
       objectReference: {fileID: 2572061}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerDeathByArmAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: dbc65bedc08895147a8bf6819e01bc40, type: 3}
     - target: {fileID: 9176433233367582049, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -23644,7 +23648,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819950830}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -37647,7 +37651,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460708061}
   serializedVersion: 4
-  m_Mass: 8
+  m_Mass: 0.5
   m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -49224,7 +49228,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955755313}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -53064,7 +53068,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034033287}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
