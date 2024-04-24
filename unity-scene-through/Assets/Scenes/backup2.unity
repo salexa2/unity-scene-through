@@ -13054,6 +13054,10 @@ PrefabInstance:
       propertyPath: transition_aniamtor
       value: 
       objectReference: {fileID: 2572061}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerDeathByArmAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: dbc65bedc08895147a8bf6819e01bc40, type: 3}
     - target: {fileID: 9176433233367582049, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -40374,7 +40378,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 10
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -40400,8 +40404,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549095953}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10717256, y: 0.71745473, z: -0.11325383, w: 0.6789303}
-  m_LocalPosition: {x: -5.696382, y: 3.5337849, z: 6.912138}
+  m_LocalRotation: {x: -0, y: 0.39158812, z: -0, w: 0.9201406}
+  m_LocalPosition: {x: -8.065, y: 3.0150003, z: -48.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
