@@ -26543,6 +26543,9 @@ MonoBehaviour:
   power_Light: {fileID: 217902089}
   lightPoint: []
   raycreate: []
+  mask:
+    serializedVersion: 2
+    m_Bits: 11955
 --- !u!120 &2061809511
 LineRenderer:
   serializedVersion: 2

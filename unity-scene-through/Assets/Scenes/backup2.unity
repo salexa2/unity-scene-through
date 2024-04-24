@@ -64077,6 +64077,9 @@ MonoBehaviour:
   power_Light: {fileID: 6201439084378096397}
   lightPoint: []
   raycreate: []
+  mask:
+    serializedVersion: 2
+    m_Bits: 11955
 --- !u!1 &6116298540790020575
 GameObject:
   m_ObjectHideFlags: 0
@@ -67911,6 +67914,10 @@ PrefabInstance:
     - target: {fileID: 2552054462592009368, guid: bbcd91f928ef17749ad7241a1dfd5d51, type: 3}
       propertyPath: m_Intensity
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886875147094491630, guid: bbcd91f928ef17749ad7241a1dfd5d51, type: 3}
+      propertyPath: mask.m_Bits
+      value: 11955
       objectReference: {fileID: 0}
     - target: {fileID: 3367280325099399833, guid: bbcd91f928ef17749ad7241a1dfd5d51, type: 3}
       propertyPath: m_Name
