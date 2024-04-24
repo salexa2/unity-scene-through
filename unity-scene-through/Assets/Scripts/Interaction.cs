@@ -88,17 +88,6 @@ public class Interaction : MonoBehaviour
                 sideCam.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathOffset.x = new_x;
             }
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        //You player the quit key to stop interaction between the player and object.
-        if (Input.GetKey(quitKey))
-        {
-            
-            stopInteraction();
-        }
-
         if (twoProjectors)
         {
             if (projectionMain.activeSelf && projectionSecondary.activeSelf)
@@ -119,7 +108,7 @@ public class Interaction : MonoBehaviour
         }
         else if (projectionMain.activeSelf)
         {
-            
+
             if (animationPlayed == false)
             {
                 stopInteraction();
@@ -132,7 +121,7 @@ public class Interaction : MonoBehaviour
         {
             animationPlayed = false;
         }
-        if(!animationPlayed)
+        if (!animationPlayed)
         {
             int i = SceneManager.GetActiveScene().buildIndex;
             if (i == 2)
@@ -149,6 +138,18 @@ public class Interaction : MonoBehaviour
             }
             //The Ible for  animator scene 3
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        //You player the quit key to stop interaction between the player and object.
+        if (Input.GetKey(quitKey))
+        {
+            
+            stopInteraction();
+        }
+
+        
         //Swing Mechanic to stop swinging. 
         /*if (isSwing)
         {
