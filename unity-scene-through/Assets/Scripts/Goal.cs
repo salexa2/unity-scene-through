@@ -12,6 +12,7 @@ public class Goal : MonoBehaviour
     public GameObject projectionToActivate;
     [SerializeField]
     public GameObject lightToActivate;
+    public AudioSource audio;
 
     
     // Start is called before the first frame update
@@ -71,8 +72,9 @@ public class Goal : MonoBehaviour
             if (!isOpen)
             {
                 //projection should show! 
-                isOpen = true;  
-                
+                isOpen = true;
+                audio.Play();
+
             }
         }
         
