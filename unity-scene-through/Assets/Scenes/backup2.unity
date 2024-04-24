@@ -28968,14 +28968,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100699739}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.39158812, z: -0, w: 0.9201406}
+  m_LocalRotation: {x: 0.12553206, y: 0.7529517, z: -0.15045455, w: 0.62822676}
   m_LocalPosition: {x: -8.065, y: 3.015, z: -48.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1705278283}
   m_Father: {fileID: 494987492}
-  m_LocalEulerAnglesHint: {x: 0, y: 46.107, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.6, y: 100.32, z: 0}
 --- !u!114 &1100699741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29564,6 +29564,10 @@ PrefabInstance:
     - target: {fileID: 6397778242612056901, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_Name
       value: DollyControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397778242612056901, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37576,6 +37580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dolly Track
       objectReference: {fileID: 0}
+    - target: {fileID: 6954694080886411839, guid: 55542a972d8440d42a36952d9bfdeff8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40508,7 +40516,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 494987492}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.86, y: 100.37, z: 0}
 --- !u!114 &1549095957
 MonoBehaviour:
   m_ObjectHideFlags: 0
