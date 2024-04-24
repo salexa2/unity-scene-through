@@ -75,11 +75,27 @@ public class PickUpTextScript : MonoBehaviour
         {
             pickUpAllowed = true;
         }
+        if (other.CompareTag("Cabinet"))
+        {
+            if(other.gameObject.GetComponent<Cabinet>() != null && !other.gameObject.GetComponent<Cabinet>().isNotLock)
+            {
+                pickUpAllowed = true;
+            }
+            else
+            {
+                pickUpAllowed = false;
+            }
+
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Mirror"))
+        {
+            pickUpAllowed = false;
+        }
+        if (other.CompareTag("Cabinet"))
         {
             pickUpAllowed = false;
         }
