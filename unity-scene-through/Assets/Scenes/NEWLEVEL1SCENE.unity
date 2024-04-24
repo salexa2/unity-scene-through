@@ -16540,7 +16540,7 @@ Camera:
     height: 1
   near clip plane: 2.5
   far clip plane: 1000
-  field of view: 30
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -16566,8 +16566,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303299975}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.015895434, y: 0.7141568, z: -0.016225774, w: 0.6996172}
-  m_LocalPosition: {x: -28.590988, y: 2.02531, z: 25.167114}
+  m_LocalRotation: {x: -0.14868905, y: -0.85069054, z: 0.26684803, w: -0.42779595}
+  m_LocalPosition: {x: -23.748, y: 5.36, z: -11.843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29683,6 +29683,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7fdb4dddf33453c4b9afa439dfc5c388, type: 3}
     - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: playerDrowningAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 0744864d2c413724f90823dc1c88b7f1, type: 3}
+    - target: {fileID: 9123862942511582750, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: transition_aniamtor
       value: 
       objectReference: {fileID: 402562340}
@@ -31780,6 +31784,8 @@ MonoBehaviour:
   projectionToActivate: {fileID: 842721781}
   lightToActivate: {fileID: 3966518049148524490}
   audio: {fileID: 5903469465627200912}
+  projectorAudio: {fileID: 8300000, guid: 0dad17ae20dcb3140806974cff2299ce, type: 3}
+  elevatorAudio: {fileID: 8300000, guid: c21628e8e1e844c43a6ed9c4ca33e571, type: 3}
 --- !u!82 &5903469465627200912
 AudioSource:
   m_ObjectHideFlags: 0

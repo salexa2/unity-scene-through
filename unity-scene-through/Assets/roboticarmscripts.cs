@@ -11,6 +11,8 @@ public class roboticarmscripts : MonoBehaviour
     // Start is called before the first frame update
     private bool flag = true; //isdown is false; 
 
+    public AudioSource audio;
+
     void Start()
     {
         // Get the Animator component attached to this GameObject
@@ -32,6 +34,7 @@ public class roboticarmscripts : MonoBehaviour
         {
             Debug.Log("[roboticarmscript.c]ARM SHOULD MOVE\n ");
             MoveArmDown();
+            //audio.Play();
             timer = 0.0f;
         }
     }

@@ -21058,7 +21058,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -21084,8 +21084,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392261421}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06429431, y: 0.67465717, z: -0.05918164, w: 0.7329404}
-  m_LocalPosition: {x: -2.1934128, y: -1.4973354, z: 15.311775}
+  m_LocalRotation: {x: 0.16218944, y: 0.41791075, z: -0.075801946, w: 0.8906735}
+  m_LocalPosition: {x: -2.975689, y: 4.0927267, z: -7.9234543}
   m_LocalScale: {x: 0.07365201, y: 0.07365201, z: 0.073652}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120665,6 +120665,14 @@ PrefabInstance:
       propertyPath: door_aniamtor
       value: 
       objectReference: {fileID: 1807856070}
+    - target: {fileID: 5903469465458590591, guid: 2a952a3184053cd43b491dea4c48c36a, type: 3}
+      propertyPath: elevatorAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: c21628e8e1e844c43a6ed9c4ca33e571, type: 3}
+    - target: {fileID: 5903469465458590591, guid: 2a952a3184053cd43b491dea4c48c36a, type: 3}
+      propertyPath: projectorAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 0dad17ae20dcb3140806974cff2299ce, type: 3}
     - target: {fileID: 5903469465458590591, guid: 2a952a3184053cd43b491dea4c48c36a, type: 3}
       propertyPath: other.Array.data[0]
       value: 

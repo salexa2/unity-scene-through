@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip playerWalkAudio;
     public AudioClip playerJumpAudio;
     public AudioClip playerDyingAudio;
+    public AudioClip playerDrowningAudio;
     public AudioClip playerDeathByArmAudio;
 
     [SerializeField] private List<Scene> _sceneList;
@@ -307,6 +308,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "death_coll" || collision.gameObject.name == "death_bridge" || collision.gameObject.name ==  "deatharm")
         {
             Debug.Log("Player Should die. ");
+
+            if(collision.gameObject.name == "death_coll")
+            {
+                audio.PlayOneShot(playerDrowningAudio, 1.5f);
+            }
 
             if (collision.gameObject.name == "deatharm")
             {

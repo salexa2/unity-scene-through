@@ -62,7 +62,7 @@ public class ForkController : MonoBehaviour {
             }
         }*/
 
-        if ((player.transform.position - transform.position).sqrMagnitude <= 5f)
+        if ((player.transform.position - transform.position).sqrMagnitude <= 6f)
         {
             goingUp = true;
 
