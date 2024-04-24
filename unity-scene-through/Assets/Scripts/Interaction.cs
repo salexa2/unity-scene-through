@@ -22,6 +22,7 @@ public class Interaction : MonoBehaviour
     public GameObject projectionMain; //Projection Object that lights up on completion.
     public GameObject projectionSecondary; //Sometimes there's two!
     public bool twoProjectors = false; //Inside the update call this makes sure to wait for both if set.
+    public CinemachineVirtualCamera goalCam;
     public Animator animator; //Animator for each Camera that will be used.
     public bool animationPlayed = false; //Inside the update I need this to make sure the animator is called only once!
 
@@ -68,7 +69,11 @@ public class Interaction : MonoBehaviour
         {
             twoProjectors = true;
         }
-        
+        if (goalCam != null && goalCam.gameObject.activeSelf)
+        {
+            goalCam.gameObject.SetActive(false);
+        }
+
     }
 
     private void FixedUpdate()
@@ -96,20 +101,49 @@ public class Interaction : MonoBehaviour
 
         if (twoProjectors)
         {
-            if(projectionMain.activeSelf && projectionSecondary.activeSelf)
+            if (projectionMain.activeSelf && projectionSecondary.activeSelf)
             {
-                stopInteraction();
-                if(animationPlayed == false)
+                if (animationPlayed == false)
                 {
+                    stopInteraction();
                     int i = SceneManager.GetActiveScene().buildIndex;
-                    playAnimation(i);
+                    Debug.Log(i);
+                    StartCoroutine(playAnimation(i));
                     animationPlayed = true;
                 }
+            }
+            else
+            {
+                animationPlayed = false;
             }
         }
         else if (projectionMain.activeSelf)
         {
-            stopInteraction();
+            
+            if (animationPlayed == false)
+            {
+                stopInteraction();
+                int i = SceneManager.GetActiveScene().buildIndex;
+                StartCoroutine(playAnimation(i));
+                animationPlayed = true;
+            }
+        }
+        else
+        {
+            animationPlayed = false;
+        }
+        if(!animationPlayed)
+        {
+            int i = SceneManager.GetActiveScene().buildIndex;
+            if (i == 2)
+            {
+                animator.Play("GoalCamIble1");
+            }
+            else if (i == 3)
+            {
+                animator.Play("GoalCamIble2");
+            }
+            //The Ible for  animator scene 3
         }
         //Swing Mechanic to stop swinging. 
         /*if (isSwing)
@@ -128,16 +162,33 @@ public class Interaction : MonoBehaviour
     /*
      * Called once inside update on level completion.
      */
-    private void playAnimation(int option)
+    private IEnumerator playAnimation(int option)
     {
+        if(sideCam != null)
+        {
+            sideCam.gameObject.SetActive(false);
+            goalCam.gameObject.SetActive(true);
+
+        }
         if(option == 2)
         {
+            yield return new WaitForSeconds(0.5f);
             animator.Play("GoalCam1");
+            yield return new WaitForSeconds(5f);
         }
         else if(option == 3)
         {
+            yield return new WaitForSeconds(0.5f);
             animator.Play("GoalCam2");
+            yield return new WaitForSeconds(5f);
         }
+        //The animator camera is move in scene 3
+        if(sideCam != null)
+        {
+            goalCam.gameObject.SetActive(false);
+            sideCam.gameObject.SetActive(true);
+        }
+
     }
 
     /*
