@@ -168,9 +168,11 @@ public class Interaction : MonoBehaviour
         {
             sideCam.gameObject.SetActive(false);
             goalCam.gameObject.SetActive(true);
+            this.gameObject.GetComponent<PlayerMovement>().enabled = false;
+
 
         }
-        if(option == 2)
+        if (option == 2)
         {
             yield return new WaitForSeconds(0.5f);
             animator.Play("GoalCam1");
@@ -180,13 +182,15 @@ public class Interaction : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
             animator.Play("GoalCam2");
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
         }
         //The animator camera is move in scene 3
         if(sideCam != null)
         {
             goalCam.gameObject.SetActive(false);
             sideCam.gameObject.SetActive(true);
+            this.gameObject.GetComponent<PlayerMovement>().enabled = true;
+
         }
 
     }

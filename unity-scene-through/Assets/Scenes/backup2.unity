@@ -11893,6 +11893,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 674401786}
     - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: goalCam
+      value: 
+      objectReference: {fileID: 1100699741}
+    - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: sideCam
       value: 
       objectReference: {fileID: 1320292694}
@@ -11926,15 +11930,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222549994670988987, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.93
+      value: 9.131
       objectReference: {fileID: 0}
     - target: {fileID: 2222549994670988987, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.23
+      value: 7.978
       objectReference: {fileID: 0}
     - target: {fileID: 2222549994670988987, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -62.67
+      value: -24.134
       objectReference: {fileID: 0}
     - target: {fileID: 2222549994670988987, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21391,7 +21395,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1601678047}
   mirrorFrame: {fileID: 1559254771}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -27796,14 +27800,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100699739}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23008052, y: -0.67087173, z: 0.2313922, w: -0.66592175}
+  m_LocalRotation: {x: -0, y: 0.39158812, z: -0, w: 0.9201406}
   m_LocalPosition: {x: -8.065, y: 3.015, z: -48.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1705278283}
   m_Father: {fileID: 494987492}
-  m_LocalEulerAnglesHint: {x: 38.09, y: 90.438, z: 0.039}
+  m_LocalEulerAnglesHint: {x: 0, y: 46.107, z: 0}
 --- !u!114 &1100699741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28351,31 +28355,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2520957
+      value: -5.696382
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.733613
+      value: 3.5337849
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.28787
+      value: 6.912138
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6239012
+      value: 0.6789303
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.198697
+      value: 0.10717256
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.72018117
+      value: 0.71745473
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2293598
+      value: -0.11325383
       objectReference: {fileID: 0}
     - target: {fileID: 3172709485166369246, guid: c94c14adb35dd604eb3771939ddff804, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -35407,7 +35411,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1564178743}
   mirrorFrame: {fileID: 395077221}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -39330,8 +39334,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549095953}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.198697, y: 0.72018117, z: -0.2293598, w: 0.6239012}
-  m_LocalPosition: {x: -6.2520957, y: 4.733613, z: -31.28787}
+  m_LocalRotation: {x: 0.10717256, y: 0.71745473, z: -0.11325383, w: 0.6789303}
+  m_LocalPosition: {x: -5.696382, y: 3.5337849, z: 6.912138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46161,7 +46165,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 831663096}
   mirrorFrame: {fileID: 1840500708}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -46446,7 +46450,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1971033955}
   mirrorFrame: {fileID: 1175470943}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -59898,7 +59902,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382958509990893}
   mirrorFrame: {fileID: 4608891312912647159}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -59921,7 +59925,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382958570472970}
   mirrorFrame: {fileID: 4608891312890308112}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -59944,7 +59948,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382959255348175}
   mirrorFrame: {fileID: 4608891312180528085}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -59967,7 +59971,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382960046887943}
   mirrorFrame: {fileID: 4608891311413900317}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.5
+  mirrorSpeed: 0.4
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05

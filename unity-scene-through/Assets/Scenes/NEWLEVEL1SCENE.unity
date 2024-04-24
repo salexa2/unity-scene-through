@@ -28631,9 +28631,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 653724981}
     - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: goalCam
+      value: 
+      objectReference: {fileID: 682467177}
+    - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: sideCam
       value: 
       objectReference: {fileID: 1736266782}
+    - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 682467176}
     - target: {fileID: 807960267538156060, guid: a2a97ea3bd84bc345a351cd4032c2302, type: 3}
       propertyPath: sideCamera
       value: 
