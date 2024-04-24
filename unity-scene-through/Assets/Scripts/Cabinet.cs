@@ -8,6 +8,8 @@ public class Cabinet : MonoBehaviour
     [SerializeField] protected Vector3 openDirection = new Vector3(-1.0f, 0.0f, 0.0f);
     [SerializeField] protected float howFarOpen = 0;
     [SerializeField] protected float speedCabinet = 0.1f;
+    public AudioSource audio;
+    private bool stopClip = false;
 
     private Vector3 currentposition;
     private float current = 0;
@@ -34,6 +36,11 @@ public class Cabinet : MonoBehaviour
             {
                 current = howFarOpen;
                 transform.position = currentposition + (openDirection * current);
+            }
+            if(stopClip == false)
+            {
+                audio.Play();
+                stopClip = true;
             }
         }
         else

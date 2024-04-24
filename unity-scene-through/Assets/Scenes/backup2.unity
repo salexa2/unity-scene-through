@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer1: {fileID: 1904612691}
-  seconds: 300
+  seconds: 420
 --- !u!1 &45383335
 GameObject:
   m_ObjectHideFlags: 0
@@ -55702,8 +55702,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.7371316, y: 2.791812, z: 3.0161362}
-  m_Center: {x: -0.5684509, y: 0.895906, z: 1.0080681}
+  m_Size: {x: 2.7371316, y: 2.791812, z: 2.8336792}
+  m_Center: {x: -0.5684509, y: 0.895906, z: 0.9168396}
 --- !u!114 &114000011343941478
 MonoBehaviour:
   m_ObjectHideFlags: 0
