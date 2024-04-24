@@ -19,6 +19,7 @@ public class Power : MonoBehaviour
     public GameObject power_Light = null;
     public GameObject[] lightPoint = new GameObject[0];
     public GameObject[] raycreate = new GameObject[0];
+    public LayerMask mask;
 
 
     GameObject tmp_goal_object = null;
@@ -66,7 +67,7 @@ public class Power : MonoBehaviour
         for (int i = 0; i < bounces+1; i++)
         {
             ray = new Ray(p0, p1);
-            if (Physics.Raycast(ray, out hit, power_range, 1))
+            if (Physics.Raycast(ray, out hit, power_range, mask))
             {
                 
                 if (hit.collider.gameObject.tag.Equals("Mirror") || childernNameCheck(hit.collider.gameObject, "Mirror") && !hit.collider.isTrigger) //When the laser cast hit a Mirror.
