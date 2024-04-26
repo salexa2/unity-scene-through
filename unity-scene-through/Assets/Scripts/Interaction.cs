@@ -25,6 +25,7 @@ public class Interaction : MonoBehaviour
     public CinemachineVirtualCamera goalCam;
     public Animator animator; //Animator for each Camera that will be used.
     public bool animationPlayed = false; //Inside the update I need this to make sure the animator is called only once!
+    public float animationCheck = 0f;
 
     public GameObject UI;
 
@@ -105,15 +106,21 @@ public class Interaction : MonoBehaviour
             {
                 if (animationPlayed == false)
                 {
-                    stopInteraction();
-                    int i = SceneManager.GetActiveScene().buildIndex;
-                    Debug.Log(i);
-                    animationPlayed = true;
-                    StartCoroutine(playAnimation(i));
+                    animationCheck += 1.0f * Time.deltaTime;
+                    if (animationCheck >= 0.25f)
+                    {
+                        stopInteraction();
+                        int i = SceneManager.GetActiveScene().buildIndex;
+                        Debug.Log(i);
+                        animationPlayed = true;
+                        StartCoroutine(playAnimation(i));
+                    }
+                        
                 }
             }
             else
             {
+                animationCheck = 0f;
                 animationPlayed = false;
             }
         }
@@ -122,15 +129,20 @@ public class Interaction : MonoBehaviour
             
             if (animationPlayed == false)
             {
-                stopInteraction();
-                int i = SceneManager.GetActiveScene().buildIndex;
-                animationPlayed = true;
-                StartCoroutine(playAnimation(i));
+                animationCheck = 1.0f*Time.deltaTime;
+                if (animationCheck >= 0.25f)
+                {
+                    stopInteraction();
+                    int i = SceneManager.GetActiveScene().buildIndex;
+                    animationPlayed = true;
+                    StartCoroutine(playAnimation(i));
+                }
                 
             }
         }
         else
         {
+            animationCheck = 0f;
             animationPlayed = false;
         }
         if(!animationPlayed)
