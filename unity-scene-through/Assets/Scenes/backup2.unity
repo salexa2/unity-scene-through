@@ -22563,9 +22563,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1601678047}
   mirrorFrame: {fileID: 1559254771}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.2
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -36583,9 +36583,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1564178743}
   mirrorFrame: {fileID: 395077221}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -47439,9 +47439,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 831663096}
   mirrorFrame: {fileID: 1840500708}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -47724,9 +47724,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 1971033955}
   mirrorFrame: {fileID: 1175470943}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -61275,7 +61275,7 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382958509990893}
   mirrorFrame: {fileID: 4608891312912647159}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
   maxSpeed: 0.6
   acceleration: 0.05
@@ -61298,9 +61298,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382958570472970}
   mirrorFrame: {fileID: 4608891312890308112}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -61321,9 +61321,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382959255348175}
   mirrorFrame: {fileID: 4608891312180528085}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
@@ -61344,9 +61344,9 @@ MonoBehaviour:
   mirrorWheel: {fileID: 4790382960046887943}
   mirrorFrame: {fileID: 4608891311413900317}
   direction: {x: 0, y: 1, z: 0}
-  mirrorSpeed: 0.4
+  mirrorSpeed: 0.25
   currentAngle: 0
-  maxSpeed: 0.6
+  maxSpeed: 0.2
   acceleration: 0.05
   decceleration: 0.01
   topCam: {fileID: 1830361244}
