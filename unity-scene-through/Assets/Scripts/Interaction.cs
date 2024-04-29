@@ -129,7 +129,7 @@ public class Interaction : MonoBehaviour
             
             if (animationPlayed == false)
             {
-                animationCheck = 1.0f*Time.deltaTime;
+                animationCheck += 1.0f*Time.deltaTime;
                 if (animationCheck >= 0.25f)
                 {
                     stopInteraction();
